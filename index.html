@@ -62,7 +62,7 @@
     .family-group{margin:13px 0 18px}.family-head{display:flex;align-items:center;gap:8px;margin-bottom:5px}
     .family-head h3{margin:0;font-size:13px}.family-head span{color:var(--muted);font-size:13px}
     .family-head::after{content:"";flex:1;height:0;border-top:1px dashed #d7dbe0}
-    .icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:6px}
+    .catalog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:6px}
     .icon-card{position:relative;z-index:0;min-width:0;min-height:62px;display:flex;align-items:center;border:1px solid var(--line);border-radius:7px;background:rgba(255,255,255,.54);overflow:visible;transition:border-color .14s ease,background .14s ease,box-shadow .14s ease}
     .icon-card:hover,.icon-card:focus-within{z-index:6;border-color:#c8cdd3;background:var(--paper);box-shadow:0 4px 14px rgba(26,35,50,.055)}
     .preview{flex:none;width:52px;height:62px;display:flex;align-items:center;justify-content:center;color:#3a4556;background:transparent}
@@ -84,7 +84,7 @@
     .copy-option:hover,.copy-option:focus-visible{background:#f0f1f2}.copy-option.is-done{background:#eceeef}
     .page[data-view="compact"] .category-section{margin-top:22px}.page[data-view="compact"] .section-head{margin-bottom:8px}
     .page[data-view="compact"] .family-group{margin:10px 0 14px}.page[data-view="compact"] .family-head{margin-bottom:4px}
-    .page[data-view="compact"] .icon-grid{grid-template-columns:repeat(auto-fill,minmax(62px,1fr));gap:3px}
+    .page[data-view="compact"] .catalog-grid{grid-template-columns:repeat(auto-fill,minmax(62px,1fr));gap:3px}
     .page[data-view="compact"] .icon-card{min-height:52px;border-radius:6px;background:rgba(255,255,255,.48)}
     .page[data-view="compact"] .preview{width:100%;height:52px}.page[data-view="compact"] .card-body{display:none}
     .page[data-view="compact"] .copy-menu{right:3px;top:3px;transform:none}
@@ -101,9 +101,9 @@
     @media(max-width:720px){
       h1{font-size:31px}
       .hero{display:block}.hero-count{width:max-content;margin-top:14px}
-      .toolbar{grid-template-columns:1fr 1fr;padding-bottom:12px}.search-wrap,.view-toggle{grid-column:1 / -1}.icon-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .toolbar{grid-template-columns:1fr 1fr;padding-bottom:12px}.search-wrap,.view-toggle{grid-column:1 / -1}.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     }
-    @media(max-width:480px){.icon-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.page[data-view="compact"] .icon-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+    @media(max-width:480px){.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.page[data-view="compact"] .catalog-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
   </style>
 </head>
 <body>
@@ -919,7 +919,7 @@
           group.dataset.family=family;
           group.innerHTML=`<div class="family-head"><h3>${family}</h3><span>${familyIcons.length}</span></div>`;
           const grid=document.createElement('div');
-          grid.className='icon-grid';
+          grid.className='catalog-grid';
           familyIcons.forEach(icon=>{
             const card=document.createElement('article');
             card.className='icon-card';
