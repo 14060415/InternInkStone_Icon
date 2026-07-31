@@ -1,0 +1,2655 @@
+{
+  "schemaVersion": 1,
+  "name": "Intern Discovery Icons",
+  "fontFamily": "InternDiscoveryIcons",
+  "fontFiles": {
+    "woff2": "intern-discovery-icons.woff2",
+    "woff": "intern-discovery-icons.woff",
+    "ttf": "intern-discovery-icons.ttf"
+  },
+  "icons": [
+    {
+      "key": "menu",
+      "name": "菜单",
+      "token": "icon-menu",
+      "unicode": "U+E001",
+      "htmlEntity": "&#xE001;",
+      "category": "导航与布局",
+      "family": "菜单与侧栏",
+      "aliases": [
+        "汉堡菜单",
+        "主菜单",
+        "更多导航"
+      ],
+      "svg": "./svg/menu.svg"
+    },
+    {
+      "key": "sidebar",
+      "name": "侧栏",
+      "token": "icon-sidebar",
+      "unicode": "U+E002",
+      "htmlEntity": "&#xE002;",
+      "category": "导航与布局",
+      "family": "菜单与侧栏",
+      "aliases": [
+        "侧边栏",
+        "导航栏",
+        "左右布局",
+        "收起边栏"
+      ],
+      "svg": "./svg/sidebar.svg"
+    },
+    {
+      "key": "sidebarCollapse",
+      "name": "侧栏收起",
+      "token": "icon-sidebar-collapse",
+      "unicode": "U+E003",
+      "htmlEntity": "&#xE003;",
+      "category": "导航与布局",
+      "family": "菜单与侧栏",
+      "aliases": [
+        "右侧栏",
+        "收起侧栏",
+        "水平翻转侧栏",
+        "MenuFoldOutlined"
+      ],
+      "svg": "./svg/sidebar-collapse.svg"
+    },
+    {
+      "key": "moreVertical",
+      "name": "纵向更多",
+      "token": "icon-more-vertical",
+      "unicode": "U+E004",
+      "htmlEntity": "&#xE004;",
+      "category": "导航与布局",
+      "family": "菜单与侧栏",
+      "aliases": [
+        "竖向更多",
+        "纵向省略菜单",
+        "VerticalMoreOutlined"
+      ],
+      "svg": "./svg/more-vertical.svg"
+    },
+    {
+      "key": "left",
+      "name": "返回",
+      "token": "icon-left",
+      "unicode": "U+E005",
+      "htmlEntity": "&#xE005;",
+      "category": "导航与布局",
+      "family": "基础方向",
+      "aliases": [
+        "后退",
+        "上一页",
+        "向左"
+      ],
+      "svg": "./svg/left.svg"
+    },
+    {
+      "key": "right",
+      "name": "前进",
+      "token": "icon-right",
+      "unicode": "U+E006",
+      "htmlEntity": "&#xE006;",
+      "category": "导航与布局",
+      "family": "基础方向",
+      "aliases": [
+        "下一页",
+        "进入",
+        "向右"
+      ],
+      "svg": "./svg/right.svg"
+    },
+    {
+      "key": "down",
+      "name": "展开",
+      "token": "icon-down",
+      "unicode": "U+E007",
+      "htmlEntity": "&#xE007;",
+      "category": "导航与布局",
+      "family": "基础方向",
+      "aliases": [
+        "下拉",
+        "收起状态",
+        "更多内容"
+      ],
+      "svg": "./svg/down.svg"
+    },
+    {
+      "key": "up",
+      "name": "收起",
+      "token": "icon-up",
+      "unicode": "U+E008",
+      "htmlEntity": "&#xE008;",
+      "category": "导航与布局",
+      "family": "基础方向",
+      "aliases": [
+        "全部收起",
+        "向上折叠",
+        "隐藏内容"
+      ],
+      "svg": "./svg/up.svg"
+    },
+    {
+      "key": "toTop",
+      "name": "回到顶部",
+      "token": "icon-to-top",
+      "unicode": "U+E009",
+      "htmlEntity": "&#xE009;",
+      "category": "导航与布局",
+      "family": "基础方向",
+      "aliases": [
+        "返回顶部",
+        "置顶",
+        "TotopOutlined"
+      ],
+      "svg": "./svg/to-top.svg"
+    },
+    {
+      "key": "arrowLeft",
+      "name": "向左箭头",
+      "token": "icon-arrow-left",
+      "unicode": "U+E00A",
+      "htmlEntity": "&#xE00A;",
+      "category": "导航与布局",
+      "family": "直向箭头",
+      "aliases": [
+        "左移",
+        "左向",
+        "水平向左"
+      ],
+      "svg": "./svg/arrow-left.svg"
+    },
+    {
+      "key": "arrowRight",
+      "name": "向右箭头",
+      "token": "icon-arrow-right",
+      "unicode": "U+E00B",
+      "htmlEntity": "&#xE00B;",
+      "category": "导航与布局",
+      "family": "直向箭头",
+      "aliases": [
+        "右移",
+        "右向",
+        "水平向右"
+      ],
+      "svg": "./svg/arrow-right.svg"
+    },
+    {
+      "key": "arrowDown",
+      "name": "向下箭头",
+      "token": "icon-arrow-down",
+      "unicode": "U+E00C",
+      "htmlEntity": "&#xE00C;",
+      "category": "导航与布局",
+      "family": "直向箭头",
+      "aliases": [
+        "下移",
+        "向下滚动",
+        "垂直向下"
+      ],
+      "svg": "./svg/arrow-down.svg"
+    },
+    {
+      "key": "enter",
+      "name": "回车",
+      "token": "icon-enter",
+      "unicode": "U+E00D",
+      "htmlEntity": "&#xE00D;",
+      "category": "导航与布局",
+      "family": "基础方向",
+      "aliases": [
+        "换行",
+        "返回键",
+        "CornerDownLeftOutlined"
+      ],
+      "svg": "./svg/enter.svg"
+    },
+    {
+      "key": "arrowUpLeft",
+      "name": "左上箭头",
+      "token": "icon-arrow-up-left",
+      "unicode": "U+E00E",
+      "htmlEntity": "&#xE00E;",
+      "category": "导航与布局",
+      "family": "斜向箭头",
+      "aliases": [
+        "左上方",
+        "西北方向"
+      ],
+      "svg": "./svg/arrow-up-left.svg"
+    },
+    {
+      "key": "arrowUpRight",
+      "name": "右上箭头",
+      "token": "icon-arrow-up-right",
+      "unicode": "U+E00F",
+      "htmlEntity": "&#xE00F;",
+      "category": "导航与布局",
+      "family": "斜向箭头",
+      "aliases": [
+        "右上方",
+        "东北方向"
+      ],
+      "svg": "./svg/arrow-up-right.svg"
+    },
+    {
+      "key": "arrowDownLeft",
+      "name": "左下箭头",
+      "token": "icon-arrow-down-left",
+      "unicode": "U+E010",
+      "htmlEntity": "&#xE010;",
+      "category": "导航与布局",
+      "family": "斜向箭头",
+      "aliases": [
+        "左下方",
+        "西南方向"
+      ],
+      "svg": "./svg/arrow-down-left.svg"
+    },
+    {
+      "key": "arrowDownRight",
+      "name": "右下箭头",
+      "token": "icon-arrow-down-right",
+      "unicode": "U+E011",
+      "htmlEntity": "&#xE011;",
+      "category": "导航与布局",
+      "family": "斜向箭头",
+      "aliases": [
+        "右下方",
+        "东南方向"
+      ],
+      "svg": "./svg/arrow-down-right.svg"
+    },
+    {
+      "key": "swapHorizontal",
+      "name": "水平交换",
+      "token": "icon-swap-horizontal",
+      "unicode": "U+E012",
+      "htmlEntity": "&#xE012;",
+      "category": "导航与布局",
+      "family": "方向交换",
+      "aliases": [
+        "左右交换",
+        "切换方向",
+        "横向互换"
+      ],
+      "svg": "./svg/swap-horizontal.svg"
+    },
+    {
+      "key": "swapVertical",
+      "name": "垂直交换",
+      "token": "icon-swap-vertical",
+      "unicode": "U+E013",
+      "htmlEntity": "&#xE013;",
+      "category": "导航与布局",
+      "family": "方向交换",
+      "aliases": [
+        "上下交换",
+        "纵向互换",
+        "升降切换"
+      ],
+      "svg": "./svg/swap-vertical.svg"
+    },
+    {
+      "key": "home",
+      "name": "首页",
+      "token": "icon-home",
+      "unicode": "U+E014",
+      "htmlEntity": "&#xE014;",
+      "category": "导航与布局",
+      "family": "页面与语言",
+      "aliases": [
+        "主页",
+        "返回首页"
+      ],
+      "svg": "./svg/home.svg"
+    },
+    {
+      "key": "external",
+      "name": "外部打开",
+      "token": "icon-external",
+      "unicode": "U+E015",
+      "htmlEntity": "&#xE015;",
+      "category": "导航与布局",
+      "family": "页面与语言",
+      "aliases": [
+        "新窗口打开",
+        "跳转链接",
+        "申请体验"
+      ],
+      "svg": "./svg/external.svg"
+    },
+    {
+      "key": "browser",
+      "name": "浏览器",
+      "token": "icon-browser",
+      "unicode": "U+E016",
+      "htmlEntity": "&#xE016;",
+      "category": "导航与布局",
+      "family": "页面与语言",
+      "aliases": [
+        "网页",
+        "Web",
+        "BrowserOutlined"
+      ],
+      "svg": "./svg/browser.svg"
+    },
+    {
+      "key": "grid",
+      "name": "网格视图",
+      "token": "icon-grid",
+      "unicode": "U+E017",
+      "htmlEntity": "&#xE017;",
+      "category": "导航与布局",
+      "family": "视图与窗口",
+      "aliases": [
+        "卡片视图",
+        "宫格"
+      ],
+      "svg": "./svg/grid.svg"
+    },
+    {
+      "key": "list",
+      "name": "列表视图",
+      "token": "icon-list",
+      "unicode": "U+E018",
+      "htmlEntity": "&#xE018;",
+      "category": "导航与布局",
+      "family": "视图与窗口",
+      "aliases": [
+        "清单视图",
+        "行列表"
+      ],
+      "svg": "./svg/list.svg"
+    },
+    {
+      "key": "layers",
+      "name": "图层",
+      "token": "icon-layers",
+      "unicode": "U+E019",
+      "htmlEntity": "&#xE019;",
+      "category": "导航与布局",
+      "family": "视图与窗口",
+      "aliases": [
+        "层级",
+        "叠层",
+        "图层视图"
+      ],
+      "svg": "./svg/layers.svg"
+    },
+    {
+      "key": "fullscreen",
+      "name": "全屏",
+      "token": "icon-fullscreen",
+      "unicode": "U+E01A",
+      "htmlEntity": "&#xE01A;",
+      "category": "导航与布局",
+      "family": "视图与窗口",
+      "aliases": [
+        "放大视图"
+      ],
+      "svg": "./svg/fullscreen.svg"
+    },
+    {
+      "key": "fullscreenExit",
+      "name": "退出全屏",
+      "token": "icon-fullscreen-exit",
+      "unicode": "U+E01B",
+      "htmlEntity": "&#xE01B;",
+      "category": "导航与布局",
+      "family": "视图与窗口",
+      "aliases": [
+        "收起全屏",
+        "恢复窗口",
+        "ExitFullscreenOutlined"
+      ],
+      "svg": "./svg/fullscreen-exit.svg"
+    },
+    {
+      "key": "zoomIn",
+      "name": "放大",
+      "token": "icon-zoom-in",
+      "unicode": "U+E01C",
+      "htmlEntity": "&#xE01C;",
+      "category": "导航与布局",
+      "family": "视图与窗口",
+      "aliases": [
+        "放大内容",
+        "局部放大",
+        "AmplificationOutlined"
+      ],
+      "svg": "./svg/zoom-in.svg"
+    },
+    {
+      "key": "zoomOut",
+      "name": "缩小",
+      "token": "icon-zoom-out",
+      "unicode": "U+E01D",
+      "htmlEntity": "&#xE01D;",
+      "category": "导航与布局",
+      "family": "视图与窗口",
+      "aliases": [
+        "缩小内容",
+        "局部缩小",
+        "ReduceOutlined"
+      ],
+      "svg": "./svg/zoom-out.svg"
+    },
+    {
+      "key": "languageChinese",
+      "name": "中文",
+      "token": "icon-language-chinese",
+      "unicode": "U+E01E",
+      "htmlEntity": "&#xE01E;",
+      "category": "导航与布局",
+      "family": "页面与语言",
+      "aliases": [
+        "中文语言",
+        "切换中文",
+        "ChineseLanguageOutlined"
+      ],
+      "svg": "./svg/language-chinese.svg"
+    },
+    {
+      "key": "languageEnglish",
+      "name": "英文",
+      "token": "icon-language-english",
+      "unicode": "U+E01F",
+      "htmlEntity": "&#xE01F;",
+      "category": "导航与布局",
+      "family": "页面与语言",
+      "aliases": [
+        "英文语言",
+        "切换英文",
+        "EnglishLanguageOutlined"
+      ],
+      "svg": "./svg/language-english.svg"
+    },
+    {
+      "key": "search",
+      "name": "搜索",
+      "token": "icon-search",
+      "unicode": "U+E020",
+      "htmlEntity": "&#xE020;",
+      "category": "通用操作",
+      "family": "搜索与筛选",
+      "aliases": [
+        "检索",
+        "查找",
+        "放大镜"
+      ],
+      "svg": "./svg/search.svg"
+    },
+    {
+      "key": "filter",
+      "name": "筛选",
+      "token": "icon-filter",
+      "unicode": "U+E021",
+      "htmlEntity": "&#xE021;",
+      "category": "通用操作",
+      "family": "搜索与筛选",
+      "aliases": [
+        "过滤",
+        "条件筛选"
+      ],
+      "svg": "./svg/filter.svg"
+    },
+    {
+      "key": "sort",
+      "name": "排序",
+      "token": "icon-sort",
+      "unicode": "U+E022",
+      "htmlEntity": "&#xE022;",
+      "category": "通用操作",
+      "family": "搜索与筛选",
+      "aliases": [
+        "时间排序",
+        "升降序",
+        "活跃倒序"
+      ],
+      "svg": "./svg/sort.svg"
+    },
+    {
+      "key": "sliders",
+      "name": "参数调节",
+      "token": "icon-sliders",
+      "unicode": "U+E023",
+      "htmlEntity": "&#xE023;",
+      "category": "通用操作",
+      "family": "搜索与筛选",
+      "aliases": [
+        "选项",
+        "高级筛选",
+        "参数设置"
+      ],
+      "svg": "./svg/sliders.svg"
+    },
+    {
+      "key": "plus",
+      "name": "新建",
+      "token": "icon-plus",
+      "unicode": "U+E024",
+      "htmlEntity": "&#xE024;",
+      "category": "通用操作",
+      "family": "创建与编辑",
+      "aliases": [
+        "添加",
+        "继续添加",
+        "创建"
+      ],
+      "svg": "./svg/plus.svg"
+    },
+    {
+      "key": "minus",
+      "name": "减少",
+      "token": "icon-minus",
+      "unicode": "U+E025",
+      "htmlEntity": "&#xE025;",
+      "category": "通用操作",
+      "family": "创建与编辑",
+      "aliases": [
+        "减去",
+        "移除数量",
+        "SubtractOutlined"
+      ],
+      "svg": "./svg/minus.svg"
+    },
+    {
+      "key": "edit",
+      "name": "编辑",
+      "token": "icon-edit",
+      "unicode": "U+E026",
+      "htmlEntity": "&#xE026;",
+      "category": "通用操作",
+      "family": "创建与编辑",
+      "aliases": [
+        "修改",
+        "重命名"
+      ],
+      "svg": "./svg/edit.svg"
+    },
+    {
+      "key": "save",
+      "name": "保存",
+      "token": "icon-save",
+      "unicode": "U+E027",
+      "htmlEntity": "&#xE027;",
+      "category": "通用操作",
+      "family": "创建与编辑",
+      "aliases": [
+        "存储",
+        "提交保存"
+      ],
+      "svg": "./svg/save.svg"
+    },
+    {
+      "key": "copy",
+      "name": "复制",
+      "token": "icon-copy",
+      "unicode": "U+E028",
+      "htmlEntity": "&#xE028;",
+      "category": "通用操作",
+      "family": "创建与编辑",
+      "aliases": [
+        "复制纯文本",
+        "复制为 LaTeX",
+        "克隆"
+      ],
+      "svg": "./svg/copy.svg"
+    },
+    {
+      "key": "trash",
+      "name": "删除",
+      "token": "icon-trash",
+      "unicode": "U+E029",
+      "htmlEntity": "&#xE029;",
+      "category": "通用操作",
+      "family": "对象管理",
+      "aliases": [
+        "移除",
+        "清空"
+      ],
+      "svg": "./svg/trash.svg"
+    },
+    {
+      "key": "clear",
+      "name": "清除",
+      "token": "icon-clear",
+      "unicode": "U+E02A",
+      "htmlEntity": "&#xE02A;",
+      "category": "通用操作",
+      "family": "对象管理",
+      "aliases": [
+        "扫除",
+        "清理",
+        "BroomOutlined"
+      ],
+      "svg": "./svg/clear.svg"
+    },
+    {
+      "key": "pin",
+      "name": "固定",
+      "token": "icon-pin",
+      "unicode": "U+E02B",
+      "htmlEntity": "&#xE02B;",
+      "category": "通用操作",
+      "family": "对象管理",
+      "aliases": [
+        "置顶",
+        "钉住",
+        "ImmobilizationOutlined"
+      ],
+      "svg": "./svg/pin.svg"
+    },
+    {
+      "key": "upload",
+      "name": "上传",
+      "token": "icon-upload",
+      "unicode": "U+E02C",
+      "htmlEntity": "&#xE02C;",
+      "category": "通用操作",
+      "family": "传输与共享",
+      "aliases": [
+        "导入",
+        "上传文件"
+      ],
+      "svg": "./svg/upload.svg"
+    },
+    {
+      "key": "download",
+      "name": "下载",
+      "token": "icon-download",
+      "unicode": "U+E02D",
+      "htmlEntity": "&#xE02D;",
+      "category": "通用操作",
+      "family": "传输与共享",
+      "aliases": [
+        "导出",
+        "保存到本地"
+      ],
+      "svg": "./svg/download.svg"
+    },
+    {
+      "key": "refresh",
+      "name": "刷新",
+      "token": "icon-refresh",
+      "unicode": "U+E02E",
+      "htmlEntity": "&#xE02E;",
+      "category": "通用操作",
+      "family": "系统控制",
+      "aliases": [
+        "重试",
+        "重新加载",
+        "更新"
+      ],
+      "svg": "./svg/refresh.svg"
+    },
+    {
+      "key": "settings",
+      "name": "设置",
+      "token": "icon-settings",
+      "unicode": "U+E02F",
+      "htmlEntity": "&#xE02F;",
+      "category": "通用操作",
+      "family": "系统控制",
+      "aliases": [
+        "配置",
+        "管理"
+      ],
+      "svg": "./svg/settings.svg"
+    },
+    {
+      "key": "share",
+      "name": "分享",
+      "token": "icon-share",
+      "unicode": "U+E030",
+      "htmlEntity": "&#xE030;",
+      "category": "通用操作",
+      "family": "传输与共享",
+      "aliases": [
+        "共享",
+        "协作链接"
+      ],
+      "svg": "./svg/share.svg"
+    },
+    {
+      "key": "bookmark",
+      "name": "收藏",
+      "token": "icon-bookmark",
+      "unicode": "U+E031",
+      "htmlEntity": "&#xE031;",
+      "category": "状态与反馈",
+      "family": "收藏状态",
+      "aliases": [
+        "书签",
+        "添加到课题"
+      ],
+      "svg": "./svg/bookmark.svg"
+    },
+    {
+      "key": "star",
+      "name": "星",
+      "token": "icon-star",
+      "unicode": "U+E032",
+      "htmlEntity": "&#xE032;",
+      "category": "状态与反馈",
+      "family": "收藏状态",
+      "aliases": [
+        "星标",
+        "评分",
+        "五角星",
+        "StarOutlined"
+      ],
+      "svg": "./svg/star.svg"
+    },
+    {
+      "key": "play",
+      "name": "启动",
+      "token": "icon-play",
+      "unicode": "U+E033",
+      "htmlEntity": "&#xE033;",
+      "category": "对话与媒体控制",
+      "family": "媒体播放",
+      "aliases": [
+        "运行",
+        "继续"
+      ],
+      "svg": "./svg/play.svg"
+    },
+    {
+      "key": "pause",
+      "name": "暂停",
+      "token": "icon-pause",
+      "unicode": "U+E034",
+      "htmlEntity": "&#xE034;",
+      "category": "对话与媒体控制",
+      "family": "媒体播放",
+      "aliases": [
+        "停止生成",
+        "暂停运行"
+      ],
+      "svg": "./svg/pause.svg"
+    },
+    {
+      "key": "fastForward",
+      "name": "快进",
+      "token": "icon-fast-forward",
+      "unicode": "U+E035",
+      "htmlEntity": "&#xE035;",
+      "category": "对话与媒体控制",
+      "family": "媒体播放",
+      "aliases": [
+        "向前跳转",
+        "加速播放"
+      ],
+      "svg": "./svg/fast-forward.svg"
+    },
+    {
+      "key": "rewind",
+      "name": "快退",
+      "token": "icon-rewind",
+      "unicode": "U+E036",
+      "htmlEntity": "&#xE036;",
+      "category": "对话与媒体控制",
+      "family": "媒体播放",
+      "aliases": [
+        "向后跳转",
+        "回退播放"
+      ],
+      "svg": "./svg/rewind.svg"
+    },
+    {
+      "key": "close",
+      "name": "关闭",
+      "token": "icon-close",
+      "unicode": "U+E037",
+      "htmlEntity": "&#xE037;",
+      "category": "通用操作",
+      "family": "对象管理",
+      "aliases": [
+        "取消",
+        "移除窗口"
+      ],
+      "svg": "./svg/close.svg"
+    },
+    {
+      "key": "more",
+      "name": "更多操作",
+      "token": "icon-more",
+      "unicode": "U+E038",
+      "htmlEntity": "&#xE038;",
+      "category": "通用操作",
+      "family": "对象管理",
+      "aliases": [
+        "省略菜单",
+        "附加操作"
+      ],
+      "svg": "./svg/more.svg"
+    },
+    {
+      "key": "thumbsUp",
+      "name": "赞同",
+      "token": "icon-thumbs-up",
+      "unicode": "U+E039",
+      "htmlEntity": "&#xE039;",
+      "category": "状态与反馈",
+      "family": "评价状态",
+      "aliases": [
+        "赞",
+        "有帮助",
+        "正向反馈"
+      ],
+      "svg": "./svg/thumbs-up.svg"
+    },
+    {
+      "key": "thumbsDown",
+      "name": "反对",
+      "token": "icon-thumbs-down",
+      "unicode": "U+E03A",
+      "htmlEntity": "&#xE03A;",
+      "category": "状态与反馈",
+      "family": "评价状态",
+      "aliases": [
+        "踩",
+        "无帮助",
+        "负向反馈"
+      ],
+      "svg": "./svg/thumbs-down.svg"
+    },
+    {
+      "key": "fileText",
+      "name": "文档",
+      "token": "icon-file-text",
+      "unicode": "U+E03B",
+      "htmlEntity": "&#xE03B;",
+      "category": "文件与内容",
+      "family": "文件格式",
+      "aliases": [
+        "DOC",
+        "DOCX",
+        "TXT",
+        "Markdown",
+        "MD",
+        "RTF",
+        "Word 文档"
+      ],
+      "svg": "./svg/file-text.svg"
+    },
+    {
+      "key": "filePdf",
+      "name": "PDF 文件",
+      "token": "icon-file-pdf",
+      "unicode": "U+E03C",
+      "htmlEntity": "&#xE03C;",
+      "category": "文件与内容",
+      "family": "文件格式",
+      "aliases": [
+        "PDF",
+        "论文 PDF",
+        "报告 PDF",
+        "便携式文档"
+      ],
+      "svg": "./svg/file-pdf.svg"
+    },
+    {
+      "key": "fileSpreadsheet",
+      "name": "表格文件",
+      "token": "icon-file-spreadsheet",
+      "unicode": "U+E03D",
+      "htmlEntity": "&#xE03D;",
+      "category": "文件与内容",
+      "family": "文件格式",
+      "aliases": [
+        "XLS",
+        "XLSX",
+        "CSV",
+        "TSV",
+        "Excel 表格"
+      ],
+      "svg": "./svg/file-spreadsheet.svg"
+    },
+    {
+      "key": "filePresentation",
+      "name": "演示文稿",
+      "token": "icon-file-presentation",
+      "unicode": "U+E03E",
+      "htmlEntity": "&#xE03E;",
+      "category": "文件与内容",
+      "family": "文件格式",
+      "aliases": [
+        "PPT",
+        "PPTX",
+        "演示文档",
+        "幻灯片"
+      ],
+      "svg": "./svg/file-presentation.svg"
+    },
+    {
+      "key": "fileArchive",
+      "name": "压缩文件",
+      "token": "icon-file-archive",
+      "unicode": "U+E03F",
+      "htmlEntity": "&#xE03F;",
+      "category": "文件与内容",
+      "family": "文件格式",
+      "aliases": [
+        "ZIP",
+        "RAR",
+        "7Z",
+        "TAR",
+        "GZ",
+        "压缩包"
+      ],
+      "svg": "./svg/file-archive.svg"
+    },
+    {
+      "key": "fileAudio",
+      "name": "音频文件",
+      "token": "icon-file-audio",
+      "unicode": "U+E040",
+      "htmlEntity": "&#xE040;",
+      "category": "文件与内容",
+      "family": "文件格式",
+      "aliases": [
+        "MP3",
+        "WAV",
+        "FLAC",
+        "AAC",
+        "音频附件"
+      ],
+      "svg": "./svg/file-audio.svg"
+    },
+    {
+      "key": "fileCode",
+      "name": "代码文件",
+      "token": "icon-file-code",
+      "unicode": "U+E041",
+      "htmlEntity": "&#xE041;",
+      "category": "文件与内容",
+      "family": "文件格式",
+      "aliases": [
+        "JSON",
+        "YAML",
+        "YML",
+        "XML",
+        "JS",
+        "TS",
+        "PY",
+        "源码文件",
+        "配置文件"
+      ],
+      "svg": "./svg/file-code.svg"
+    },
+    {
+      "key": "fileList",
+      "name": "文件列表",
+      "token": "icon-file-list",
+      "unicode": "U+E042",
+      "htmlEntity": "&#xE042;",
+      "category": "文件与内容",
+      "family": "文件与容器",
+      "aliases": [
+        "文件清单",
+        "文件目录",
+        "文件条目",
+        "FileListOutlined"
+      ],
+      "svg": "./svg/file-list.svg"
+    },
+    {
+      "key": "folder",
+      "name": "文件夹",
+      "token": "icon-folder",
+      "unicode": "U+E043",
+      "htmlEntity": "&#xE043;",
+      "category": "文件与内容",
+      "family": "文件与容器",
+      "aliases": [
+        "目录",
+        "资料夹"
+      ],
+      "svg": "./svg/folder.svg"
+    },
+    {
+      "key": "database",
+      "name": "数据库",
+      "token": "icon-database",
+      "unicode": "U+E044",
+      "htmlEntity": "&#xE044;",
+      "category": "数据与可视化",
+      "family": "数据结构",
+      "aliases": [
+        "数据集",
+        "数据源"
+      ],
+      "svg": "./svg/database.svg"
+    },
+    {
+      "key": "table",
+      "name": "表格",
+      "token": "icon-table",
+      "unicode": "U+E045",
+      "htmlEntity": "&#xE045;",
+      "category": "数据与可视化",
+      "family": "数据结构",
+      "aliases": [
+        "数据表",
+        "矩阵"
+      ],
+      "svg": "./svg/table.svg"
+    },
+    {
+      "key": "image",
+      "name": "图片",
+      "token": "icon-image",
+      "unicode": "U+E046",
+      "htmlEntity": "&#xE046;",
+      "category": "文件与内容",
+      "family": "媒体内容",
+      "aliases": [
+        "图像",
+        "预览图",
+        "媒体",
+        "PNG",
+        "JPG",
+        "JPEG",
+        "GIF",
+        "WEBP",
+        "SVG"
+      ],
+      "svg": "./svg/image.svg"
+    },
+    {
+      "key": "camera",
+      "name": "相机",
+      "token": "icon-camera",
+      "unicode": "U+E047",
+      "htmlEntity": "&#xE047;",
+      "category": "文件与内容",
+      "family": "媒体内容",
+      "aliases": [
+        "拍照",
+        "摄像头",
+        "CameraOutlined"
+      ],
+      "svg": "./svg/camera.svg"
+    },
+    {
+      "key": "video",
+      "name": "视频",
+      "token": "icon-video",
+      "unicode": "U+E048",
+      "htmlEntity": "&#xE048;",
+      "category": "文件与内容",
+      "family": "媒体内容",
+      "aliases": [
+        "录像",
+        "视频文件",
+        "MP4",
+        "MOV",
+        "AVI",
+        "MKV",
+        "VideoOutlined"
+      ],
+      "svg": "./svg/video.svg"
+    },
+    {
+      "key": "cloud",
+      "name": "云端",
+      "token": "icon-cloud",
+      "unicode": "U+E049",
+      "htmlEntity": "&#xE049;",
+      "category": "文件与内容",
+      "family": "云端内容",
+      "aliases": [
+        "云服务",
+        "云存储",
+        "CloudOutlined"
+      ],
+      "svg": "./svg/cloud.svg"
+    },
+    {
+      "key": "cloudDownload",
+      "name": "云下载",
+      "token": "icon-cloud-download",
+      "unicode": "U+E04A",
+      "htmlEntity": "&#xE04A;",
+      "category": "文件与内容",
+      "family": "云端内容",
+      "aliases": [
+        "从云端下载",
+        "云端导出",
+        "CloudDownloadOutlined"
+      ],
+      "svg": "./svg/cloud-download.svg"
+    },
+    {
+      "key": "attachment",
+      "name": "附件",
+      "token": "icon-attachment",
+      "unicode": "U+E04B",
+      "htmlEntity": "&#xE04B;",
+      "category": "文件与内容",
+      "family": "链接与引用",
+      "aliases": [
+        "附加文件",
+        "回形针"
+      ],
+      "svg": "./svg/attachment.svg"
+    },
+    {
+      "key": "link",
+      "name": "链接",
+      "token": "icon-link",
+      "unicode": "U+E04C",
+      "htmlEntity": "&#xE04C;",
+      "category": "文件与内容",
+      "family": "链接与引用",
+      "aliases": [
+        "外部链接",
+        "引用地址"
+      ],
+      "svg": "./svg/link.svg"
+    },
+    {
+      "key": "unlink",
+      "name": "断开链接",
+      "token": "icon-unlink",
+      "unicode": "U+E04D",
+      "htmlEntity": "&#xE04D;",
+      "category": "文件与内容",
+      "family": "链接与引用",
+      "aliases": [
+        "取消链接",
+        "链接失效",
+        "BrokenOutlined"
+      ],
+      "svg": "./svg/unlink.svg"
+    },
+    {
+      "key": "quote",
+      "name": "引用",
+      "token": "icon-quote",
+      "unicode": "U+E04E",
+      "htmlEntity": "&#xE04E;",
+      "category": "文件与内容",
+      "family": "链接与引用",
+      "aliases": [
+        "引文",
+        "引用来源",
+        "QuoteOutlined",
+        "CiteOutlined"
+      ],
+      "svg": "./svg/quote.svg"
+    },
+    {
+      "key": "location",
+      "name": "地点",
+      "token": "icon-location",
+      "unicode": "U+E04F",
+      "htmlEntity": "&#xE04F;",
+      "category": "文件与内容",
+      "family": "知识与记录",
+      "aliases": [
+        "位置",
+        "定位",
+        "LocationOutlined"
+      ],
+      "svg": "./svg/location.svg"
+    },
+    {
+      "key": "book",
+      "name": "知识库",
+      "token": "icon-book",
+      "unicode": "U+E050",
+      "htmlEntity": "&#xE050;",
+      "category": "文件与内容",
+      "family": "知识与记录",
+      "aliases": [
+        "文献库",
+        "资料",
+        "阅读"
+      ],
+      "svg": "./svg/book.svg"
+    },
+    {
+      "key": "history",
+      "name": "历史记录",
+      "token": "icon-history",
+      "unicode": "U+E051",
+      "htmlEntity": "&#xE051;",
+      "category": "文件与内容",
+      "family": "知识与记录",
+      "aliases": [
+        "最近对话",
+        "查看全部历史对话"
+      ],
+      "svg": "./svg/history.svg"
+    },
+    {
+      "key": "inbox",
+      "name": "收件箱",
+      "token": "icon-inbox",
+      "unicode": "U+E052",
+      "htmlEntity": "&#xE052;",
+      "category": "文件与内容",
+      "family": "文件与容器",
+      "aliases": [
+        "本次会话文件",
+        "共享资产"
+      ],
+      "svg": "./svg/inbox.svg"
+    },
+    {
+      "key": "code",
+      "name": "代码",
+      "token": "icon-code",
+      "unicode": "U+E053",
+      "htmlEntity": "&#xE053;",
+      "category": "开发与 AI 工程",
+      "family": "代码与协作",
+      "aliases": [
+        "源码",
+        "开发文件"
+      ],
+      "svg": "./svg/code.svg"
+    },
+    {
+      "key": "user",
+      "name": "用户",
+      "token": "icon-user",
+      "unicode": "U+E054",
+      "htmlEntity": "&#xE054;",
+      "category": "用户与协作",
+      "family": "个人与账户",
+      "aliases": [
+        "个人",
+        "账户",
+        "头像"
+      ],
+      "svg": "./svg/user.svg"
+    },
+    {
+      "key": "users",
+      "name": "团队",
+      "token": "icon-users",
+      "unicode": "U+E055",
+      "htmlEntity": "&#xE055;",
+      "category": "用户与协作",
+      "family": "团队与组织",
+      "aliases": [
+        "成员",
+        "用户组",
+        "协作"
+      ],
+      "svg": "./svg/users.svg"
+    },
+    {
+      "key": "building",
+      "name": "机构",
+      "token": "icon-building",
+      "unicode": "U+E056",
+      "htmlEntity": "&#xE056;",
+      "category": "用户与协作",
+      "family": "团队与组织",
+      "aliases": [
+        "组织",
+        "实验室",
+        "企业"
+      ],
+      "svg": "./svg/building.svg"
+    },
+    {
+      "key": "occupation",
+      "name": "职务",
+      "token": "icon-occupation",
+      "unicode": "U+E057",
+      "htmlEntity": "&#xE057;",
+      "category": "用户与协作",
+      "family": "个人与账户",
+      "aliases": [
+        "岗位",
+        "职业",
+        "OccupationOutlined"
+      ],
+      "svg": "./svg/occupation.svg"
+    },
+    {
+      "key": "invite",
+      "name": "邀请成员",
+      "token": "icon-invite",
+      "unicode": "U+E058",
+      "htmlEntity": "&#xE058;",
+      "category": "用户与协作",
+      "family": "团队与组织",
+      "aliases": [
+        "添加用户",
+        "加入团队"
+      ],
+      "svg": "./svg/invite.svg"
+    },
+    {
+      "key": "shield",
+      "name": "权限",
+      "token": "icon-shield",
+      "unicode": "U+E059",
+      "htmlEntity": "&#xE059;",
+      "category": "用户与协作",
+      "family": "联系与权限",
+      "aliases": [
+        "管理员",
+        "安全策略",
+        "授权"
+      ],
+      "svg": "./svg/shield.svg"
+    },
+    {
+      "key": "phone",
+      "name": "电话",
+      "token": "icon-phone",
+      "unicode": "U+E05A",
+      "htmlEntity": "&#xE05A;",
+      "category": "用户与协作",
+      "family": "联系与权限",
+      "aliases": [
+        "联系",
+        "拨号",
+        "PhoneOutlined"
+      ],
+      "svg": "./svg/phone.svg"
+    },
+    {
+      "key": "logout",
+      "name": "退出",
+      "token": "icon-logout",
+      "unicode": "U+E05B",
+      "htmlEntity": "&#xE05B;",
+      "category": "用户与协作",
+      "family": "个人与账户",
+      "aliases": [
+        "退出登录",
+        "注销",
+        "quitOutlined"
+      ],
+      "svg": "./svg/logout.svg"
+    },
+    {
+      "key": "check",
+      "name": "成功",
+      "token": "icon-check",
+      "unicode": "U+E05C",
+      "htmlEntity": "&#xE05C;",
+      "category": "状态与反馈",
+      "family": "结果与提示",
+      "aliases": [
+        "完成",
+        "确认",
+        "校验通过"
+      ],
+      "svg": "./svg/check.svg"
+    },
+    {
+      "key": "info",
+      "name": "信息",
+      "token": "icon-info",
+      "unicode": "U+E05D",
+      "htmlEntity": "&#xE05D;",
+      "category": "状态与反馈",
+      "family": "结果与提示",
+      "aliases": [
+        "提示",
+        "说明"
+      ],
+      "svg": "./svg/info.svg"
+    },
+    {
+      "key": "help",
+      "name": "帮助",
+      "token": "icon-help",
+      "unicode": "U+E05E",
+      "htmlEntity": "&#xE05E;",
+      "category": "状态与反馈",
+      "family": "结果与提示",
+      "aliases": [
+        "疑问",
+        "使用帮助",
+        "HelpOutlined"
+      ],
+      "svg": "./svg/help.svg"
+    },
+    {
+      "key": "lightbulb",
+      "name": "灵感",
+      "token": "icon-lightbulb",
+      "unicode": "U+E05F",
+      "htmlEntity": "&#xE05F;",
+      "category": "状态与反馈",
+      "family": "结果与提示",
+      "aliases": [
+        "想法",
+        "提示建议",
+        "LightbulbOutlined"
+      ],
+      "svg": "./svg/lightbulb.svg"
+    },
+    {
+      "key": "alert",
+      "name": "警告",
+      "token": "icon-alert",
+      "unicode": "U+E060",
+      "htmlEntity": "&#xE060;",
+      "category": "状态与反馈",
+      "family": "结果与提示",
+      "aliases": [
+        "风险",
+        "异常"
+      ],
+      "svg": "./svg/alert.svg"
+    },
+    {
+      "key": "trophy",
+      "name": "荣誉",
+      "token": "icon-trophy",
+      "unicode": "U+E061",
+      "htmlEntity": "&#xE061;",
+      "category": "状态与反馈",
+      "family": "成就与热度",
+      "aliases": [
+        "奖杯",
+        "成就",
+        "TrophyOutlined"
+      ],
+      "svg": "./svg/trophy.svg"
+    },
+    {
+      "key": "fire",
+      "name": "热门",
+      "token": "icon-fire",
+      "unicode": "U+E062",
+      "htmlEntity": "&#xE062;",
+      "category": "状态与反馈",
+      "family": "成就与热度",
+      "aliases": [
+        "火焰",
+        "热度",
+        "趋势热门",
+        "FireOutlined"
+      ],
+      "svg": "./svg/fire.svg"
+    },
+    {
+      "key": "required",
+      "name": "必填",
+      "token": "icon-required",
+      "unicode": "U+E063",
+      "htmlEntity": "&#xE063;",
+      "category": "状态与反馈",
+      "family": "结果与提示",
+      "aliases": [
+        "必填项",
+        "星号",
+        "AsteriskOutlined"
+      ],
+      "svg": "./svg/required.svg"
+    },
+    {
+      "key": "error",
+      "name": "错误",
+      "token": "icon-error",
+      "unicode": "U+E064",
+      "htmlEntity": "&#xE064;",
+      "category": "状态与反馈",
+      "family": "结果与提示",
+      "aliases": [
+        "失败",
+        "不可用"
+      ],
+      "svg": "./svg/error.svg"
+    },
+    {
+      "key": "bell",
+      "name": "通知",
+      "token": "icon-bell",
+      "unicode": "U+E065",
+      "htmlEntity": "&#xE065;",
+      "category": "状态与反馈",
+      "family": "通知与时间",
+      "aliases": [
+        "消息提醒",
+        "徽标"
+      ],
+      "svg": "./svg/bell.svg"
+    },
+    {
+      "key": "bellOff",
+      "name": "关闭通知",
+      "token": "icon-bell-off",
+      "unicode": "U+E066",
+      "htmlEntity": "&#xE066;",
+      "category": "状态与反馈",
+      "family": "通知与时间",
+      "aliases": [
+        "通知关闭",
+        "免打扰",
+        "NotificationGateOutlined"
+      ],
+      "svg": "./svg/bell-off.svg"
+    },
+    {
+      "key": "clock",
+      "name": "时间",
+      "token": "icon-clock",
+      "unicode": "U+E067",
+      "htmlEntity": "&#xE067;",
+      "category": "状态与反馈",
+      "family": "通知与时间",
+      "aliases": [
+        "时钟",
+        "更新时间",
+        "等待"
+      ],
+      "svg": "./svg/clock.svg"
+    },
+    {
+      "key": "calendar",
+      "name": "日期",
+      "token": "icon-calendar",
+      "unicode": "U+E068",
+      "htmlEntity": "&#xE068;",
+      "category": "状态与反馈",
+      "family": "通知与时间",
+      "aliases": [
+        "日历",
+        "日期选择",
+        "DateOutlined"
+      ],
+      "svg": "./svg/calendar.svg"
+    },
+    {
+      "key": "loading",
+      "name": "加载",
+      "token": "icon-loading",
+      "unicode": "U+E069",
+      "htmlEntity": "&#xE069;",
+      "category": "状态与反馈",
+      "family": "通知与时间",
+      "aliases": [
+        "载入中",
+        "处理中",
+        "LoadingOutlined"
+      ],
+      "svg": "./svg/loading.svg"
+    },
+    {
+      "key": "eye",
+      "name": "查看",
+      "token": "icon-eye",
+      "unicode": "U+E06A",
+      "htmlEntity": "&#xE06A;",
+      "category": "状态与反馈",
+      "family": "可见与安全",
+      "aliases": [
+        "可见",
+        "预览",
+        "显示"
+      ],
+      "svg": "./svg/eye.svg"
+    },
+    {
+      "key": "eyeOff",
+      "name": "隐藏",
+      "token": "icon-eye-off",
+      "unicode": "U+E06B",
+      "htmlEntity": "&#xE06B;",
+      "category": "状态与反馈",
+      "family": "可见与安全",
+      "aliases": [
+        "不可见",
+        "关闭预览",
+        "ConcealOutlined"
+      ],
+      "svg": "./svg/eye-off.svg"
+    },
+    {
+      "key": "lock",
+      "name": "锁定",
+      "token": "icon-lock",
+      "unicode": "U+E06C",
+      "htmlEntity": "&#xE06C;",
+      "category": "状态与反馈",
+      "family": "可见与安全",
+      "aliases": [
+        "私有",
+        "受保护",
+        "权限限制"
+      ],
+      "svg": "./svg/lock.svg"
+    },
+    {
+      "key": "unlock",
+      "name": "解锁",
+      "token": "icon-unlock",
+      "unicode": "U+E06D",
+      "htmlEntity": "&#xE06D;",
+      "category": "状态与反馈",
+      "family": "可见与安全",
+      "aliases": [
+        "公开",
+        "解除锁定",
+        "UnlockOutlined"
+      ],
+      "svg": "./svg/unlock.svg"
+    },
+    {
+      "key": "message",
+      "name": "消息",
+      "token": "icon-message",
+      "unicode": "U+E06E",
+      "htmlEntity": "&#xE06E;",
+      "category": "对话与媒体控制",
+      "family": "消息与会话",
+      "aliases": [
+        "评论",
+        "单条对话",
+        "反馈"
+      ],
+      "svg": "./svg/message.svg"
+    },
+    {
+      "key": "messages",
+      "name": "对话",
+      "token": "icon-messages",
+      "unicode": "U+E06F",
+      "htmlEntity": "&#xE06F;",
+      "category": "对话与媒体控制",
+      "family": "消息与会话",
+      "aliases": [
+        "聊天",
+        "历史会话",
+        "新对话"
+      ],
+      "svg": "./svg/messages.svg"
+    },
+    {
+      "key": "messagePlus",
+      "name": "新建对话",
+      "token": "icon-message-plus",
+      "unicode": "U+E070",
+      "htmlEntity": "&#xE070;",
+      "category": "对话与媒体控制",
+      "family": "消息与会话",
+      "aliases": [
+        "发起对话",
+        "创建会话",
+        "添加消息"
+      ],
+      "svg": "./svg/message-plus.svg"
+    },
+    {
+      "key": "send",
+      "name": "发送",
+      "token": "icon-send",
+      "unicode": "U+E071",
+      "htmlEntity": "&#xE071;",
+      "category": "对话与媒体控制",
+      "family": "输入与发送",
+      "aliases": [
+        "向上箭头",
+        "提交消息",
+        "生成",
+        "开始探索"
+      ],
+      "svg": "./svg/send.svg"
+    },
+    {
+      "key": "mic",
+      "name": "语音",
+      "token": "icon-mic",
+      "unicode": "U+E072",
+      "htmlEntity": "&#xE072;",
+      "category": "对话与媒体控制",
+      "family": "输入与发送",
+      "aliases": [
+        "录音",
+        "语音输入"
+      ],
+      "svg": "./svg/mic.svg"
+    },
+    {
+      "key": "volumeOn",
+      "name": "声音",
+      "token": "icon-volume-on",
+      "unicode": "U+E073",
+      "htmlEntity": "&#xE073;",
+      "category": "对话与媒体控制",
+      "family": "声音控制",
+      "aliases": [
+        "声音开启",
+        "播放声音",
+        "SoundOnOutlined"
+      ],
+      "svg": "./svg/volume-on.svg"
+    },
+    {
+      "key": "volumeOff",
+      "name": "静音",
+      "token": "icon-volume-off",
+      "unicode": "U+E074",
+      "htmlEntity": "&#xE074;",
+      "category": "对话与媒体控制",
+      "family": "声音控制",
+      "aliases": [
+        "声音关闭",
+        "关闭声音",
+        "SoundOffOutlined"
+      ],
+      "svg": "./svg/volume-off.svg"
+    },
+    {
+      "key": "bot",
+      "name": "AI 助手",
+      "token": "icon-bot",
+      "unicode": "U+E075",
+      "htmlEntity": "&#xE075;",
+      "category": "开发与 AI 工程",
+      "family": "智能流程",
+      "aliases": [
+        "智能体",
+        "Agent",
+        "模型助手"
+      ],
+      "svg": "./svg/bot.svg"
+    },
+    {
+      "key": "workflow",
+      "name": "工作流",
+      "token": "icon-workflow",
+      "unicode": "U+E076",
+      "htmlEntity": "&#xE076;",
+      "category": "开发与 AI 工程",
+      "family": "智能流程",
+      "aliases": [
+        "推理流程",
+        "任务编排",
+        "生成链路"
+      ],
+      "svg": "./svg/workflow.svg"
+    },
+    {
+      "key": "sparkles",
+      "name": "智能生成",
+      "token": "icon-sparkles",
+      "unicode": "U+E077",
+      "htmlEntity": "&#xE077;",
+      "category": "开发与 AI 工程",
+      "family": "智能流程",
+      "aliases": [
+        "推荐追问",
+        "深度思考",
+        "AI 生成",
+        "AIGC"
+      ],
+      "svg": "./svg/sparkles.svg"
+    },
+    {
+      "key": "task",
+      "name": "任务",
+      "token": "icon-task",
+      "unicode": "U+E078",
+      "htmlEntity": "&#xE078;",
+      "category": "开发与 AI 工程",
+      "family": "代码与协作",
+      "aliases": [
+        "待办任务",
+        "检查清单",
+        "TaskOutlined"
+      ],
+      "svg": "./svg/task.svg"
+    },
+    {
+      "key": "log",
+      "name": "日志",
+      "token": "icon-log",
+      "unicode": "U+E079",
+      "htmlEntity": "&#xE079;",
+      "category": "开发与 AI 工程",
+      "family": "代码与协作",
+      "aliases": [
+        "运行日志",
+        "操作日志",
+        "LogOutlined"
+      ],
+      "svg": "./svg/log.svg"
+    },
+    {
+      "key": "repository",
+      "name": "代码仓库",
+      "token": "icon-repository",
+      "unicode": "U+E07A",
+      "htmlEntity": "&#xE07A;",
+      "category": "开发与 AI 工程",
+      "family": "代码与协作",
+      "aliases": [
+        "仓库",
+        "Repo",
+        "RepositoryOutlined"
+      ],
+      "svg": "./svg/repository.svg"
+    },
+    {
+      "key": "branch",
+      "name": "代码分支",
+      "token": "icon-branch",
+      "unicode": "U+E07B",
+      "htmlEntity": "&#xE07B;",
+      "category": "开发与 AI 工程",
+      "family": "代码与协作",
+      "aliases": [
+        "分支",
+        "Git 分支",
+        "BranchOutlined"
+      ],
+      "svg": "./svg/branch.svg"
+    },
+    {
+      "key": "plugin",
+      "name": "插件",
+      "token": "icon-plugin",
+      "unicode": "U+E07C",
+      "htmlEntity": "&#xE07C;",
+      "category": "开发与 AI 工程",
+      "family": "代码与协作",
+      "aliases": [
+        "扩展",
+        "扩展能力",
+        "PluginOutlined"
+      ],
+      "svg": "./svg/plugin.svg"
+    },
+    {
+      "key": "bug",
+      "name": "缺陷",
+      "token": "icon-bug",
+      "unicode": "U+E07D",
+      "htmlEntity": "&#xE07D;",
+      "category": "开发与 AI 工程",
+      "family": "代码与协作",
+      "aliases": [
+        "BUG",
+        "问题追踪",
+        "BugOutlined"
+      ],
+      "svg": "./svg/bug.svg"
+    },
+    {
+      "key": "license",
+      "name": "许可证",
+      "token": "icon-license",
+      "unicode": "U+E07E",
+      "htmlEntity": "&#xE07E;",
+      "category": "开发与 AI 工程",
+      "family": "代码与协作",
+      "aliases": [
+        "License",
+        "授权证书",
+        "开源协议"
+      ],
+      "svg": "./svg/license.svg"
+    },
+    {
+      "key": "terminal",
+      "name": "终端",
+      "token": "icon-terminal",
+      "unicode": "U+E07F",
+      "htmlEntity": "&#xE07F;",
+      "category": "开发与 AI 工程",
+      "family": "开发工具",
+      "aliases": [
+        "命令行",
+        "CLI",
+        "Bash",
+        "ConsoleOutlined"
+      ],
+      "svg": "./svg/terminal.svg"
+    },
+    {
+      "key": "archive",
+      "name": "归档",
+      "token": "icon-archive",
+      "unicode": "U+E080",
+      "htmlEntity": "&#xE080;",
+      "category": "文件与内容",
+      "family": "文件与容器",
+      "aliases": [
+        "存档",
+        "归档箱",
+        "ArchiveOutlined"
+      ],
+      "svg": "./svg/archive.svg"
+    },
+    {
+      "key": "key",
+      "name": "密钥",
+      "token": "icon-key",
+      "unicode": "U+E081",
+      "htmlEntity": "&#xE081;",
+      "category": "开发与 AI 工程",
+      "family": "开发工具",
+      "aliases": [
+        "API Key",
+        "访问密钥",
+        "KeyOutlined"
+      ],
+      "svg": "./svg/key.svg"
+    },
+    {
+      "key": "embed",
+      "name": "嵌入",
+      "token": "icon-embed",
+      "unicode": "U+E082",
+      "htmlEntity": "&#xE082;",
+      "category": "开发与 AI 工程",
+      "family": "开发工具",
+      "aliases": [
+        "代码嵌入",
+        "Embed",
+        "EmbedOutlined"
+      ],
+      "svg": "./svg/embed.svg"
+    },
+    {
+      "key": "sync",
+      "name": "同步",
+      "token": "icon-sync",
+      "unicode": "U+E083",
+      "htmlEntity": "&#xE083;",
+      "category": "通用操作",
+      "family": "传输与共享",
+      "aliases": [
+        "双向同步",
+        "同步状态",
+        "SyncOutlined"
+      ],
+      "svg": "./svg/sync.svg"
+    },
+    {
+      "key": "lightMode",
+      "name": "浅色模式",
+      "token": "icon-light-mode",
+      "unicode": "U+E084",
+      "htmlEntity": "&#xE084;",
+      "category": "导航与布局",
+      "family": "主题模式",
+      "aliases": [
+        "明亮模式",
+        "日间模式",
+        "LightOutlined"
+      ],
+      "svg": "./svg/light-mode.svg"
+    },
+    {
+      "key": "darkMode",
+      "name": "深色模式",
+      "token": "icon-dark-mode",
+      "unicode": "U+E085",
+      "htmlEntity": "&#xE085;",
+      "category": "导航与布局",
+      "family": "主题模式",
+      "aliases": [
+        "暗色模式",
+        "夜间模式",
+        "DarkOutlined"
+      ],
+      "svg": "./svg/dark-mode.svg"
+    },
+    {
+      "key": "algorithm",
+      "name": "算法",
+      "token": "icon-algorithm",
+      "unicode": "U+E086",
+      "htmlEntity": "&#xE086;",
+      "category": "开发与 AI 工程",
+      "family": "AI 基础能力",
+      "aliases": [
+        "计算方法",
+        "算法流程",
+        "AlgorithmOutlined"
+      ],
+      "svg": "./svg/algorithm.svg"
+    },
+    {
+      "key": "mcp",
+      "name": "MCP",
+      "token": "icon-mcp",
+      "unicode": "U+E087",
+      "htmlEntity": "&#xE087;",
+      "category": "开发与 AI 工程",
+      "family": "AI 基础能力",
+      "aliases": [
+        "模型上下文协议",
+        "Model Context Protocol",
+        "MCPOutlined"
+      ],
+      "svg": "./svg/mcp.svg"
+    },
+    {
+      "key": "python",
+      "name": "Python",
+      "token": "icon-python",
+      "unicode": "U+E088",
+      "htmlEntity": "&#xE088;",
+      "category": "开发与 AI 工程",
+      "family": "AI 基础能力",
+      "aliases": [
+        "Python 语言",
+        "PythonOutlined"
+      ],
+      "svg": "./svg/python.svg"
+    },
+    {
+      "key": "dataPreparation",
+      "name": "数据准备",
+      "token": "icon-data-preparation",
+      "unicode": "U+E089",
+      "htmlEntity": "&#xE089;",
+      "category": "开发与 AI 工程",
+      "family": "AI 基础能力",
+      "aliases": [
+        "数据预处理",
+        "特征处理",
+        "DataPreparationOutlined"
+      ],
+      "svg": "./svg/data-preparation.svg"
+    },
+    {
+      "key": "multimodal",
+      "name": "多模态",
+      "token": "icon-multimodal",
+      "unicode": "U+E08A",
+      "htmlEntity": "&#xE08A;",
+      "category": "开发与 AI 工程",
+      "family": "AI 基础能力",
+      "aliases": [
+        "图文音频理解",
+        "Multimodal",
+        "MultimodalOutlined"
+      ],
+      "svg": "./svg/multimodal.svg"
+    },
+    {
+      "key": "computerVision",
+      "name": "计算机视觉",
+      "token": "icon-computer-vision",
+      "unicode": "U+E08B",
+      "htmlEntity": "&#xE08B;",
+      "category": "开发与 AI 工程",
+      "family": "AI 基础能力",
+      "aliases": [
+        "视觉识别",
+        "CV",
+        "Computer Vision"
+      ],
+      "svg": "./svg/computer-vision.svg"
+    },
+    {
+      "key": "nlp",
+      "name": "自然语言处理",
+      "token": "icon-nlp",
+      "unicode": "U+E08C",
+      "htmlEntity": "&#xE08C;",
+      "category": "开发与 AI 工程",
+      "family": "AI 基础能力",
+      "aliases": [
+        "NLP",
+        "文本理解",
+        "语言模型"
+      ],
+      "svg": "./svg/nlp.svg"
+    },
+    {
+      "key": "pointCloud",
+      "name": "点云",
+      "token": "icon-point-cloud",
+      "unicode": "U+E08D",
+      "htmlEntity": "&#xE08D;",
+      "category": "开发与 AI 工程",
+      "family": "AI 基础能力",
+      "aliases": [
+        "3D 点云",
+        "Point Cloud",
+        "PointCloudOutlined"
+      ],
+      "svg": "./svg/point-cloud.svg"
+    },
+    {
+      "key": "inference",
+      "name": "推理服务",
+      "token": "icon-inference",
+      "unicode": "U+E08E",
+      "htmlEntity": "&#xE08E;",
+      "category": "开发与 AI 工程",
+      "family": "模型工程",
+      "aliases": [
+        "模型推理",
+        "在线推理",
+        "InferenceOutlined"
+      ],
+      "svg": "./svg/inference.svg"
+    },
+    {
+      "key": "training",
+      "name": "模型训练",
+      "token": "icon-training",
+      "unicode": "U+E08F",
+      "htmlEntity": "&#xE08F;",
+      "category": "开发与 AI 工程",
+      "family": "模型工程",
+      "aliases": [
+        "训练",
+        "微调",
+        "StyletrainingOutlined"
+      ],
+      "svg": "./svg/training.svg"
+    },
+    {
+      "key": "cpu",
+      "name": "计算芯片",
+      "token": "icon-cpu",
+      "unicode": "U+E090",
+      "htmlEntity": "&#xE090;",
+      "category": "科研与计算",
+      "family": "计算资源",
+      "aliases": [
+        "CPU",
+        "GPU",
+        "算力"
+      ],
+      "svg": "./svg/cpu.svg"
+    },
+    {
+      "key": "server",
+      "name": "开发机",
+      "token": "icon-server",
+      "unicode": "U+E091",
+      "htmlEntity": "&#xE091;",
+      "category": "科研与计算",
+      "family": "计算资源",
+      "aliases": [
+        "服务器",
+        "计算节点",
+        "资源监控"
+      ],
+      "svg": "./svg/server.svg"
+    },
+    {
+      "key": "desktop",
+      "name": "电脑",
+      "token": "icon-desktop",
+      "unicode": "U+E092",
+      "htmlEntity": "&#xE092;",
+      "category": "科研与计算",
+      "family": "计算资源",
+      "aliases": [
+        "桌面设备",
+        "PC",
+        "ComputerOutlined"
+      ],
+      "svg": "./svg/desktop.svg"
+    },
+    {
+      "key": "container",
+      "name": "容器",
+      "token": "icon-container",
+      "unicode": "U+E093",
+      "htmlEntity": "&#xE093;",
+      "category": "科研与计算",
+      "family": "计算资源",
+      "aliases": [
+        "镜像",
+        "运行环境"
+      ],
+      "svg": "./svg/container.svg"
+    },
+    {
+      "key": "molecule",
+      "name": "分子",
+      "token": "icon-molecule",
+      "unicode": "U+E094",
+      "htmlEntity": "&#xE094;",
+      "category": "科研与计算",
+      "family": "科学对象",
+      "aliases": [
+        "化学",
+        "材料",
+        "结构"
+      ],
+      "svg": "./svg/molecule.svg"
+    },
+    {
+      "key": "dna",
+      "name": "基因",
+      "token": "icon-dna",
+      "unicode": "U+E095",
+      "htmlEntity": "&#xE095;",
+      "category": "科研与计算",
+      "family": "科学对象",
+      "aliases": [
+        "DNA",
+        "组学",
+        "生物信息",
+        "蛋白质进化"
+      ],
+      "svg": "./svg/dna.svg"
+    },
+    {
+      "key": "flask",
+      "name": "实验",
+      "token": "icon-flask",
+      "unicode": "U+E096",
+      "htmlEntity": "&#xE096;",
+      "category": "科研与计算",
+      "family": "实验过程",
+      "aliases": [
+        "实验方案",
+        "化学实验"
+      ],
+      "svg": "./svg/flask.svg"
+    },
+    {
+      "key": "atom",
+      "name": "原子",
+      "token": "icon-atom",
+      "unicode": "U+E097",
+      "htmlEntity": "&#xE097;",
+      "category": "科研与计算",
+      "family": "科学对象",
+      "aliases": [
+        "物理",
+        "科学领域",
+        "研究"
+      ],
+      "svg": "./svg/atom.svg"
+    },
+    {
+      "key": "material",
+      "name": "材料结构",
+      "token": "icon-material",
+      "unicode": "U+E098",
+      "htmlEntity": "&#xE098;",
+      "category": "科研与计算",
+      "family": "科学对象",
+      "aliases": [
+        "超材料",
+        "晶体",
+        "材料设计"
+      ],
+      "svg": "./svg/material.svg"
+    },
+    {
+      "key": "catalyst",
+      "name": "催化反应",
+      "token": "icon-catalyst",
+      "unicode": "U+E099",
+      "htmlEntity": "&#xE099;",
+      "category": "科研与计算",
+      "family": "实验过程",
+      "aliases": [
+        "电催化",
+        "反应活性",
+        "能源化学"
+      ],
+      "svg": "./svg/catalyst.svg"
+    },
+    {
+      "key": "lineChart",
+      "name": "趋势图",
+      "token": "icon-line-chart",
+      "unicode": "U+E09A",
+      "htmlEntity": "&#xE09A;",
+      "category": "数据与可视化",
+      "family": "统计图表",
+      "aliases": [
+        "折线图",
+        "曲线",
+        "变化趋势"
+      ],
+      "svg": "./svg/line-chart.svg"
+    },
+    {
+      "key": "barChart",
+      "name": "柱状图",
+      "token": "icon-bar-chart",
+      "unicode": "U+E09B",
+      "htmlEntity": "&#xE09B;",
+      "category": "数据与可视化",
+      "family": "统计图表",
+      "aliases": [
+        "数量比较",
+        "统计"
+      ],
+      "svg": "./svg/bar-chart.svg"
+    },
+    {
+      "key": "pieChart",
+      "name": "占比图",
+      "token": "icon-pie-chart",
+      "unicode": "U+E09C",
+      "htmlEntity": "&#xE09C;",
+      "category": "数据与可视化",
+      "family": "统计图表",
+      "aliases": [
+        "饼图",
+        "分布"
+      ],
+      "svg": "./svg/pie-chart.svg"
+    },
+    {
+      "key": "network",
+      "name": "关系图",
+      "token": "icon-network",
+      "unicode": "U+E09D",
+      "htmlEntity": "&#xE09D;",
+      "category": "数据与可视化",
+      "family": "关系与指标",
+      "aliases": [
+        "拓扑",
+        "知识图谱",
+        "节点网络"
+      ],
+      "svg": "./svg/network.svg"
+    },
+    {
+      "key": "activity",
+      "name": "指标",
+      "token": "icon-activity",
+      "unicode": "U+E09E",
+      "htmlEntity": "&#xE09E;",
+      "category": "数据与可视化",
+      "family": "关系与指标",
+      "aliases": [
+        "活动指标",
+        "监控",
+        "实验室活动",
+        "实时状态"
+      ],
+      "svg": "./svg/activity.svg"
+    },
+    {
+      "key": "heatmap",
+      "name": "热力图",
+      "token": "icon-heatmap",
+      "unicode": "U+E09F",
+      "htmlEntity": "&#xE09F;",
+      "category": "数据与可视化",
+      "family": "统计图表",
+      "aliases": [
+        "密度分布",
+        "Heatmap",
+        "HeatmapOutlined"
+      ],
+      "svg": "./svg/heatmap.svg"
+    },
+    {
+      "key": "module",
+      "name": "模块入口",
+      "token": "icon-module",
+      "unicode": "U+E0A0",
+      "htmlEntity": "&#xE0A0;",
+      "category": "平台组件与资产",
+      "family": "平台组件",
+      "aliases": [
+        "产品模块",
+        "功能模块",
+        "应用入口"
+      ],
+      "svg": "./svg/module.svg"
+    },
+    {
+      "key": "workspace",
+      "name": "工作区",
+      "token": "icon-workspace",
+      "unicode": "U+E0A1",
+      "htmlEntity": "&#xE0A1;",
+      "category": "平台组件与资产",
+      "family": "平台组件",
+      "aliases": [
+        "论文工作区",
+        "课题空间",
+        "控制台",
+        "工作空间",
+        "工作面板"
+      ],
+      "svg": "./svg/workspace.svg"
+    },
+    {
+      "key": "tool",
+      "name": "工具",
+      "token": "icon-tool",
+      "unicode": "U+E0A2",
+      "htmlEntity": "&#xE0A2;",
+      "category": "平台组件与资产",
+      "family": "平台组件",
+      "aliases": [
+        "科学工具",
+        "研究工具"
+      ],
+      "svg": "./svg/tool.svg"
+    },
+    {
+      "key": "app",
+      "name": "应用卡片",
+      "token": "icon-app",
+      "unicode": "U+E0A3",
+      "htmlEntity": "&#xE0A3;",
+      "category": "平台组件与资产",
+      "family": "平台组件",
+      "aliases": [
+        "科研应用",
+        "工具卡片",
+        "详情卡片"
+      ],
+      "svg": "./svg/app.svg"
+    },
+    {
+      "key": "project",
+      "name": "项目",
+      "token": "icon-project",
+      "unicode": "U+E0A4",
+      "htmlEntity": "&#xE0A4;",
+      "category": "平台组件与资产",
+      "family": "核心资产",
+      "aliases": [
+        "科研项目",
+        "课题",
+        "项目图标"
+      ],
+      "svg": "./svg/project.svg"
+    },
+    {
+      "key": "paper",
+      "name": "论文",
+      "token": "icon-paper",
+      "unicode": "U+E0A5",
+      "htmlEntity": "&#xE0A5;",
+      "category": "平台组件与资产",
+      "family": "核心资产",
+      "aliases": [
+        "学术论文",
+        "研究论文",
+        "PaperOutlined"
+      ],
+      "svg": "./svg/paper.svg"
+    },
+    {
+      "key": "model",
+      "name": "模型",
+      "token": "icon-model",
+      "unicode": "U+E0A6",
+      "htmlEntity": "&#xE0A6;",
+      "category": "平台组件与资产",
+      "family": "核心资产",
+      "aliases": [
+        "算法模型",
+        "预测模型",
+        "应用模型",
+        "选择模型"
+      ],
+      "svg": "./svg/model.svg"
+    },
+    {
+      "key": "bookmarkFilled",
+      "name": "收藏",
+      "token": "icon-bookmark-filled",
+      "unicode": "U+E0A7",
+      "htmlEntity": "&#xE0A7;",
+      "category": "状态与反馈",
+      "family": "收藏状态",
+      "aliases": [
+        "收藏选中",
+        "实心收藏",
+        "Filled Bookmark"
+      ],
+      "svg": "./svg/bookmark-filled.svg"
+    },
+    {
+      "key": "starFilled",
+      "name": "星",
+      "token": "icon-star-filled",
+      "unicode": "U+E0A8",
+      "htmlEntity": "&#xE0A8;",
+      "category": "状态与反馈",
+      "family": "收藏状态",
+      "aliases": [
+        "星标选中",
+        "实心星",
+        "Filled Star"
+      ],
+      "svg": "./svg/star-filled.svg"
+    },
+    {
+      "key": "thumbsUpFilled",
+      "name": "赞同",
+      "token": "icon-thumbs-up-filled",
+      "unicode": "U+E0A9",
+      "htmlEntity": "&#xE0A9;",
+      "category": "状态与反馈",
+      "family": "评价状态",
+      "aliases": [
+        "赞同选中",
+        "实心点赞",
+        "Filled Thumbs Up"
+      ],
+      "svg": "./svg/thumbs-up-filled.svg"
+    },
+    {
+      "key": "thumbsDownFilled",
+      "name": "反对",
+      "token": "icon-thumbs-down-filled",
+      "unicode": "U+E0AA",
+      "htmlEntity": "&#xE0AA;",
+      "category": "状态与反馈",
+      "family": "评价状态",
+      "aliases": [
+        "反对选中",
+        "实心反对",
+        "Filled Thumbs Down"
+      ],
+      "svg": "./svg/thumbs-down-filled.svg"
+    },
+    {
+      "key": "fireFilled",
+      "name": "热门",
+      "token": "icon-fire-filled",
+      "unicode": "U+E0AB",
+      "htmlEntity": "&#xE0AB;",
+      "category": "状态与反馈",
+      "family": "成就与热度",
+      "aliases": [
+        "热门选中",
+        "实心火焰",
+        "Filled Fire"
+      ],
+      "svg": "./svg/fire-filled.svg"
+    },
+    {
+      "key": "modelApp",
+      "name": "模型应用",
+      "token": "icon-model-app",
+      "unicode": "U+E0AC",
+      "htmlEntity": "&#xE0AC;",
+      "category": "平台组件与资产",
+      "family": "核心资产",
+      "aliases": [
+        "应用模型",
+        "模型入口",
+        "ApplicationModelOutlined"
+      ],
+      "svg": "./svg/model-app.svg"
+    },
+    {
+      "key": "compare",
+      "name": "对比",
+      "token": "icon-compare",
+      "unicode": "U+E0AF",
+      "htmlEntity": "&#xE0AF;",
+      "category": "导航与布局",
+      "family": "视图与窗口",
+      "aliases": [
+        "内容对比",
+        "版本对比",
+        "切换对比",
+        "CompareOutlined"
+      ],
+      "svg": "./svg/compare.svg"
+    },
+    {
+      "key": "export",
+      "name": "导出",
+      "token": "icon-export",
+      "unicode": "U+E0B0",
+      "htmlEntity": "&#xE0B0;",
+      "category": "通用操作",
+      "family": "传输与共享",
+      "aliases": [
+        "内容导出",
+        "导出内容",
+        "发布导出",
+        "ExportOutlined"
+      ],
+      "svg": "./svg/export.svg"
+    },
+    {
+      "key": "languageSwitch",
+      "name": "语言切换",
+      "token": "icon-language-switch",
+      "unicode": "U+E0B1",
+      "htmlEntity": "&#xE0B1;",
+      "category": "导航与布局",
+      "family": "页面与语言",
+      "aliases": [
+        "通用语言",
+        "翻译语言",
+        "A 文",
+        "LanguageSwitchOutlined"
+      ],
+      "svg": "./svg/language-switch.svg"
+    },
+    {
+      "key": "checkmark",
+      "name": "勾号",
+      "token": "icon-checkmark",
+      "unicode": "U+E0B2",
+      "htmlEntity": "&#xE0B2;",
+      "category": "通用操作",
+      "family": "对象管理",
+      "aliases": [
+        "对勾",
+        "勾选",
+        "应用操作",
+        "CheckmarkOutlined"
+      ],
+      "svg": "./svg/checkmark.svg"
+    }
+  ]
+}

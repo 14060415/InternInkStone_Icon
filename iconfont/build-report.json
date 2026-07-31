@@ -1,0 +1,15 @@
+{
+  "icons": 176,
+  "glyphs": 176,
+  "codePointMin": "U+E001",
+  "codePointMax": "U+E0B2",
+  "reserved": [
+    "U+E0AD",
+    "U+E0AE"
+  ],
+  "files": {
+    "woff2": 18216,
+    "woff": 22156,
+    "ttf": 45492
+  }
+}

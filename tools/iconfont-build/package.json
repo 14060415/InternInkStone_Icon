@@ -1,0 +1,13 @@
+{
+  "name": "intern-discovery-iconfont-build",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "verify": "node verify.mjs"
+  },
+  "devDependencies": {
+    "@davestewart/outliner": "1.2.0",
+    "svgtofont": "6.5.3"
+  }
+}
