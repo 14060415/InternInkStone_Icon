@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SVGPathData } from 'svg-pathdata';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(here, '..', '..');
@@ -19,10 +20,39 @@ function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+function contourAreaSigns(pathData) {
+  const commands = new SVGPathData(pathData)
+    .toAbs()
+    .normalizeST()
+    .qtToC()
+    .aToC()
+    .commands;
+  const contours = [];
+  let points = [];
+  for (const command of commands) {
+    if (command.type === SVGPathData.MOVE_TO && points.length) {
+      contours.push(points);
+      points = [];
+    }
+    if ('x' in command && 'y' in command) points.push([command.x, command.y]);
+  }
+  if (points.length) contours.push(points);
+  return contours.map(contour => {
+    let twiceArea = 0;
+    for (let index = 0; index < contour.length; index += 1) {
+      const current = contour[index];
+      const next = contour[(index + 1) % contour.length];
+      twiceArea += current[0] * next[1] - next[0] * current[1];
+    }
+    return Math.sign(twiceArea);
+  }).filter(Boolean);
+}
+
 const errors = [];
 const iconKeys = new Set();
 const tokens = new Set();
 const codePoints = new Set();
+const hollowGlyphs = new Set(['bookmark', 'star', 'eye', 'bell', 'lock']);
 
 for (const icon of manifest.icons) {
   if (iconKeys.has(icon.key)) errors.push(`重复 key：${icon.key}`);
@@ -37,9 +67,15 @@ for (const icon of manifest.icons) {
     errors.push(`CSS 缺少 ${icon.token} / ${icon.unicode}`);
   }
   const glyphName = path.basename(icon.svg, '.svg');
-  const glyphPattern = new RegExp(`<glyph\\s+glyph-name="${escapeRegExp(glyphName)}"\\s+unicode="&#x${icon.unicode.slice(2)};"\\s+horiz-adv-x="[^"]+"\\s+d="[^"]+"`);
-  if (!glyphPattern.test(svgFont)) {
+  const glyphPattern = new RegExp(`<glyph\\s+glyph-name="${escapeRegExp(glyphName)}"\\s+unicode="&#x${icon.unicode.slice(2)};"\\s+horiz-adv-x="[^"]+"\\s+d="([^"]+)"`);
+  const glyphMatch = svgFont.match(glyphPattern);
+  if (!glyphMatch) {
     errors.push(`字体字形名称或码位不一致：${icon.key} / ${icon.unicode}`);
+  } else if (hollowGlyphs.has(icon.key)) {
+    const signs = contourAreaSigns(glyphMatch[1]);
+    if (signs.length < 2 || signs[0] === signs[1]) {
+      errors.push(`描边图标孔洞方向错误：${icon.key}`);
+    }
   }
   if (unicodeMap.icons[icon.key] !== icon.unicode) {
     errors.push(`清单与 Unicode 映射不一致：${icon.key}`);
@@ -84,10 +120,16 @@ if (sourceSvgs.length !== manifest.icons.length) {
 if (outlineSvgs.length !== manifest.icons.length) {
   errors.push(`轮廓 SVG 数量错误：${outlineSvgs.length}`);
 }
+for (const name of outlineSvgs) {
+  const outlined = await fs.readFile(path.join(root, 'outlined-svg', name), 'utf8');
+  if (/fill-rule=["']evenodd["']/.test(outlined)) {
+    errors.push(`轮廓 SVG 仍依赖字体不支持的偶奇填充：${name}`);
+  }
+}
 
 if (errors.length) {
   console.error(errors.join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`验证通过：${manifest.icons.length} 个图标，Unicode/CSS/字体/列表预览映射一致。`);
+  console.log(`验证通过：${manifest.icons.length} 个图标，Unicode/CSS/字体/描边孔洞/列表预览映射一致。`);
 }
