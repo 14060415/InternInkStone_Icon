@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Intern InkStone 本地 Unicode 对照审阅</title>
+  <link rel="stylesheet" href="./iconfont/iconfont.css">
+  <style>
+    :root{--ink:#3a4556;--muted:#7a8394;--line:#dfe3e8;--paper:#fff;--canvas:#f6f7f8;--size:32px}
+    *{box-sizing:border-box}
+    body{margin:0;color:var(--ink);background:var(--canvas);font:14px/1.5 Inter,"PingFang SC","Microsoft YaHei",sans-serif}
+    header{position:sticky;top:0;z-index:3;padding:20px 28px 16px;border-bottom:1px solid var(--line);background:rgba(246,247,248,.96);backdrop-filter:blur(10px)}
+    h1{margin:0;font-size:22px}p{margin:6px 0 0;color:var(--muted)}
+    .warning{color:#9a5a11;font-weight:600}
+    .tools{display:grid;grid-template-columns:minmax(220px,1fr) 140px;gap:10px;max-width:700px;margin-top:14px}
+    input,select{height:40px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font:inherit}
+    main{padding:24px 28px 60px}
+    .summary{margin-bottom:14px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
+    .card{min-width:0;padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--paper)}
+    .visuals{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .sample{height:76px;display:grid;place-items:center;position:relative;border-radius:7px;background:#f8f9fa}
+    .sample::after{position:absolute;left:7px;top:5px;color:#9aa1ac;font-size:11px}
+    .sample.svg::after{content:"原始 SVG"}.sample.font::after{content:"Unicode 字体"}
+    .sample img{width:var(--size);height:var(--size)}
+    .sample .iconfont{color:var(--ink);font-size:var(--size);line-height:1}
+    .meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}
+    .key{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+    .unicode{flex:none;color:var(--muted);font:12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace}
+    .empty{display:none;padding:70px 0;color:var(--muted);text-align:center}
+    @media(max-width:600px){header,main{padding-left:16px;padding-right:16px}.tools{grid-template-columns:1fr}.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Unicode 字体本地对照审阅</h1>
+    <p class="warning">仅用于本地确认，当前内容不会发布到 GitHub Pages。</p>
+    <p>左侧为原始 SVG，右侧为实际 TTF/WOFF 字体结果。请重点检查描边孔洞、填充状态、比例和方向。</p>
+    <div class="tools">
+      <input id="search" type="search" placeholder="搜索 key、Unicode 或文件名…">
+      <select id="size" aria-label="预览尺寸">
+        <option value="24">24px</option>
+        <option value="32" selected>32px</option>
+        <option value="40">40px</option>
+        <option value="48">48px</option>
+      </select>
+    </div>
+  </header>
+  <main>
+    <div class="summary" id="summary"></div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty">没有找到匹配的图标。</div>
+  </main>
+  <script src="./iconfont/unicode-map.js"></script>
+  <script>
+    const map=globalThis.InternDiscoveryIconUnicode||{};
+    const entries=Object.entries(map).map(([key,unicodeHex])=>({
+      key,unicodeHex,
+      file:key.replace(/[A-Z]/g,letter=>`-${letter.toLowerCase()}`)
+    }));
+    const grid=document.getElementById('grid');
+    const search=document.getElementById('search');
+    const size=document.getElementById('size');
+    const summary=document.getElementById('summary');
+    const empty=document.getElementById('empty');
+
+    for(const icon of entries){
+      const card=document.createElement('article');
+      card.className='card';
+      card.dataset.search=`${icon.key} ${icon.file} ${icon.unicodeHex}`.toLowerCase();
+      const codePoint=Number.parseInt(icon.unicodeHex.slice(2),16);
+      card.innerHTML=`<div class="visuals"><div class="sample svg"><img src="./iconfont/svg/${icon.file}.svg" alt=""></div><div class="sample font"><span class="iconfont" aria-hidden="true">${String.fromCodePoint(codePoint)}</span></div></div><div class="meta"><span class="key">${icon.key}</span><span class="unicode">${icon.unicodeHex}</span></div>`;
+      grid.append(card);
+    }
+
+    function filter(){
+      const query=search.value.trim().toLowerCase();
+      let visible=0;
+      document.querySelectorAll('.card').forEach(card=>{
+        const match=!query||card.dataset.search.includes(query);
+        card.hidden=!match;
+        if(match)visible+=1;
+      });
+      summary.textContent=`显示 ${visible} / ${entries.length} 个图标`;
+      empty.style.display=visible?'none':'block';
+    }
+    search.addEventListener('input',filter);
+    size.addEventListener('change',()=>document.documentElement.style.setProperty('--size',`${size.value}px`));
+    filter();
+  </script>
+</body>
+</html>
