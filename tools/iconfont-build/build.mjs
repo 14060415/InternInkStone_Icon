@@ -3,7 +3,6 @@ import path from 'node:path';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { load } from 'cheerio';
-import { SVGPathData } from 'svg-pathdata';
 import {
   createSVG,
   createTTF,
@@ -258,45 +257,6 @@ function inheritedAttribute($, element, name, fallback) {
   return fallback;
 }
 
-function reverseAlternatingSubpaths(pathData, iconName) {
-  const normalized = new SVGPathData(pathData)
-    .toAbs()
-    .normalizeST()
-    .qtToC()
-    .aToC();
-  const subpaths = [];
-  let current = [];
-  for (const command of normalized.commands) {
-    if (command.type === SVGPathData.MOVE_TO && current.length) {
-      subpaths.push(current);
-      current = [];
-    }
-    current.push(command);
-  }
-  if (current.length) subpaths.push(current);
-  if (!subpaths.length) throw new Error(`${iconName} 的偶奇轮廓为空。`);
-  return subpaths.map((commands, index) => {
-    const subpath = new SVGPathData(commands);
-    if (index % 2 === 1) subpath.reverse();
-    return subpath.encode();
-  }).join('');
-}
-
-function convertEvenOddToNonZero(svg, iconName) {
-  const $ = load(svg, { xmlMode: true });
-  $('path[fill-rule="evenodd"]').each((_, element) => {
-    const node = $(element);
-    node.attr('d', reverseAlternatingSubpaths(node.attr('d') || '', iconName));
-    node.removeAttr('fill-rule');
-    node.removeAttr('clip-rule');
-  });
-  const result = $.xml('svg');
-  if (/fill-rule=["']evenodd["']/.test(result)) {
-    throw new Error(`${iconName} 仍含字体不支持的偶奇填充规则。`);
-  }
-  return result;
-}
-
 function prepareForFont(svg, iconName) {
   const $ = load(svg, { xmlMode: true });
   if (iconName === 'atom') {
@@ -434,8 +394,7 @@ function prepareForFont(svg, iconName) {
   );
   const cleaned = $outlined.xml('svg');
   if (/\sstroke=/.test(cleaned)) throw new Error(`${iconName} 仍含描边，不能安全生成普通轮廓字体。`);
-  const nonZero = convertEvenOddToNonZero(cleaned, iconName);
-  return nonZero.replaceAll('fill="#000"', 'fill="black"');
+  return cleaned.replaceAll('fill="#000"', 'fill="black"');
 }
 
 function xmlEscape(value) {
