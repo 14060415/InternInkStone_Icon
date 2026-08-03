@@ -21,13 +21,13 @@ https://14060415.github.io/InternInkStone_Icon/
 >
 ```
 
-再使用列表中复制的 Unicode、HTML 实体或完整 HTML：
+推荐直接复制列表中的“完整 HTML”：
 
 ```html
-<span class="iconfont" aria-hidden="true">&#xE001;</span>
+<span class="intern-inkstone-icon" aria-hidden="true">&#xE001;</span>
 ```
 
-这些码位属于 Unicode 私有使用区，未加载 `InternDiscoveryIcons` 字体时不会显示正确图案。
+如果只复制 Unicode 字符或 HTML 实体，也必须给承载元素添加 `.intern-inkstone-icon` 类。旧版 `.iconfont` 类仍兼容。这些码位属于 Unicode 私有使用区，未加载 `InternDiscoveryIcons` 字体时不会显示正确图案。
 
 ## 更新约束
 
@@ -43,3 +43,9 @@ https://14060415.github.io/InternInkStone_Icon/
 cd tools/iconfont-build
 npm ci
 npm run build
+npm run verify
+```
+
+## License
+
+MIT

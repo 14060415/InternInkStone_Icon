@@ -436,7 +436,7 @@ function makeCss(icons, unicodeMap) {
     '  font-style:normal;',
     '  font-display:block;',
     '}',
-    '.iconfont{',
+    '.intern-inkstone-icon,.iconfont{',
     `  font-family:"${fontFamily}"!important;`,
     '  font-style:normal;',
     '  font-weight:normal;',

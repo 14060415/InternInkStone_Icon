@@ -33,7 +33,7 @@
     .eyebrow{margin:0 0 9px;color:var(--blue);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
     h1{margin:0;font:600 38px/1.2 Georgia,"Songti SC",serif;letter-spacing:.02em}
     .lead{max-width:760px;margin:14px 0 0;color:var(--ink-soft);font-size:13px;line-height:1.8}
-    .toolbar{position:sticky;top:0;z-index:4;display:grid;grid-template-columns:minmax(180px,1fr) 178px 122px 116px 122px;gap:10px;padding:14px 0;background:linear-gradient(var(--canvas) 78%,rgba(245,247,250,0))}
+    .toolbar{position:sticky;top:0;z-index:4;display:grid;grid-template-columns:minmax(180px,1fr) 178px 122px 122px;gap:10px;padding:14px 0;background:linear-gradient(var(--canvas) 78%,rgba(245,247,250,0))}
     .search-wrap{position:relative}.search-wrap svg{position:absolute;left:14px;top:50%;width:17px;height:17px;transform:translateY(-50%);color:var(--muted);stroke-linecap:round;stroke-linejoin:round}
     .toolbar input,.toolbar select{width:100%;height:42px;border:1px solid var(--line);border-radius:8px;color:var(--ink);background:var(--paper);outline:none}
     .toolbar input{padding:0 14px 0 42px}.toolbar select{padding:0 34px 0 12px;appearance:none;-webkit-appearance:none;background-color:#fff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='m3.5 5.25 3.5 3.5 3.5-3.5' stroke='%237a8394' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;background-size:14px 14px;cursor:pointer}
@@ -67,6 +67,7 @@
     .icon-card:hover,.icon-card:focus-within{z-index:6;border-color:#c8cdd3;background:var(--paper);box-shadow:0 4px 14px rgba(26,35,50,.055)}
     .preview{flex:none;width:52px;height:62px;display:flex;align-items:center;justify-content:center;color:#3a4556;background:transparent}
     .preview svg{width:var(--icon-preview-size);height:var(--icon-preview-size);fill:none;stroke:currentColor;stroke-width:1.5;shape-rendering:geometricPrecision;overflow:visible}
+    .preview .preview-glyph{display:block;color:inherit;font-size:var(--icon-preview-size);line-height:1}
     .icon-card:hover .preview{color:#3a4556}
     .card-body{min-width:0;flex:1;padding:0 8px}.card-meta{display:block;text-align:left}.name-block{min-width:0}
     .name-block h4{margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#3a4556;font-size:13px;font-weight:500;line-height:1.35}
@@ -78,7 +79,7 @@
     .icon-card:hover .copy-menu,.copy-menu:focus-within{opacity:1;pointer-events:auto;transform:translateY(-50%)}
     .copy-trigger{width:26px;height:26px;display:grid;place-items:center;padding:0;border:1px solid var(--line);border-radius:5px;color:#7a8394;background:rgba(255,255,255,.97);cursor:pointer}
     .copy-trigger:hover,.copy-trigger:focus-visible{color:#3a4556;border-color:#aeb4bc;background:#f1f2f3}.copy-trigger svg{width:15px;height:15px;overflow:visible}
-    .copy-options{position:absolute;right:0;top:100%;width:154px;display:grid;gap:2px;padding:4px;border:1px solid var(--line);border-radius:6px;background:#fff;box-shadow:0 8px 22px rgba(26,35,50,.1);opacity:0;visibility:hidden;transform:translateY(-3px);transition:.14s ease}
+    .copy-options{position:absolute;right:0;top:100%;width:180px;display:grid;gap:2px;padding:4px;border:1px solid var(--line);border-radius:6px;background:#fff;box-shadow:0 8px 22px rgba(26,35,50,.1);opacity:0;visibility:hidden;transform:translateY(-3px);transition:.14s ease}
     .copy-menu:hover .copy-options,.copy-menu:focus-within .copy-options{opacity:1;visibility:visible;transform:none}
     .copy-option{width:100%;height:32px;padding:0 9px;border:0;border-radius:4px;color:#3a4556;background:transparent;cursor:pointer;text-align:left;font-size:13px}
     .copy-option:hover,.copy-option:focus-visible{background:#f0f1f2}.copy-option.is-done{background:#eceeef}
@@ -89,7 +90,7 @@
     .page[data-view="compact"] .preview{width:100%;height:52px}.page[data-view="compact"] .card-body{display:none}
     .page[data-view="compact"] .copy-menu{right:3px;top:3px;transform:none}
     .page[data-view="compact"] .icon-card:hover .copy-menu,.page[data-view="compact"] .copy-menu:focus-within{transform:none}
-    .page[data-view="compact"] .copy-trigger{width:23px;height:23px}.page[data-view="compact"] .copy-options{top:100%;width:154px}
+    .page[data-view="compact"] .copy-trigger{width:23px;height:23px}.page[data-view="compact"] .copy-options{top:100%;width:180px}
     @media(hover:none){.copy-menu{opacity:.8;pointer-events:auto;transform:translateY(-50%)}.page[data-view="compact"] .copy-menu{opacity:.8;transform:none}}
     .empty{display:none;padding:80px 0;text-align:center;color:var(--muted)}
     .foot{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.7}
@@ -118,7 +119,7 @@
       <div>
         <p class="eyebrow">Intern InkStone · Canonical Icon Set</p>
         <h1>平台标准图标库</h1>
-        <p class="lead">按使用场景与组件职责组织的标准图标集。加载 <code>iconfont/iconfont.css</code> 后，可从每个图标的菜单复制 Unicode 字符、HTML 实体或完整 HTML 代码。</p>
+        <p class="lead">列表直接使用发布字体预览，确保与引用结果一致。加载 <code>iconfont/iconfont.css</code> 后，推荐从菜单复制“完整 HTML”。</p>
       </div>
       <div class="hero-count" aria-label="图标总数"><span>共</span><strong id="icon-total">0</strong><span>个图标</span></div>
     </header>
@@ -135,11 +136,6 @@
         <option value="20">20px 检查</option>
         <option value="16">16px 检查</option>
       </select>
-      <select id="corner-style" aria-label="切换图标圆角档位">
-        <option value="sharp">锐利</option>
-        <option value="standard" selected>标准</option>
-        <option value="rounded">圆润</option>
-      </select>
       <div class="view-toggle" role="group" aria-label="切换浏览视图">
         <button class="view-btn is-active" type="button" data-view="standard" aria-pressed="true" aria-label="标准视图" title="标准视图"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="5" height="5" rx="1"/><path d="M11.5 7H20.5"/><rect x="3.5" y="14.5" width="5" height="5" rx="1"/><path d="M11.5 17H20.5"/></svg></button>
         <button class="view-btn" type="button" data-view="compact" aria-pressed="false" aria-label="简化视图" title="简化视图"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></button>
@@ -148,7 +144,7 @@
 
     <div class="catalog" id="catalog"></div>
     <div class="empty" id="empty">没有找到匹配的图标。</div>
-    <footer class="foot">搜索支持名称、token、Unicode 码位与历史别名；每个图标均可复制 Unicode 字符、HTML 实体或完整 HTML 代码。Unicode 位于私有使用区，使用前必须加载本图标库的字体 CSS。圆角档位仅作用于 SVG 预览，不改变 Unicode 码位。</footer>
+    <footer class="foot">列表预览与复制代码使用同一份 WebFont。推荐复制完整 HTML；若只复制 Unicode 字符或 HTML 实体，元素仍须添加 <code>intern-inkstone-icon</code> 类，并加载本图标库的字体 CSS。</footer>
   </main>
 
   <script src="./iconfont/unicode-map.js"></script>
@@ -604,7 +600,7 @@
     const anchorList = document.getElementById('anchor-list');
     const categorySelect = document.getElementById('category');
     const previewSize = document.getElementById('preview-size');
-    const cornerStyle = document.getElementById('corner-style');
+    const cornerStyle = {value:'standard'};
     const search = document.getElementById('search');
     const empty = document.getElementById('empty');
     const page = document.getElementById('page');
@@ -873,8 +869,11 @@
     function htmlEntityFor(icon){
       return `&#x${icon.unicodeHex.slice(2)};`;
     }
+    function fontPreviewFor(icon){
+      return `<span class="intern-inkstone-icon preview-glyph" aria-hidden="true">${htmlEntityFor(icon)}</span>`;
+    }
     function htmlSnippetFor(icon){
-      return `<span class="iconfont" aria-hidden="true">${htmlEntityFor(icon)}</span>`;
+      return `<span class="intern-inkstone-icon" aria-hidden="true">${htmlEntityFor(icon)}</span>`;
     }
 
     async function copyValue(value,button){
@@ -925,10 +924,10 @@
             card.className='icon-card';
             card.dataset.key=icon.key;
             card.dataset.search=`${icon.name} ${icon.token} ${icon.unicodeHex} ${icon.aliases.join(' ')} ${icon.family} ${icon.category}`.toLowerCase();
-            const unicodeCopyTitle=`复制 ${icon.name} Unicode 字符（${icon.unicodeHex}）`;
-            const entityCopyTitle=`复制 ${icon.name} HTML 实体（${htmlEntityFor(icon)}）`;
-            const htmlCopyTitle=`复制 ${icon.name} 完整 HTML 代码`;
-            card.innerHTML=`<div class="preview">${svgFor(icon)}</div><div class="card-body"><div class="card-meta"><div class="name-block"><h4>${icon.name}</h4><p class="token">${icon.token}</p></div></div></div><div class="card-tooltip" role="tooltip"><strong>${icon.name}</strong><span>${icon.token}</span></div><div class="copy-menu"><button class="copy-trigger" type="button" title="更多复制选项" aria-label="${icon.name} 更多复制选项"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="19" cy="12" r="1.5" fill="currentColor"/></svg></button><div class="copy-options" role="menu" aria-label="${icon.name} 复制选项"><button class="copy-option" type="button" role="menuitem" data-copy="unicode" data-label="复制 Unicode 字符" data-title="${unicodeCopyTitle}" title="${unicodeCopyTitle}">复制 Unicode 字符</button><button class="copy-option" type="button" role="menuitem" data-copy="entity" data-label="复制 HTML 实体" data-title="${entityCopyTitle}" title="${entityCopyTitle}">复制 HTML 实体</button><button class="copy-option" type="button" role="menuitem" data-copy="html" data-label="复制完整 HTML" data-title="${htmlCopyTitle}" title="${htmlCopyTitle}">复制完整 HTML</button></div></div>`;
+            const unicodeCopyTitle=`复制 ${icon.name} Unicode 字符（${icon.unicodeHex}，需配合 .intern-inkstone-icon 类）`;
+            const entityCopyTitle=`复制 ${icon.name} HTML 实体（${htmlEntityFor(icon)}，需配合 .intern-inkstone-icon 类）`;
+            const htmlCopyTitle=`复制 ${icon.name} 完整 HTML 代码（推荐）`;
+            card.innerHTML=`<div class="preview">${fontPreviewFor(icon)}</div><div class="card-body"><div class="card-meta"><div class="name-block"><h4>${icon.name}</h4><p class="token">${icon.token}</p></div></div></div><div class="card-tooltip" role="tooltip"><strong>${icon.name}</strong><span>${icon.token}</span></div><div class="copy-menu"><button class="copy-trigger" type="button" title="更多复制选项" aria-label="${icon.name} 更多复制选项"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="19" cy="12" r="1.5" fill="currentColor"/></svg></button><div class="copy-options" role="menu" aria-label="${icon.name} 复制选项"><button class="copy-option" type="button" role="menuitem" data-copy="unicode" data-label="复制 Unicode 字符" data-title="${unicodeCopyTitle}" title="${unicodeCopyTitle}">复制 Unicode 字符</button><button class="copy-option" type="button" role="menuitem" data-copy="entity" data-label="复制 HTML 实体" data-title="${entityCopyTitle}" title="${entityCopyTitle}">复制 HTML 实体</button><button class="copy-option" type="button" role="menuitem" data-copy="html" data-label="复制完整 HTML（推荐）" data-title="${htmlCopyTitle}" title="${htmlCopyTitle}">复制完整 HTML（推荐）</button></div></div>`;
             card.querySelector('[data-copy="unicode"]').addEventListener('click',event=>copyValue(icon.unicode,event.currentTarget));
             card.querySelector('[data-copy="entity"]').addEventListener('click',event=>copyValue(htmlEntityFor(icon),event.currentTarget));
             card.querySelector('[data-copy="html"]').addEventListener('click',event=>copyValue(htmlSnippetFor(icon),event.currentTarget));
@@ -1047,18 +1046,13 @@
 
     let initialView=new URLSearchParams(location.search).get('view')||'standard';
     try{initialView=new URLSearchParams(location.search).get('view')||localStorage.getItem('icon-list-view')||'standard'}catch{}
-    let initialCornerStyle='standard';
-    try{initialCornerStyle=localStorage.getItem('icon-list-corner-style')||'standard'}catch{}
-    cornerStyle.value=validCornerStyles.has(initialCornerStyle)?initialCornerStyle:'standard';
     setView(initialView,{save:false});
     render();
     search.addEventListener('input',applyFilters);
     categorySelect.addEventListener('change',applyFilters);
     previewSize.addEventListener('change',()=>document.documentElement.style.setProperty('--icon-preview-size',`${previewSize.value}px`));
-    cornerStyle.addEventListener('change',()=>applyCornerStyle());
     setupCustomSelect(categorySelect);
     setupCustomSelect(previewSize);
-    setupCustomSelect(cornerStyle);
     document.addEventListener('click',event=>{
       document.querySelectorAll('.select-control.is-open').forEach(control=>{
         if(control.contains(event.target))return;
