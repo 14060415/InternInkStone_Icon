@@ -6,6 +6,7 @@
   <title>Intern InkStone 本地 Unicode 对照审阅</title>
   <link rel="stylesheet" href="./iconfont/iconfont.css">
   <style>
+    @font-face{font-family:"InternDiscoveryIconsLocalReview";src:url("./iconfont/intern-discovery-icons.woff2?v=local-review-20260803-3") format("woff2"),url("./iconfont/intern-discovery-icons.woff?v=local-review-20260803-3") format("woff");font-weight:normal;font-style:normal;font-display:block}
     :root{--ink:#3a4556;--muted:#7a8394;--line:#dfe3e8;--paper:#fff;--canvas:#f6f7f8;--size:32px}
     *{box-sizing:border-box}
     body{margin:0;color:var(--ink);background:var(--canvas);font:14px/1.5 Inter,"PingFang SC","Microsoft YaHei",sans-serif}
@@ -23,7 +24,7 @@
     .sample::after{position:absolute;left:7px;top:5px;color:#9aa1ac;font-size:11px}
     .sample.svg::after{content:"原始 SVG"}.sample.font::after{content:"Unicode 字体"}
     .sample img{width:var(--size);height:var(--size)}
-    .sample .iconfont{color:var(--ink);font-size:var(--size);line-height:1}
+    .sample .iconfont{font-family:"InternDiscoveryIconsLocalReview"!important;color:var(--ink);font-size:var(--size);line-height:1}
     .meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}
     .key{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
     .unicode{flex:none;color:var(--muted);font:12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace}

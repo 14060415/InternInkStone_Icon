@@ -51,7 +51,13 @@ const errors = [];
 const iconKeys = new Set();
 const tokens = new Set();
 const codePoints = new Set();
-const hollowGlyphs = new Set(['bookmark', 'star', 'eye', 'bell', 'lock']);
+const hollowGlyphs = new Set([
+  'bookmark', 'star', 'eye', 'bell', 'lock',
+  'languageChinese', 'trash', 'edit', 'settings', 'fastForward', 'rewind',
+  'filePdf', 'filePresentation', 'table', 'occupation',
+  'lightbulb', 'bellOff', 'eyeOff', 'python', 'dna',
+  'flask', 'network',
+]);
 
 for (const icon of manifest.icons) {
   if (iconKeys.has(icon.key)) errors.push(`重复 key：${icon.key}`);
@@ -107,6 +113,9 @@ for (const name of outlineSvgs) {
   const outlined = await fs.readFile(path.join(root, 'outlined-svg', name), 'utf8');
   if (/fill-rule=["']evenodd["']/.test(outlined)) {
     errors.push(`轮廓 SVG 仍依赖字体不支持的偶奇填充：${name}`);
+  }
+  if (/<text\b/.test(outlined)) {
+    errors.push(`轮廓 SVG 仍含字体生成器会忽略的文字：${name}`);
   }
 }
 

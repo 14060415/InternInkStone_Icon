@@ -26,6 +26,10 @@ const mapPath = path.join(here, 'unicode-map.json');
 const fontName = 'intern-discovery-icons';
 const fontFamily = 'InternDiscoveryIcons';
 const reservedCodePoints = new Set([0xE0AD, 0xE0AE]);
+const textPathOverrides = Object.freeze({
+  PDF: "M6.35351 17.6L6.35351 13.01875L8.40653 13.01875Q9.07724 13.01875 9.41123 13.38438Q9.74522 13.75 9.74522 14.425L9.74522 14.425Q9.74522 15.11875 9.38124 15.50938Q9.01726 15.9 8.27021 15.9L8.27021 15.9L7.59405 15.9L7.59405 17.6L6.35351 17.6zM7.59405 13.95L7.59405 14.97188L7.89668 14.97188Q8.25385 14.97188 8.39835 14.82969Q8.54286 14.6875 8.54286 14.46563L8.54286 14.46563Q8.54286 14.25 8.41744 14.1Q8.29202 13.95 7.94576 13.95L7.94576 13.95L7.59405 13.95zM10.40775 17.6L10.40775 13.01875L12.24265 13.01875Q12.78522 13.01875 13.11921 13.1875Q13.4532 13.35625 13.67131 13.67188Q13.88943 13.9875 13.98758 14.40625Q14.08573 14.825 14.08573 15.29375L14.08573 15.29375Q14.08573 16.02813 13.93987 16.43281Q13.79401 16.8375 13.53499 17.11094Q13.27598 17.38438 12.97879 17.475L12.97879 17.475Q12.57256 17.6 12.24265 17.6L12.24265 17.6L10.40775 17.6zM11.95092 14.05625L11.64283 14.05625L11.64283 16.55938L11.94547 16.55938Q12.33263 16.55938 12.49621 16.46094Q12.6598 16.3625 12.7525 16.11719Q12.8452 15.87188 12.8452 15.32188L12.8452 15.32188Q12.8452 14.59375 12.63799 14.325Q12.43078 14.05625 11.95092 14.05625L11.95092 14.05625zM14.74008 17.6L14.74008 13.01875L17.79372 13.01875L17.79372 14.00313L15.98062 14.00313L15.98062 14.80313L17.52925 14.80313L17.52925 15.72813L15.98062 15.72813L15.98062 17.6L14.74008 17.6z",
+  PPT: "M6.4936 17.6L6.4936 13.01875L8.49617 13.01875Q9.15039 13.01875 9.47617 13.38438Q9.80196 13.75 9.80196 14.425L9.80196 14.425Q9.80196 15.11875 9.44692 15.50938Q9.09188 15.9 8.36319 15.9L8.36319 15.9L7.70365 15.9L7.70365 17.6L6.4936 17.6zM7.70365 13.95L7.70365 14.97188L7.99885 14.97188Q8.34724 14.97188 8.48819 14.82969Q8.62914 14.6875 8.62914 14.46563L8.62914 14.46563Q8.62914 14.25 8.5068 14.1Q8.38447 13.95 8.04672 13.95L8.04672 13.95L7.70365 13.95zM10.42693 17.6L10.42693 13.01875L12.4295 13.01875Q13.08373 13.01875 13.40951 13.38438Q13.73529 13.75 13.73529 14.425L13.73529 14.425Q13.73529 15.11875 13.38025 15.50938Q13.02522 15.9 12.29653 15.9L12.29653 15.9L11.63699 15.9L11.63699 17.6L10.42693 17.6zM11.63699 13.95L11.63699 14.97188L11.93218 14.97188Q12.28057 14.97188 12.42152 14.82969Q12.56248 14.6875 12.56248 14.46563L12.56248 14.46563Q12.56248 14.25 12.44014 14.1Q12.31781 13.95 11.98005 13.95L11.98005 13.95L11.63699 13.95zM14.09166 14.15L14.09166 13.01875L17.75373 13.01875L17.75373 14.15L16.52506 14.15L16.52506 17.6L15.32033 17.6L15.32033 14.15L14.09166 14.15z",
+});
 
 function extractLibrary(html) {
   const start = html.indexOf('const categoryDefinitions');
@@ -258,9 +262,10 @@ function inheritedAttribute($, element, name, fallback) {
   return fallback;
 }
 
-function reverseAlternatingSubpaths(pathData, iconName) {
+function splitNormalizedSubpaths(pathData, iconName) {
   const normalized = new SVGPathData(pathData)
     .toAbs()
+    .normalizeHVZ(false, true, true)
     .normalizeST()
     .qtToC()
     .aToC();
@@ -275,18 +280,144 @@ function reverseAlternatingSubpaths(pathData, iconName) {
   }
   if (current.length) subpaths.push(current);
   if (!subpaths.length) throw new Error(`${iconName} 的偶奇轮廓为空。`);
+  return subpaths;
+}
+
+function flattenSubpath(commands, iconName) {
+  const points = [];
+  let currentX = 0;
+  let currentY = 0;
+  for (const command of commands) {
+    if (command.type === SVGPathData.MOVE_TO) {
+      currentX = command.x;
+      currentY = command.y;
+      points.push([currentX, currentY]);
+    } else if (command.type === SVGPathData.LINE_TO) {
+      currentX = command.x;
+      currentY = command.y;
+      points.push([currentX, currentY]);
+    } else if (command.type === SVGPathData.CURVE_TO) {
+      const startX = currentX;
+      const startY = currentY;
+      for (let step = 1; step <= 12; step += 1) {
+        const t = step / 12;
+        const inverse = 1 - t;
+        const x = inverse ** 3 * startX +
+          3 * inverse ** 2 * t * command.x1 +
+          3 * inverse * t ** 2 * command.x2 +
+          t ** 3 * command.x;
+        const y = inverse ** 3 * startY +
+          3 * inverse ** 2 * t * command.y1 +
+          3 * inverse * t ** 2 * command.y2 +
+          t ** 3 * command.y;
+        points.push([x, y]);
+      }
+      currentX = command.x;
+      currentY = command.y;
+    } else if (command.type !== SVGPathData.CLOSE_PATH) {
+      throw new Error(`${iconName} 含有未标准化的轮廓命令。`);
+    }
+  }
+  if (points.length < 3) throw new Error(`${iconName} 含有无法定向的子轮廓。`);
+  return points;
+}
+
+function signedPolygonArea(points) {
+  let twiceArea = 0;
+  for (let index = 0; index < points.length; index += 1) {
+    const current = points[index];
+    const next = points[(index + 1) % points.length];
+    twiceArea += current[0] * next[1] - next[0] * current[1];
+  }
+  return twiceArea / 2;
+}
+
+function pointInPolygon(point, polygon) {
+  let inside = false;
+  const [x, y] = point;
+  for (let index = 0, previous = polygon.length - 1; index < polygon.length; previous = index++) {
+    const [x1, y1] = polygon[index];
+    const [x2, y2] = polygon[previous];
+    const crosses = (y1 > y) !== (y2 > y) &&
+      x < (x2 - x1) * (y - y1) / (y2 - y1) + x1;
+    if (crosses) inside = !inside;
+  }
+  return inside;
+}
+
+function interiorPoint(points, area, iconName) {
+  let centroidX = 0;
+  let centroidY = 0;
+  let areaFactor = 0;
+  for (let index = 0; index < points.length; index += 1) {
+    const current = points[index];
+    const next = points[(index + 1) % points.length];
+    const cross = current[0] * next[1] - next[0] * current[1];
+    centroidX += (current[0] + next[0]) * cross;
+    centroidY += (current[1] + next[1]) * cross;
+    areaFactor += cross;
+  }
+  if (Math.abs(areaFactor) > 1e-9) {
+    const centroid = [centroidX / (3 * areaFactor), centroidY / (3 * areaFactor)];
+    if (pointInPolygon(centroid, points)) return centroid;
+  }
+
+  let minY = Infinity;
+  let maxY = -Infinity;
+  for (const [, y] of points) {
+    minY = Math.min(minY, y);
+    maxY = Math.max(maxY, y);
+  }
+  const height = Math.max(maxY - minY, 1);
+  const scanlines = [0.5, 0.33, 0.67, 0.2, 0.8].map(ratio => minY + height * ratio);
+  for (const y of scanlines) {
+    const intersections = [];
+    for (let index = 0; index < points.length; index += 1) {
+      const [x1, y1] = points[index];
+      const [x2, y2] = points[(index + 1) % points.length];
+      if ((y1 > y) !== (y2 > y)) {
+        intersections.push(x1 + (x2 - x1) * (y - y1) / (y2 - y1));
+      }
+    }
+    intersections.sort((a, b) => a - b);
+    let best = null;
+    for (let index = 0; index + 1 < intersections.length; index += 2) {
+      const width = intersections[index + 1] - intersections[index];
+      const candidate = [(intersections[index] + intersections[index + 1]) / 2, y];
+      if (width > 1e-8 && pointInPolygon(candidate, points) && (!best || width > best.width)) {
+        best = { point: candidate, width };
+      }
+    }
+    if (best) return best.point;
+  }
+  throw new Error(`${iconName} 无法找到子轮廓内部采样点（面积 ${area}）。`);
+}
+
+function orientSubpathsForNonZero(pathData, iconName) {
+  const subpaths = splitNormalizedSubpaths(pathData, iconName);
+  const polygons = subpaths.map(commands => flattenSubpath(commands, iconName));
+  const areas = polygons.map(points => signedPolygonArea(points));
+  const samples = polygons.map((points, index) => interiorPoint(points, areas[index], iconName));
   return subpaths.map((commands, index) => {
+    const currentArea = Math.abs(areas[index]);
+    if (currentArea < 1e-9) throw new Error(`${iconName} 含有面积为零的子轮廓。`);
+    const depth = polygons.reduce((count, polygon, otherIndex) => {
+      if (otherIndex === index || Math.abs(areas[otherIndex]) <= currentArea + 1e-7) return count;
+      return pointInPolygon(samples[index], polygon) ? count + 1 : count;
+    }, 0);
+    const desiredSign = depth % 2 === 0 ? 1 : -1;
+    const actualSign = Math.sign(areas[index]);
     const subpath = new SVGPathData(commands);
-    if (index % 2 === 1) subpath.reverse();
+    if (actualSign !== desiredSign) subpath.reverse();
     return subpath.encode();
   }).join('');
 }
 
 function convertEvenOddToNonZero(svg, iconName) {
   const $ = load(svg, { xmlMode: true });
-  $('path[fill-rule="evenodd"]').each((_, element) => {
+  $('path[fill]').each((_, element) => {
     const node = $(element);
-    node.attr('d', reverseAlternatingSubpaths(node.attr('d') || '', iconName));
+    node.attr('d', orientSubpathsForNonZero(node.attr('d') || '', iconName));
     node.removeAttr('fill-rule');
     node.removeAttr('clip-rule');
   });
@@ -299,6 +430,15 @@ function convertEvenOddToNonZero(svg, iconName) {
 
 function prepareForFont(svg, iconName) {
   const $ = load(svg, { xmlMode: true });
+  $('text').each((_, element) => {
+    const label = $(element).text().trim();
+    const d = textPathOverrides[label];
+    if (!d) throw new Error(`${iconName} 含有尚未转换为轮廓的文字：${label}`);
+    element.name = 'path';
+    element.tagName = 'path';
+    element.children = [];
+    element.attribs = { d, fill: '#000', stroke: 'none' };
+  });
   if (iconName === 'atom') {
     const orbitPaths = $('path').toArray();
     if (orbitPaths.length !== 2) throw new Error('atom 轨道结构已变化，需要重新校准字体轮廓。');
