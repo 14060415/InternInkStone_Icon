@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "@davestewart/outliner": "1.2.0",
+    "svg-pathdata": "7.2.0",
     "svgtofont": "6.5.3"
   }
 }
