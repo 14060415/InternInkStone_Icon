@@ -6,24 +6,24 @@
 
 ```html
 <link rel="stylesheet" href="./iconfont/iconfont.css">
-<i class="intern-inkstone-icon icon-menu" aria-hidden="true"></i>
+<i class="iconfont icon-menu" aria-hidden="true"></i>
 ```
 
 有语义的操作按钮必须提供可访问名称：
 
 ```html
 <button type="button" aria-label="打开菜单">
-  <i class="intern-inkstone-icon icon-menu" aria-hidden="true"></i>
+  <i class="iconfont icon-menu" aria-hidden="true"></i>
 </button>
 ```
 
 ## Unicode 引用
 
 ```html
-<span class="intern-inkstone-icon">&#xE001;</span>
+<span class="iconfont">&#xE001;</span>
 ```
 
-Unicode 字符只有在应用 `InternDiscoveryIcons` 字体后才会显示为图标。推荐使用 `.intern-inkstone-icon`；旧版 `.iconfont` 仍作为兼容别名保留。永久对应关系见 `unicode-map.json` 和 `manifest.json`。
+Unicode 字符只有在应用 `InternDiscoveryIcons` 字体后才会显示为图标。永久对应关系见 `unicode-map.json` 和 `manifest.json`。
 
 ## SVG Symbol 引用
 
