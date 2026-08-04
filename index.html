@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Intern InkStone 图标库</title>
-  <link rel="stylesheet" href="./iconfont/iconfont.css">
+  <link rel="stylesheet" href="./iconfont/iconfont.css?v=20260804-w1875">
   <style>
     :root{
       --ink:#3a4556;--ink-soft:#3a4556;--muted:#7a8394;--line:#e1e4e8;
@@ -66,7 +66,7 @@
     .icon-card{position:relative;z-index:0;min-width:0;min-height:62px;display:flex;align-items:center;border:1px solid var(--line);border-radius:7px;background:rgba(255,255,255,.54);overflow:visible;transition:border-color .14s ease,background .14s ease,box-shadow .14s ease}
     .icon-card:hover,.icon-card:focus-within{z-index:6;border-color:#c8cdd3;background:var(--paper);box-shadow:0 4px 14px rgba(26,35,50,.055)}
     .preview{flex:none;width:52px;height:62px;display:flex;align-items:center;justify-content:center;color:#3a4556;background:transparent}
-    .preview svg{width:var(--icon-preview-size);height:var(--icon-preview-size);fill:none;stroke:currentColor;stroke-width:1.5;shape-rendering:geometricPrecision;overflow:visible}
+    .preview svg{width:var(--icon-preview-size);height:var(--icon-preview-size);fill:none;stroke:currentColor;stroke-width:1.5;shape-rendering:geometricPrecision;overflow:visible}.preview .iconfont{font-size:var(--icon-preview-size);line-height:1}
     .icon-card:hover .preview{color:#3a4556}
     .card-body{min-width:0;flex:1;padding:0 8px}.card-meta{display:block;text-align:left}.name-block{min-width:0}
     .name-block h4{margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#3a4556;font-size:13px;font-weight:500;line-height:1.35}
@@ -118,7 +118,7 @@
       <div>
         <p class="eyebrow">Intern InkStone · Canonical Icon Set</p>
         <h1>平台标准图标库</h1>
-        <p class="lead">按使用场景与组件职责组织的标准图标集。加载 <code>iconfont/iconfont.css</code> 后，可从每个图标的菜单复制 Unicode 字符、HTML 实体或完整 HTML 代码。</p>
+        <p class="lead">按使用场景与组件职责组织的标准图标集。选择锋利、标准或圆润后，列表会用对应 Unicode 字体预览，复制的完整 HTML 也会自动使用当前档位。</p>
       </div>
       <div class="hero-count" aria-label="图标总数"><span>共</span><strong id="icon-total">0</strong><span>个图标</span></div>
     </header>
@@ -130,13 +130,13 @@
       </label>
       <select id="category" aria-label="按分类筛选"><option value="">全部分类</option></select>
       <select id="preview-size" aria-label="切换图标预览尺寸">
+        <option value="16">16px 预览</option>
         <option value="24" selected>24px 预览</option>
-        <option value="32">32px 检查</option>
-        <option value="20">20px 检查</option>
-        <option value="16">16px 检查</option>
+        <option value="32">32px 预览</option>
+        <option value="40">40px 预览</option>
       </select>
       <select id="corner-style" aria-label="切换图标圆角档位">
-        <option value="sharp">锐利</option>
+        <option value="sharp">锋利</option>
         <option value="standard" selected>标准</option>
         <option value="rounded">圆润</option>
       </select>
@@ -148,7 +148,7 @@
 
     <div class="catalog" id="catalog"></div>
     <div class="empty" id="empty">没有找到匹配的图标。</div>
-    <footer class="foot">搜索支持名称、token、Unicode 码位与历史别名；每个图标均可复制 Unicode 字符、HTML 实体或完整 HTML 代码。Unicode 位于私有使用区，使用前必须加载本图标库的字体 CSS。圆角档位仅作用于 SVG 预览，不改变 Unicode 码位。</footer>
+    <footer class="foot">搜索支持名称、token、Unicode 码位与历史别名；每个图标均可复制 Unicode 字符、HTML 实体或当前档位的完整 HTML。三档共用稳定 Unicode 码位，但分别加载独立字体文件；使用前必须加载本图标库的字体 CSS。</footer>
   </main>
 
   <script src="./iconfont/unicode-map.js"></script>
@@ -614,6 +614,11 @@
     const links = [];
     const iconByKey = new Map(icons.map(icon=>[icon.key,icon]));
     const validCornerStyles = new Set(['sharp','standard','rounded']);
+    const publicCornerClasses = Object.freeze({
+      sharp:'iconfont-sharp',
+      standard:'iconfont-standard',
+      rounded:'iconfont-rounded'
+    });
     iconTotal.textContent = String(icons.length);
 
     const cornerProfiles={
@@ -862,16 +867,23 @@
       return transformed;
     }
 
+    function activeCornerStyle(){
+      return validCornerStyles.has(cornerStyle.value)?cornerStyle.value:'standard';
+    }
+    function unicodePreviewFor(icon){
+      const mode=activeCornerStyle();
+      return `<span class="iconfont ${publicCornerClasses[mode]}" aria-hidden="true">${icon.unicode}</span>`;
+    }
     function applyCornerStyle({save=true}={}){
       document.querySelectorAll('.icon-card').forEach(card=>{
         const icon=iconByKey.get(card.dataset.key);
         const preview=card.querySelector('.preview');
-        if(icon&&preview)preview.innerHTML=svgFor(icon);
+        if(icon&&preview)preview.innerHTML=unicodePreviewFor(icon);
       });
       if(save){try{localStorage.setItem('icon-list-corner-style',cornerStyle.value)}catch{}}
     }
     function svgFor(icon){
-      const mode=validCornerStyles.has(cornerStyle.value)?cornerStyle.value:'standard';
+      const mode=activeCornerStyle();
       const profile=cornerProfiles[mode];
       const glyph=glyphForCornerStyle(glyphs[icon.key],mode);
       const stroke=/data-shape="filled"/.test(glyph)?'none':'currentColor';
@@ -881,7 +893,8 @@
       return `&#x${icon.unicodeHex.slice(2)};`;
     }
     function htmlSnippetFor(icon){
-      return `<span class="iconfont" aria-hidden="true">${htmlEntityFor(icon)}</span>`;
+      const mode=activeCornerStyle();
+      return `<span class="iconfont ${publicCornerClasses[mode]}" aria-hidden="true">${htmlEntityFor(icon)}</span>`;
     }
 
     async function copyValue(value,button){
@@ -935,7 +948,7 @@
             const unicodeCopyTitle=`复制 ${icon.name} Unicode 字符（${icon.unicodeHex}）`;
             const entityCopyTitle=`复制 ${icon.name} HTML 实体（${htmlEntityFor(icon)}）`;
             const htmlCopyTitle=`复制 ${icon.name} 完整 HTML 代码`;
-            card.innerHTML=`<div class="preview">${svgFor(icon)}</div><div class="card-body"><div class="card-meta"><div class="name-block"><h4>${icon.name}</h4><p class="token">${icon.token}</p></div></div></div><div class="card-tooltip" role="tooltip"><strong>${icon.name}</strong><span>${icon.token}</span></div><div class="copy-menu"><button class="copy-trigger" type="button" title="更多复制选项" aria-label="${icon.name} 更多复制选项"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="19" cy="12" r="1.5" fill="currentColor"/></svg></button><div class="copy-options" role="menu" aria-label="${icon.name} 复制选项"><button class="copy-option" type="button" role="menuitem" data-copy="unicode" data-label="复制 Unicode 字符" data-title="${unicodeCopyTitle}" title="${unicodeCopyTitle}">复制 Unicode 字符</button><button class="copy-option" type="button" role="menuitem" data-copy="entity" data-label="复制 HTML 实体" data-title="${entityCopyTitle}" title="${entityCopyTitle}">复制 HTML 实体</button><button class="copy-option" type="button" role="menuitem" data-copy="html" data-label="复制完整 HTML" data-title="${htmlCopyTitle}" title="${htmlCopyTitle}">复制完整 HTML</button></div></div>`;
+            card.innerHTML=`<div class="preview">${unicodePreviewFor(icon)}</div><div class="card-body"><div class="card-meta"><div class="name-block"><h4>${icon.name}</h4><p class="token">${icon.token}</p></div></div></div><div class="card-tooltip" role="tooltip"><strong>${icon.name}</strong><span>${icon.token}</span></div><div class="copy-menu"><button class="copy-trigger" type="button" title="更多复制选项" aria-label="${icon.name} 更多复制选项"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="19" cy="12" r="1.5" fill="currentColor"/></svg></button><div class="copy-options" role="menu" aria-label="${icon.name} 复制选项"><button class="copy-option" type="button" role="menuitem" data-copy="unicode" data-label="复制 Unicode 字符" data-title="${unicodeCopyTitle}" title="${unicodeCopyTitle}">复制 Unicode 字符</button><button class="copy-option" type="button" role="menuitem" data-copy="entity" data-label="复制 HTML 实体" data-title="${entityCopyTitle}" title="${entityCopyTitle}">复制 HTML 实体</button><button class="copy-option" type="button" role="menuitem" data-copy="html" data-label="复制完整 HTML" data-title="${htmlCopyTitle}" title="${htmlCopyTitle}">复制完整 HTML</button></div></div>`;
             card.querySelector('[data-copy="unicode"]').addEventListener('click',event=>copyValue(icon.unicode,event.currentTarget));
             card.querySelector('[data-copy="entity"]').addEventListener('click',event=>copyValue(htmlEntityFor(icon),event.currentTarget));
             card.querySelector('[data-copy="html"]').addEventListener('click',event=>copyValue(htmlSnippetFor(icon),event.currentTarget));

@@ -26,11 +26,28 @@ const mapPath = path.join(here, 'unicode-map.json');
 
 const fontName = 'intern-discovery-icons';
 const fontFamily = 'InternDiscoveryIcons';
-const fontVariants = Object.freeze([
-  { id: 'sharp', name: `${fontName}-sharp`, family: `${fontFamily}Sharp` },
-  { id: 'standard', name: `${fontName}-standard`, family: `${fontFamily}Standard` },
-  { id: 'rounded', name: `${fontName}-rounded`, family: `${fontFamily}Rounded` },
+const cornerVariants = Object.freeze([
+  { id: 'sharp', familySuffix: 'Sharp' },
+  { id: 'standard', familySuffix: 'Standard' },
+  { id: 'rounded', familySuffix: 'Rounded' },
 ]);
+const strokeWeights = Object.freeze([
+  { id: 'normal', fileSuffix: '', familySuffix: '', sourceStroke: 1.5, scale: 1, strokeAt16: 1 },
+  { id: 'w1875', fileSuffix: '-w1875', familySuffix: 'W1875', sourceStroke: 1.875, scale: 1.25, strokeAt16: 1.25 },
+]);
+const fontVariants = Object.freeze(cornerVariants.flatMap(corner =>
+  strokeWeights.map(weight => ({
+    id: weight.id === 'normal' ? corner.id : `${corner.id}-${weight.id}`,
+    corner: corner.id,
+    weight: weight.id,
+    sourceStroke: weight.sourceStroke,
+    strokeScale: weight.scale,
+    strokeAt16: weight.strokeAt16,
+    name: `${fontName}-${corner.id}${weight.fileSuffix}`,
+    family: `${fontFamily}${corner.familySuffix}${weight.familySuffix}`,
+  }))
+));
+const publicFontVariants = Object.freeze(fontVariants.filter(variant => variant.weight === 'w1875'));
 const reservedCodePoints = new Set([0xE0AD, 0xE0AE]);
 const textPathOverrides = Object.freeze({
   PDF: "M6.35351 17.6L6.35351 13.01875L8.40653 13.01875Q9.07724 13.01875 9.41123 13.38438Q9.74522 13.75 9.74522 14.425L9.74522 14.425Q9.74522 15.11875 9.38124 15.50938Q9.01726 15.9 8.27021 15.9L8.27021 15.9L7.59405 15.9L7.59405 17.6L6.35351 17.6zM7.59405 13.95L7.59405 14.97188L7.89668 14.97188Q8.25385 14.97188 8.39835 14.82969Q8.54286 14.6875 8.54286 14.46563L8.54286 14.46563Q8.54286 14.25 8.41744 14.1Q8.29202 13.95 7.94576 13.95L7.94576 13.95L7.59405 13.95zM10.40775 17.6L10.40775 13.01875L12.24265 13.01875Q12.78522 13.01875 13.11921 13.1875Q13.4532 13.35625 13.67131 13.67188Q13.88943 13.9875 13.98758 14.40625Q14.08573 14.825 14.08573 15.29375L14.08573 15.29375Q14.08573 16.02813 13.93987 16.43281Q13.79401 16.8375 13.53499 17.11094Q13.27598 17.38438 12.97879 17.475L12.97879 17.475Q12.57256 17.6 12.24265 17.6L12.24265 17.6L10.40775 17.6zM11.95092 14.05625L11.64283 14.05625L11.64283 16.55938L11.94547 16.55938Q12.33263 16.55938 12.49621 16.46094Q12.6598 16.3625 12.7525 16.11719Q12.8452 15.87188 12.8452 15.32188L12.8452 15.32188Q12.8452 14.59375 12.63799 14.325Q12.43078 14.05625 11.95092 14.05625L11.95092 14.05625zM14.74008 17.6L14.74008 13.01875L17.79372 13.01875L17.79372 14.00313L15.98062 14.00313L15.98062 14.80313L17.52925 14.80313L17.52925 15.72813L15.98062 15.72813L15.98062 17.6L14.74008 17.6z",
@@ -142,11 +159,18 @@ async function loadOrCreateUnicodeMap(icons) {
   return document;
 }
 
-function sourceSvg(fragment, profile = cornerProfiles.standard) {
+function scaleStrokeWidths(fragment, scale) {
+  if (scale === 1) return fragment;
+  return fragment.replace(/stroke-width=(['"])(-?\d*\.?\d+)\1/g, (match, quote, value) =>
+    `stroke-width=${quote}${fmt(number(value) * scale)}${quote}`
+  );
+}
+
+function sourceSvg(fragment, profile = cornerProfiles.standard, strokeWidth = 1.5) {
   const stroke = /data-shape="filled"/.test(fragment) ? 'none' : 'currentColor';
   return [
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"',
-    ` fill="none" stroke="${stroke}" stroke-width="1.5"`,
+    ` fill="none" stroke="${stroke}" stroke-width="${fmt(strokeWidth)}"`,
     ` stroke-linecap="${profile.linecap}" stroke-linejoin="${profile.linejoin}"`,
     ' shape-rendering="geometricPrecision">',
     fragment,
@@ -681,7 +705,7 @@ function makeCss(icons, unicodeMap) {
     '/* Generated file. Do not edit by hand. */',
     ...fontFace(fontFamily, fontName),
     ...fontVariants.flatMap(variant => fontFace(variant.family, variant.name)),
-    '.iconfont,.iconfont-sharp,.iconfont-standard,.iconfont-rounded{',
+    `.iconfont,${publicFontVariants.flatMap(variant => [`.iconfont-${variant.corner}`, `.iconfont-${variant.id}`]).join(',')}{`,
     '  font-style:normal;',
     '  font-weight:normal;',
     '  font-variant:normal;',
@@ -692,9 +716,10 @@ function makeCss(icons, unicodeMap) {
     '  -moz-osx-font-smoothing:grayscale;',
     '}',
     `.iconfont{font-family:"${fontFamily}"!important;}`,
-    ...fontVariants.map(variant =>
-      `.iconfont-${variant.id}{font-family:"${variant.family}"!important;}`
-    ),
+    ...publicFontVariants.flatMap(variant => [
+      `.iconfont-${variant.corner}{font-family:"${variant.family}"!important;}`,
+      `.iconfont-${variant.id}{font-family:"${variant.family}"!important;}`,
+    ]),
     ...rules,
     '',
   ].join('\n');
@@ -724,6 +749,10 @@ function makeManifest(icons, unicodeMap) {
       variant.id,
       {
         fontFamily: variant.family,
+        corner: variant.corner,
+        weight: variant.weight,
+        sourceStroke: variant.sourceStroke,
+        strokeAt16: variant.strokeAt16,
         fontFiles: {
           woff2: `${variant.name}.woff2`,
           woff: `${variant.name}.woff`,
@@ -789,7 +818,7 @@ async function emptyAndCreate(directory) {
 }
 
 function variantDirectories(variant) {
-  if (variant.id === 'standard') {
+  if (variant.corner === 'standard' && variant.weight === 'normal') {
     return { source: sourceSvgDir, outline: outlineSvgDir };
   }
   return {
@@ -870,12 +899,21 @@ async function main() {
   }
 
   for (const variant of fontVariants) {
-    const profile = cornerProfiles[variant.id];
+    const profile = cornerProfiles[variant.corner];
     const dirs = directories.get(variant.id);
     for (const icon of icons) {
       const fileName = `${icon.token.slice(5)}.svg`;
-      const fragment = glyphForCornerStyle(glyphs[icon.key], variant.id);
-      const sourceSvgText = sourceSvg(fragment, profile);
+      const cornerFragment = glyphForCornerStyle(glyphs[icon.key], variant.corner);
+      let fragment = scaleStrokeWidths(cornerFragment, variant.strokeScale);
+      if (icon.key === 'edit' && variant.id === 'sharp-w1875') {
+        fragment = fragment.replace(
+          /<path d="[^"]+"/,
+          '<path d="M5.4 20 L7.379 20 L8.439 19.561 L17.939 10.061 L17.939 7.939 ' +
+          'L16.061 6.061 L13.939 6.061 L4.439 15.561 L4 16.621 L4 18.6 L5.4 20 Z ' +
+          'M13.5 6.5 L17.5 10.5"'
+        );
+      }
+      const sourceSvgText = sourceSvg(fragment, profile, variant.sourceStroke);
       const outlined = prepareForFont(sourceSvgText, icon.key);
       await Promise.all([
         fs.writeFile(path.join(dirs.source, fileName), `${sourceSvgText}\n`, 'utf8'),
@@ -900,7 +938,7 @@ async function main() {
     );
   }
 
-  const standard = fontVariants.find(variant => variant.id === 'standard');
+  const standard = publicFontVariants.find(variant => variant.corner === 'standard');
   for (const extension of ['svg', 'ttf', 'woff', 'woff2']) {
     await fs.copyFile(
       path.join(distDir, `${standard.name}.${extension}`),
@@ -941,7 +979,12 @@ async function main() {
     codePointMin: codePointHex(Math.min(...unicodeByFileName.values())),
     codePointMax: codePointHex(Math.max(...unicodeByFileName.values())),
     reserved: [...reservedCodePoints].map(codePointHex),
-    files: variantFiles.standard,
+    files: variantFiles['standard-w1875'],
+    strokeWeights: Object.fromEntries(strokeWeights.map(weight => [weight.id, {
+      sourceStroke: weight.sourceStroke,
+      strokeAt16: weight.strokeAt16,
+      scale: weight.scale,
+    }])),
     variants: variantFiles,
   };
   await fs.writeFile(

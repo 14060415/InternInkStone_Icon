@@ -10,7 +10,7 @@ const dist = root;
 const manifest = JSON.parse(await fs.readFile(path.join(root, 'manifest.json'), 'utf8'));
 const unicodeMap = JSON.parse(await fs.readFile(path.join(root, 'unicode-map.json'), 'utf8'));
 const css = await fs.readFile(path.join(dist, 'iconfont.css'), 'utf8');
-const variantIds = ['sharp', 'standard', 'rounded'];
+const variantIds = ['sharp', 'standard', 'rounded', 'sharp-w1875', 'standard-w1875', 'rounded-w1875'];
 const svgFonts = Object.fromEntries(await Promise.all(variantIds.map(async variant => [
   variant,
   await fs.readFile(path.join(dist, `intern-discovery-icons-${variant}.svg`), 'utf8'),
@@ -113,6 +113,9 @@ const variantDirectories = {
   sharp: { source: 'svg-sharp', outline: 'outlined-svg-sharp' },
   standard: { source: 'svg', outline: 'outlined-svg' },
   rounded: { source: 'svg-rounded', outline: 'outlined-svg-rounded' },
+  'sharp-w1875': { source: 'svg-sharp-w1875', outline: 'outlined-svg-sharp-w1875' },
+  'standard-w1875': { source: 'svg-standard-w1875', outline: 'outlined-svg-standard-w1875' },
+  'rounded-w1875': { source: 'svg-rounded-w1875', outline: 'outlined-svg-rounded-w1875' },
 };
 const outlineFiles = [];
 for (const [variant, directories] of Object.entries(variantDirectories)) {
@@ -138,6 +141,14 @@ for (const { variant, directory, name } of outlineFiles) {
   }
 }
 
+const expectedVariantStroke = {
+  sharp: 1.5,
+  standard: 1.5,
+  rounded: 1.5,
+  'sharp-w1875': 1.875,
+  'standard-w1875': 1.875,
+  'rounded-w1875': 1.875,
+};
 for (const variant of variantIds) {
   const metadata = manifest.fontVariants?.[variant];
   if (!metadata) {
@@ -147,10 +158,24 @@ for (const variant of variantIds) {
   if (!css.includes(metadata.fontFiles.woff2) || !css.includes(metadata.fontFiles.woff)) {
     errors.push(`CSS 缺少 ${variant} 字体引用`);
   }
+  if (metadata.sourceStroke !== expectedVariantStroke[variant]) {
+    errors.push(`${variant} 源笔触值错误：${metadata.sourceStroke}`);
+  }
+  const sourceFile = path.join(root, variantDirectories[variant].source, 'check.svg');
+  const source = await fs.readFile(sourceFile, 'utf8');
+  if (!source.includes(`stroke-width="${expectedVariantStroke[variant]}"`)) {
+    errors.push(`${variant} SVG 根笔触值错误`);
+  }
+}
+for (const corner of ['sharp', 'standard', 'rounded']) {
+  const family = manifest.fontVariants[`${corner}-w1875`]?.fontFamily;
+  if (!family || !css.includes(`.iconfont-${corner}{font-family:"${family}"!important;}`)) {
+    errors.push(`${corner} 正式 CSS 类未指向 1.875 字体`);
+  }
 }
 for (const extension of ['svg', 'ttf', 'woff', 'woff2']) {
   const base = await fs.readFile(path.join(dist, `intern-discovery-icons.${extension}`));
-  const standard = await fs.readFile(path.join(dist, `intern-discovery-icons-standard.${extension}`));
+  const standard = await fs.readFile(path.join(dist, `intern-discovery-icons-standard-w1875.${extension}`));
   if (!base.equals(standard)) errors.push(`标准兼容文件内容不一致：${extension}`);
 }
 
@@ -158,5 +183,5 @@ if (errors.length) {
   console.error(errors.join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`验证通过：${manifest.icons.length} 个图标，锋利/标准/圆润三套 Unicode/CSS/字体/描边孔洞映射一致。`);
+  console.log(`验证通过：${manifest.icons.length} 个图标，3 种圆角 × 2 种笔触的 Unicode/CSS/字体/描边孔洞映射一致；正式笔触 16px≈1.25px。`);
 }

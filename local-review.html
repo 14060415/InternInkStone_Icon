@@ -6,16 +6,19 @@
   <title>Intern InkStone 本地 Unicode 对照审阅</title>
   <link rel="stylesheet" href="./iconfont/iconfont.css">
   <style>
-    @font-face{font-family:"InternDiscoveryIconsLocalReviewSharp";src:url("./iconfont/intern-discovery-icons-sharp.woff2?v=local-review-20260804-2") format("woff2"),url("./iconfont/intern-discovery-icons-sharp.woff?v=local-review-20260804-2") format("woff");font-weight:normal;font-style:normal;font-display:block}
-    @font-face{font-family:"InternDiscoveryIconsLocalReviewStandard";src:url("./iconfont/intern-discovery-icons-standard.woff2?v=local-review-20260804-2") format("woff2"),url("./iconfont/intern-discovery-icons-standard.woff?v=local-review-20260804-2") format("woff");font-weight:normal;font-style:normal;font-display:block}
-    @font-face{font-family:"InternDiscoveryIconsLocalReviewRounded";src:url("./iconfont/intern-discovery-icons-rounded.woff2?v=local-review-20260804-2") format("woff2"),url("./iconfont/intern-discovery-icons-rounded.woff?v=local-review-20260804-2") format("woff");font-weight:normal;font-style:normal;font-display:block}
-    :root{--ink:#3a4556;--muted:#7a8394;--line:#dfe3e8;--paper:#fff;--canvas:#f6f7f8;--size:32px;--review-font:"InternDiscoveryIconsLocalReviewStandard"}
+    @font-face{font-family:"InternDiscoveryIconsLocalReviewSharp";src:url("./iconfont/intern-discovery-icons-sharp.woff2?v=local-review-20260804-4") format("woff2"),url("./iconfont/intern-discovery-icons-sharp.woff?v=local-review-20260804-4") format("woff");font-weight:normal;font-style:normal;font-display:block}
+    @font-face{font-family:"InternDiscoveryIconsLocalReviewStandard";src:url("./iconfont/intern-discovery-icons-standard.woff2?v=local-review-20260804-4") format("woff2"),url("./iconfont/intern-discovery-icons-standard.woff?v=local-review-20260804-4") format("woff");font-weight:normal;font-style:normal;font-display:block}
+    @font-face{font-family:"InternDiscoveryIconsLocalReviewRounded";src:url("./iconfont/intern-discovery-icons-rounded.woff2?v=local-review-20260804-4") format("woff2"),url("./iconfont/intern-discovery-icons-rounded.woff?v=local-review-20260804-4") format("woff");font-weight:normal;font-style:normal;font-display:block}
+    @font-face{font-family:"InternDiscoveryIconsLocalReviewSharpW1875";src:url("./iconfont/intern-discovery-icons-sharp-w1875.woff2?v=local-review-20260804-4") format("woff2"),url("./iconfont/intern-discovery-icons-sharp-w1875.woff?v=local-review-20260804-4") format("woff");font-weight:normal;font-style:normal;font-display:block}
+    @font-face{font-family:"InternDiscoveryIconsLocalReviewStandardW1875";src:url("./iconfont/intern-discovery-icons-standard-w1875.woff2?v=local-review-20260804-4") format("woff2"),url("./iconfont/intern-discovery-icons-standard-w1875.woff?v=local-review-20260804-4") format("woff");font-weight:normal;font-style:normal;font-display:block}
+    @font-face{font-family:"InternDiscoveryIconsLocalReviewRoundedW1875";src:url("./iconfont/intern-discovery-icons-rounded-w1875.woff2?v=local-review-20260804-4") format("woff2"),url("./iconfont/intern-discovery-icons-rounded-w1875.woff?v=local-review-20260804-4") format("woff");font-weight:normal;font-style:normal;font-display:block}
+    :root{--ink:#3a4556;--muted:#7a8394;--line:#dfe3e8;--paper:#fff;--canvas:#f6f7f8;--size:16px;--review-font:"InternDiscoveryIconsLocalReviewStandard"}
     *{box-sizing:border-box}
     body{margin:0;color:var(--ink);background:var(--canvas);font:14px/1.5 Inter,"PingFang SC","Microsoft YaHei",sans-serif}
     header{position:sticky;top:0;z-index:3;padding:20px 28px 16px;border-bottom:1px solid var(--line);background:rgba(246,247,248,.96);backdrop-filter:blur(10px)}
     h1{margin:0;font-size:22px}p{margin:6px 0 0;color:var(--muted)}
     .warning{color:#9a5a11;font-weight:600}
-    .tools{display:grid;grid-template-columns:minmax(220px,1fr) 140px 140px;gap:10px;max-width:850px;margin-top:14px}
+    .tools{display:grid;grid-template-columns:minmax(220px,1fr) 140px 140px 190px;gap:10px;max-width:1050px;margin-top:14px}
     input,select{height:40px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font:inherit}
     main{padding:24px 28px 60px}
     .summary{margin-bottom:14px;color:var(--muted)}
@@ -42,8 +45,9 @@
     <div class="tools">
       <input id="search" type="search" placeholder="搜索 key、Unicode 或文件名…">
       <select id="size" aria-label="预览尺寸">
+        <option value="16" selected>16px（目标尺寸）</option>
         <option value="24">24px</option>
-        <option value="32" selected>32px</option>
+        <option value="32">32px</option>
         <option value="40">40px</option>
         <option value="48">48px</option>
       </select>
@@ -51,6 +55,10 @@
         <option value="sharp">锋利</option>
         <option value="standard" selected>标准</option>
         <option value="rounded">圆润</option>
+      </select>
+      <select id="stroke-weight" aria-label="笔触粗细">
+        <option value="normal">正常（16px≈1.0px）</option>
+        <option value="w1875" selected>实验粗（16px≈1.25px）</option>
       </select>
     </div>
   </header>
@@ -70,12 +78,20 @@
     const search=document.getElementById('search');
     const size=document.getElementById('size');
     const cornerStyle=document.getElementById('corner-style');
+    const strokeWeight=document.getElementById('stroke-weight');
     const summary=document.getElementById('summary');
     const empty=document.getElementById('empty');
     const variants={
-      sharp:{font:'"InternDiscoveryIconsLocalReviewSharp"',svgDir:'svg-sharp'},
-      standard:{font:'"InternDiscoveryIconsLocalReviewStandard"',svgDir:'svg'},
-      rounded:{font:'"InternDiscoveryIconsLocalReviewRounded"',svgDir:'svg-rounded'}
+      normal:{
+        sharp:{font:'"InternDiscoveryIconsLocalReviewSharp"',svgDir:'svg-sharp'},
+        standard:{font:'"InternDiscoveryIconsLocalReviewStandard"',svgDir:'svg'},
+        rounded:{font:'"InternDiscoveryIconsLocalReviewRounded"',svgDir:'svg-rounded'}
+      },
+      w1875:{
+        sharp:{font:'"InternDiscoveryIconsLocalReviewSharpW1875"',svgDir:'svg-sharp-w1875'},
+        standard:{font:'"InternDiscoveryIconsLocalReviewStandardW1875"',svgDir:'svg-standard-w1875'},
+        rounded:{font:'"InternDiscoveryIconsLocalReviewRoundedW1875"',svgDir:'svg-rounded-w1875'}
+      }
     };
 
     for(const icon of entries){
@@ -87,8 +103,9 @@
       grid.append(card);
     }
 
-    function applyCornerStyle(){
-      const variant=variants[cornerStyle.value]||variants.standard;
+    function applyVariant(){
+      const weight=variants[strokeWeight.value]||variants.normal;
+      const variant=weight[cornerStyle.value]||weight.standard;
       document.documentElement.style.setProperty('--review-font',variant.font);
       document.querySelectorAll('img[data-file]').forEach(image=>{
         image.src=`./iconfont/${variant.svgDir}/${image.dataset.file}.svg`;
@@ -108,8 +125,9 @@
     }
     search.addEventListener('input',filter);
     size.addEventListener('change',()=>document.documentElement.style.setProperty('--size',`${size.value}px`));
-    cornerStyle.addEventListener('change',applyCornerStyle);
-    applyCornerStyle();
+    cornerStyle.addEventListener('change',applyVariant);
+    strokeWeight.addEventListener('change',applyVariant);
+    applyVariant();
     filter();
   </script>
 </body>
