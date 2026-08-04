@@ -263,6 +263,9 @@ export function glyphForCornerStyle(glyph, mode) {
     return tag;
   });
   transformed = transformed.replace(/<path\b[^>]*\/?>/g, tag => {
+    const preserved = /data-corner-preserve/.test(tag);
+    tag = tag.replace(/\sdata-corner-preserve(?:="[^"]*")?/, '');
+    if (preserved) return tag;
     const locked = /data-corner-lock/.test(tag);
     tag = tag.replace(/\sdata-corner-lock(?:="[^"]*")?/, '');
     if (locked) return setSvgAttribute(tag, 'stroke-linejoin', 'round');

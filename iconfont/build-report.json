@@ -8,25 +8,25 @@
     "U+E0AE"
   ],
   "files": {
-    "woff2": 20792,
-    "woff": 25112,
-    "ttf": 52108
+    "woff2": 20408,
+    "woff": 24588,
+    "ttf": 50604
   },
   "variants": {
     "sharp": {
-      "woff2": 18784,
-      "woff": 22812,
-      "ttf": 45904
+      "woff2": 18688,
+      "woff": 22640,
+      "ttf": 44928
     },
     "standard": {
-      "woff2": 20792,
-      "woff": 25112,
-      "ttf": 52108
+      "woff2": 20408,
+      "woff": 24588,
+      "ttf": 50604
     },
     "rounded": {
-      "woff2": 21852,
-      "woff": 26176,
-      "ttf": 53724
+      "woff2": 21324,
+      "woff": 25524,
+      "ttf": 51980
     }
   }
 }

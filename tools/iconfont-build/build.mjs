@@ -143,9 +143,10 @@ async function loadOrCreateUnicodeMap(icons) {
 }
 
 function sourceSvg(fragment, profile = cornerProfiles.standard) {
+  const stroke = /data-shape="filled"/.test(fragment) ? 'none' : 'currentColor';
   return [
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"',
-    ' fill="none" stroke="currentColor" stroke-width="1.5"',
+    ` fill="none" stroke="${stroke}" stroke-width="1.5"`,
     ` stroke-linecap="${profile.linecap}" stroke-linejoin="${profile.linejoin}"`,
     ' shape-rendering="geometricPrecision">',
     fragment,
@@ -226,6 +227,44 @@ function pointsPath(points, close) {
     d += `L${fmt(values[index])} ${fmt(values[index + 1])}`;
   }
   return close ? `${d}Z` : d;
+}
+
+function rectOutlinePath(attrs, strokeWidth) {
+  const half = strokeWidth / 2;
+  const x = number(attrs.x);
+  const y = number(attrs.y);
+  const width = number(attrs.width);
+  const height = number(attrs.height);
+  const rx = Math.max(0, number(attrs.rx, number(attrs.ry)));
+  const ry = Math.max(0, number(attrs.ry, rx));
+  const outer = rectPath({
+    x: x - half,
+    y: y - half,
+    width: width + strokeWidth,
+    height: height + strokeWidth,
+    rx: rx + half,
+    ry: ry + half,
+  });
+  const innerWidth = width - strokeWidth;
+  const innerHeight = height - strokeWidth;
+  if (innerWidth <= 0 || innerHeight <= 0) return outer;
+  const inner = rectPath({
+    x: x + half,
+    y: y + half,
+    width: innerWidth,
+    height: innerHeight,
+    rx: Math.max(0, rx - half),
+    ry: Math.max(0, ry - half),
+  });
+  const reversedInner = new SVGPathData(inner)
+    .toAbs()
+    .normalizeHVZ(false, true, true)
+    .normalizeST()
+    .qtToC()
+    .aToC()
+    .reverse()
+    .encode();
+  return outer + reversedInner;
 }
 
 function shapeToPath(name, attrs) {
@@ -400,20 +439,25 @@ function interiorPoint(points, area, iconName) {
 }
 
 function orientSubpathsForNonZero(pathData, iconName) {
-  const subpaths = splitNormalizedSubpaths(pathData, iconName);
-  const polygons = subpaths.map(commands => flattenSubpath(commands, iconName));
-  const areas = polygons.map(points => signedPolygonArea(points));
-  const samples = polygons.map((points, index) => interiorPoint(points, areas[index], iconName));
-  return subpaths.map((commands, index) => {
-    const currentArea = Math.abs(areas[index]);
-    if (currentArea < 1e-9) throw new Error(`${iconName} 含有面积为零的子轮廓。`);
-    const depth = polygons.reduce((count, polygon, otherIndex) => {
-      if (otherIndex === index || Math.abs(areas[otherIndex]) <= currentArea + 1e-7) return count;
-      return pointInPolygon(samples[index], polygon) ? count + 1 : count;
+  const entries = splitNormalizedSubpaths(pathData, iconName)
+    .map(commands => {
+      const polygon = flattenSubpath(commands, iconName);
+      return { commands, polygon, area: signedPolygonArea(polygon) };
+    })
+    .filter(entry => Math.abs(entry.area) >= 1e-7);
+  if (!entries.length) throw new Error(`${iconName} 的有效轮廓为空。`);
+  for (const entry of entries) {
+    entry.sample = interiorPoint(entry.polygon, entry.area, iconName);
+  }
+  return entries.map((entry, index) => {
+    const currentArea = Math.abs(entry.area);
+    const depth = entries.reduce((count, other, otherIndex) => {
+      if (otherIndex === index || Math.abs(other.area) <= currentArea + 1e-7) return count;
+      return pointInPolygon(entry.sample, other.polygon) ? count + 1 : count;
     }, 0);
     const desiredSign = depth % 2 === 0 ? 1 : -1;
-    const actualSign = Math.sign(areas[index]);
-    const subpath = new SVGPathData(commands);
+    const actualSign = Math.sign(entry.area);
+    const subpath = new SVGPathData(entry.commands);
     if (actualSign !== desiredSign) subpath.reverse();
     return subpath.encode();
   }).join('');
@@ -478,7 +522,10 @@ function prepareForFont(svg, iconName) {
     const hasFill = fill !== 'none' && fill !== 'transparent';
     const hasStroke = stroke !== 'none' && stroke !== 'transparent' && Number(strokeWidth) > 0;
     const directEllipseOutline = hasStroke && !hasFill && ['circle', 'ellipse'].includes(originalName);
-    if (directEllipseOutline) {
+    const directRectOutline = hasStroke && !hasFill && originalName === 'rect';
+    if (directRectOutline) {
+      d = rectOutlinePath(attrs, Number(strokeWidth));
+    } else if (directEllipseOutline) {
       const width = Number(strokeWidth);
       const cx = number(attrs.cx);
       const cy = number(attrs.cy);
@@ -511,7 +558,7 @@ function prepareForFont(svg, iconName) {
       $element.before(fillClone);
     }
 
-    if (directEllipseOutline) {
+    if (directEllipseOutline || directRectOutline) {
       element.attribs.fill = '#000';
       delete element.attribs.stroke;
       delete element.attribs['stroke-width'];
@@ -593,13 +640,17 @@ function xmlEscape(value) {
 }
 
 function makeSymbolSprite(icons, glyphs) {
-  const symbols = icons.map(icon => [
+  const symbols = icons.map(icon => {
+    const fragment = glyphs[icon.key];
+    const stroke = /data-shape="filled"/.test(fragment) ? 'none' : 'currentColor';
+    return [
     `<symbol id="${xmlEscape(icon.token)}" viewBox="0 0 24 24"`,
-    ' fill="none" stroke="currentColor" stroke-width="1.5"',
+    ` fill="none" stroke="${stroke}" stroke-width="1.5"`,
     ' stroke-linecap="round" stroke-linejoin="round">',
-    glyphs[icon.key],
+    fragment,
     '</symbol>',
-  ].join(''));
+  ].join('');
+  });
   return [
     '<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true">',
     ...symbols,

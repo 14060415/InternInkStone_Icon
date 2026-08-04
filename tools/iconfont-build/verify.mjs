@@ -58,6 +58,7 @@ const hollowGlyphs = new Set([
   'filePdf', 'filePresentation', 'table', 'occupation',
   'lightbulb', 'bellOff', 'eyeOff', 'python', 'dna',
   'flask', 'network',
+  'sparkles', 'cpu', 'message', 'messages', 'play', 'messagePlus',
 ]);
 
 for (const icon of manifest.icons) {
