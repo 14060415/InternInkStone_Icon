@@ -683,11 +683,16 @@ function makeSymbolSprite(icons, glyphs) {
   ].join('\n');
 }
 
+const publicFontBaseUrl =
+  'https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont';
+
 function fontFace(family, file) {
   return [
     '@font-face{',
     `  font-family:"${family}";`,
-    `  src:url("./${file}.woff2") format("woff2"),`,
+    `  src:url("${publicFontBaseUrl}/${file}.woff2") format("woff2"),`,
+    `      url("./${file}.woff2") format("woff2"),`,
+    `      url("${publicFontBaseUrl}/${file}.woff") format("woff"),`,
     `      url("./${file}.woff") format("woff");`,
     '  font-weight:normal;',
     '  font-style:normal;',

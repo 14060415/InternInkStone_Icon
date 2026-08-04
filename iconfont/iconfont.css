@@ -1,7 +1,9 @@
 /* Generated file. Do not edit by hand. */
 @font-face{
   font-family:"InternDiscoveryIcons";
-  src:url("./intern-discovery-icons.woff2") format("woff2"),
+  src:url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons.woff2") format("woff2"),
+      url("./intern-discovery-icons.woff2") format("woff2"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons.woff") format("woff"),
       url("./intern-discovery-icons.woff") format("woff");
   font-weight:normal;
   font-style:normal;
@@ -9,7 +11,9 @@
 }
 @font-face{
   font-family:"InternDiscoveryIconsSharp";
-  src:url("./intern-discovery-icons-sharp.woff2") format("woff2"),
+  src:url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-sharp.woff2") format("woff2"),
+      url("./intern-discovery-icons-sharp.woff2") format("woff2"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-sharp.woff") format("woff"),
       url("./intern-discovery-icons-sharp.woff") format("woff");
   font-weight:normal;
   font-style:normal;
@@ -17,7 +21,9 @@
 }
 @font-face{
   font-family:"InternDiscoveryIconsSharpW1875";
-  src:url("./intern-discovery-icons-sharp-w1875.woff2") format("woff2"),
+  src:url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-sharp-w1875.woff2") format("woff2"),
+      url("./intern-discovery-icons-sharp-w1875.woff2") format("woff2"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-sharp-w1875.woff") format("woff"),
       url("./intern-discovery-icons-sharp-w1875.woff") format("woff");
   font-weight:normal;
   font-style:normal;
@@ -25,7 +31,9 @@
 }
 @font-face{
   font-family:"InternDiscoveryIconsStandard";
-  src:url("./intern-discovery-icons-standard.woff2") format("woff2"),
+  src:url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-standard.woff2") format("woff2"),
+      url("./intern-discovery-icons-standard.woff2") format("woff2"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-standard.woff") format("woff"),
       url("./intern-discovery-icons-standard.woff") format("woff");
   font-weight:normal;
   font-style:normal;
@@ -33,7 +41,9 @@
 }
 @font-face{
   font-family:"InternDiscoveryIconsStandardW1875";
-  src:url("./intern-discovery-icons-standard-w1875.woff2") format("woff2"),
+  src:url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-standard-w1875.woff2") format("woff2"),
+      url("./intern-discovery-icons-standard-w1875.woff2") format("woff2"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-standard-w1875.woff") format("woff"),
       url("./intern-discovery-icons-standard-w1875.woff") format("woff");
   font-weight:normal;
   font-style:normal;
@@ -41,7 +51,9 @@
 }
 @font-face{
   font-family:"InternDiscoveryIconsRounded";
-  src:url("./intern-discovery-icons-rounded.woff2") format("woff2"),
+  src:url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-rounded.woff2") format("woff2"),
+      url("./intern-discovery-icons-rounded.woff2") format("woff2"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-rounded.woff") format("woff"),
       url("./intern-discovery-icons-rounded.woff") format("woff");
   font-weight:normal;
   font-style:normal;
@@ -49,7 +61,9 @@
 }
 @font-face{
   font-family:"InternDiscoveryIconsRoundedW1875";
-  src:url("./intern-discovery-icons-rounded-w1875.woff2") format("woff2"),
+  src:url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-rounded-w1875.woff2") format("woff2"),
+      url("./intern-discovery-icons-rounded-w1875.woff2") format("woff2"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-rounded-w1875.woff") format("woff"),
       url("./intern-discovery-icons-rounded-w1875.woff") format("woff");
   font-weight:normal;
   font-style:normal;
