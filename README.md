@@ -10,6 +10,8 @@ Intern InkStone 的公共 Unicode 图标库，包含 176 枚图标、固定私�
 https://14060415.github.io/InternInkStone_Icon/
 ```
 
+每张图标卡片的操作菜单支持复制 Unicode、HTML 实体、完整 HTML、当前档位 SVG，以及将当前档位 SVG 下载到本地。
+
 ## 使用
 
 先加载图标字体 CSS：

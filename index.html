@@ -882,12 +882,34 @@
       });
       if(save){try{localStorage.setItem('icon-list-corner-style',cornerStyle.value)}catch{}}
     }
+    const svgSourceBaseUrl='https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/';
+    function scaleSvgStrokeWidths(fragment,scale=1.25){
+      return fragment.replace(/stroke-width="([0-9.]+)"/g,(_,value)=>{
+        const scaled=Math.round(Number(value)*scale*1e6)/1e6;
+        return `stroke-width="${scaled}"`;
+      });
+    }
     function svgFor(icon){
       const mode=activeCornerStyle();
       const profile=cornerProfiles[mode];
-      const glyph=glyphForCornerStyle(glyphs[icon.key],mode);
+      const glyph=scaleSvgStrokeWidths(glyphForCornerStyle(glyphs[icon.key],mode));
       const stroke=/data-shape="filled"/.test(glyph)?'none':'currentColor';
-      return `<svg viewBox="0 0 24 24" color="#3a4556" fill="none" stroke="${stroke}" stroke-width="1.5" stroke-linecap="${profile.linecap}" stroke-linejoin="${profile.linejoin}" shape-rendering="geometricPrecision" role="img" aria-label="${icon.name}">${glyph}</svg>`;
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#3a4556" fill="none" stroke="${stroke}" stroke-width="1.875" stroke-linecap="${profile.linecap}" stroke-linejoin="${profile.linejoin}" shape-rendering="geometricPrecision" role="img" aria-label="${icon.name}">${glyph}</svg>`;
+    }
+    function svgAssetPathFor(icon){
+      const mode=activeCornerStyle();
+      const directory=mode==='standard'?'svg-standard-w1875':`svg-${mode}-w1875`;
+      return `iconfont/${directory}/${icon.token.slice(5)}.svg`;
+    }
+    async function svgSourceFor(icon){
+      try{
+        const response=await fetch(`${svgSourceBaseUrl}${svgAssetPathFor(icon)}`,{cache:'no-cache'});
+        if(response.ok){
+          const source=(await response.text()).trim();
+          if(source.startsWith('<svg'))return source;
+        }
+      }catch{}
+      return svgFor(icon);
     }
     function htmlEntityFor(icon){
       return `&#x${icon.unicodeHex.slice(2)};`;
@@ -897,6 +919,30 @@
       return `<span class="iconfont ${publicCornerClasses[mode]}" aria-hidden="true">${htmlEntityFor(icon)}</span>`;
     }
 
+    function svgFileNameFor(icon){
+      return `${icon.token}-${activeCornerStyle()}.svg`;
+    }
+    async function downloadSvg(icon,button){
+      const source=await svgSourceFor(icon);
+      const url=URL.createObjectURL(new Blob([source],{type:'image/svg+xml;charset=utf-8'}));
+      const link=document.createElement('a');
+      link.href=url;
+      link.download=svgFileNameFor(icon);
+      document.body.append(link);
+      link.click();
+      link.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),0);
+      const originalLabel=button.dataset.label;
+      const originalTitle=button.dataset.title;
+      button.textContent='✓ 已下载';
+      button.title='已下载 SVG';
+      button.classList.add('is-done');
+      setTimeout(()=>{
+        button.textContent=originalLabel;
+        button.title=originalTitle;
+        button.classList.remove('is-done');
+      },1200);
+    }
     async function copyValue(value,button){
       let copied=false;
       try{
@@ -948,10 +994,18 @@
             const unicodeCopyTitle=`复制 ${icon.name} Unicode 字符（${icon.unicodeHex}）`;
             const entityCopyTitle=`复制 ${icon.name} HTML 实体（${htmlEntityFor(icon)}）`;
             const htmlCopyTitle=`复制 ${icon.name} 完整 HTML 代码`;
-            card.innerHTML=`<div class="preview">${unicodePreviewFor(icon)}</div><div class="card-body"><div class="card-meta"><div class="name-block"><h4>${icon.name}</h4><p class="token">${icon.token}</p></div></div></div><div class="card-tooltip" role="tooltip"><strong>${icon.name}</strong><span>${icon.token}</span></div><div class="copy-menu"><button class="copy-trigger" type="button" title="更多复制选项" aria-label="${icon.name} 更多复制选项"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="19" cy="12" r="1.5" fill="currentColor"/></svg></button><div class="copy-options" role="menu" aria-label="${icon.name} 复制选项"><button class="copy-option" type="button" role="menuitem" data-copy="unicode" data-label="复制 Unicode 字符" data-title="${unicodeCopyTitle}" title="${unicodeCopyTitle}">复制 Unicode 字符</button><button class="copy-option" type="button" role="menuitem" data-copy="entity" data-label="复制 HTML 实体" data-title="${entityCopyTitle}" title="${entityCopyTitle}">复制 HTML 实体</button><button class="copy-option" type="button" role="menuitem" data-copy="html" data-label="复制完整 HTML" data-title="${htmlCopyTitle}" title="${htmlCopyTitle}">复制完整 HTML</button></div></div>`;
+            card.innerHTML=`<div class="preview">${unicodePreviewFor(icon)}</div><div class="card-body"><div class="card-meta"><div class="name-block"><h4>${icon.name}</h4><p class="token">${icon.token}</p></div></div></div><div class="card-tooltip" role="tooltip"><strong>${icon.name}</strong><span>${icon.token}</span></div><div class="copy-menu"><button class="copy-trigger" type="button" title="更多复制选项" aria-label="${icon.name} 更多复制选项"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="19" cy="12" r="1.5" fill="currentColor"/></svg></button><div class="copy-options" role="menu" aria-label="${icon.name} 复制选项"><button class="copy-option" type="button" role="menuitem" data-copy="unicode" data-label="复制 Unicode 字符" data-title="${unicodeCopyTitle}" title="${unicodeCopyTitle}">复制 Unicode 字符</button><button class="copy-option" type="button" role="menuitem" data-copy="entity" data-label="复制 HTML 实体" data-title="${entityCopyTitle}" title="${entityCopyTitle}">复制 HTML 实体</button><button class="copy-option" type="button" role="menuitem" data-copy="html" data-label="复制完整 HTML" data-title="${htmlCopyTitle}" title="${htmlCopyTitle}">复制完整 HTML</button><button class="copy-option" type="button" role="menuitem" data-copy="svg" data-label="复制 SVG" data-title="复制当前档位 SVG" title="复制当前锋利、标准或圆润档位的 SVG">复制 SVG</button><button class="copy-option" type="button" role="menuitem" data-action="download-svg" data-label="下载 SVG" data-title="下载当前档位 SVG" title="下载当前锋利、标准或圆润档位的 SVG">下载 SVG</button></div></div>`;
             card.querySelector('[data-copy="unicode"]').addEventListener('click',event=>copyValue(icon.unicode,event.currentTarget));
             card.querySelector('[data-copy="entity"]').addEventListener('click',event=>copyValue(htmlEntityFor(icon),event.currentTarget));
             card.querySelector('[data-copy="html"]').addEventListener('click',event=>copyValue(htmlSnippetFor(icon),event.currentTarget));
+            card.querySelector('[data-copy="svg"]').addEventListener('click',async event=>{
+              const button=event.currentTarget;
+              await copyValue(await svgSourceFor(icon),button);
+            });
+            card.querySelector('[data-action="download-svg"]').addEventListener('click',async event=>{
+              const button=event.currentTarget;
+              await downloadSvg(icon,button);
+            });
             grid.append(card);
           });
           group.append(grid);
