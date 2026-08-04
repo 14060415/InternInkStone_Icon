@@ -10,26 +10,74 @@
   "fontVariants": {
     "sharp": {
       "fontFamily": "InternDiscoveryIconsSharp",
+      "corner": "sharp",
+      "weight": "normal",
+      "sourceStroke": 1.5,
+      "strokeAt16": 1,
       "fontFiles": {
         "woff2": "intern-discovery-icons-sharp.woff2",
         "woff": "intern-discovery-icons-sharp.woff",
         "ttf": "intern-discovery-icons-sharp.ttf"
       }
     },
+    "sharp-w1875": {
+      "fontFamily": "InternDiscoveryIconsSharpW1875",
+      "corner": "sharp",
+      "weight": "w1875",
+      "sourceStroke": 1.875,
+      "strokeAt16": 1.25,
+      "fontFiles": {
+        "woff2": "intern-discovery-icons-sharp-w1875.woff2",
+        "woff": "intern-discovery-icons-sharp-w1875.woff",
+        "ttf": "intern-discovery-icons-sharp-w1875.ttf"
+      }
+    },
     "standard": {
       "fontFamily": "InternDiscoveryIconsStandard",
+      "corner": "standard",
+      "weight": "normal",
+      "sourceStroke": 1.5,
+      "strokeAt16": 1,
       "fontFiles": {
         "woff2": "intern-discovery-icons-standard.woff2",
         "woff": "intern-discovery-icons-standard.woff",
         "ttf": "intern-discovery-icons-standard.ttf"
       }
     },
+    "standard-w1875": {
+      "fontFamily": "InternDiscoveryIconsStandardW1875",
+      "corner": "standard",
+      "weight": "w1875",
+      "sourceStroke": 1.875,
+      "strokeAt16": 1.25,
+      "fontFiles": {
+        "woff2": "intern-discovery-icons-standard-w1875.woff2",
+        "woff": "intern-discovery-icons-standard-w1875.woff",
+        "ttf": "intern-discovery-icons-standard-w1875.ttf"
+      }
+    },
     "rounded": {
       "fontFamily": "InternDiscoveryIconsRounded",
+      "corner": "rounded",
+      "weight": "normal",
+      "sourceStroke": 1.5,
+      "strokeAt16": 1,
       "fontFiles": {
         "woff2": "intern-discovery-icons-rounded.woff2",
         "woff": "intern-discovery-icons-rounded.woff",
         "ttf": "intern-discovery-icons-rounded.ttf"
+      }
+    },
+    "rounded-w1875": {
+      "fontFamily": "InternDiscoveryIconsRoundedW1875",
+      "corner": "rounded",
+      "weight": "w1875",
+      "sourceStroke": 1.875,
+      "strokeAt16": 1.25,
+      "fontFiles": {
+        "woff2": "intern-discovery-icons-rounded-w1875.woff2",
+        "woff": "intern-discovery-icons-rounded-w1875.woff",
+        "ttf": "intern-discovery-icons-rounded-w1875.ttf"
       }
     }
   },
