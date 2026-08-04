@@ -10,6 +10,7 @@ import {
   createWOFF,
   createWOFF2,
 } from 'svgtofont/lib/utils';
+import { cornerProfiles, glyphForCornerStyle } from './corner-styles.mjs';
 
 const require = createRequire(import.meta.url);
 const { outlineSvg } = require('@davestewart/outliner');
@@ -25,6 +26,11 @@ const mapPath = path.join(here, 'unicode-map.json');
 
 const fontName = 'intern-discovery-icons';
 const fontFamily = 'InternDiscoveryIcons';
+const fontVariants = Object.freeze([
+  { id: 'sharp', name: `${fontName}-sharp`, family: `${fontFamily}Sharp` },
+  { id: 'standard', name: `${fontName}-standard`, family: `${fontFamily}Standard` },
+  { id: 'rounded', name: `${fontName}-rounded`, family: `${fontFamily}Rounded` },
+]);
 const reservedCodePoints = new Set([0xE0AD, 0xE0AE]);
 const textPathOverrides = Object.freeze({
   PDF: "M6.35351 17.6L6.35351 13.01875L8.40653 13.01875Q9.07724 13.01875 9.41123 13.38438Q9.74522 13.75 9.74522 14.425L9.74522 14.425Q9.74522 15.11875 9.38124 15.50938Q9.01726 15.9 8.27021 15.9L8.27021 15.9L7.59405 15.9L7.59405 17.6L6.35351 17.6zM7.59405 13.95L7.59405 14.97188L7.89668 14.97188Q8.25385 14.97188 8.39835 14.82969Q8.54286 14.6875 8.54286 14.46563L8.54286 14.46563Q8.54286 14.25 8.41744 14.1Q8.29202 13.95 7.94576 13.95L7.94576 13.95L7.59405 13.95zM10.40775 17.6L10.40775 13.01875L12.24265 13.01875Q12.78522 13.01875 13.11921 13.1875Q13.4532 13.35625 13.67131 13.67188Q13.88943 13.9875 13.98758 14.40625Q14.08573 14.825 14.08573 15.29375L14.08573 15.29375Q14.08573 16.02813 13.93987 16.43281Q13.79401 16.8375 13.53499 17.11094Q13.27598 17.38438 12.97879 17.475L12.97879 17.475Q12.57256 17.6 12.24265 17.6L12.24265 17.6L10.40775 17.6zM11.95092 14.05625L11.64283 14.05625L11.64283 16.55938L11.94547 16.55938Q12.33263 16.55938 12.49621 16.46094Q12.6598 16.3625 12.7525 16.11719Q12.8452 15.87188 12.8452 15.32188L12.8452 15.32188Q12.8452 14.59375 12.63799 14.325Q12.43078 14.05625 11.95092 14.05625L11.95092 14.05625zM14.74008 17.6L14.74008 13.01875L17.79372 13.01875L17.79372 14.00313L15.98062 14.00313L15.98062 14.80313L17.52925 14.80313L17.52925 15.72813L15.98062 15.72813L15.98062 17.6L14.74008 17.6z",
@@ -136,11 +142,11 @@ async function loadOrCreateUnicodeMap(icons) {
   return document;
 }
 
-function sourceSvg(fragment) {
+function sourceSvg(fragment, profile = cornerProfiles.standard) {
   return [
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"',
     ' fill="none" stroke="currentColor" stroke-width="1.5"',
-    ' stroke-linecap="round" stroke-linejoin="round"',
+    ` stroke-linecap="${profile.linecap}" stroke-linejoin="${profile.linejoin}"`,
     ' shape-rendering="geometricPrecision">',
     fragment,
     '</svg>',
@@ -602,6 +608,19 @@ function makeSymbolSprite(icons, glyphs) {
   ].join('\n');
 }
 
+function fontFace(family, file) {
+  return [
+    '@font-face{',
+    `  font-family:"${family}";`,
+    `  src:url("./${file}.woff2") format("woff2"),`,
+    `      url("./${file}.woff") format("woff");`,
+    '  font-weight:normal;',
+    '  font-style:normal;',
+    '  font-display:block;',
+    '}',
+  ];
+}
+
 function makeCss(icons, unicodeMap) {
   const rules = icons.map(icon => {
     const codePoint = parseCodePoint(unicodeMap.icons[icon.key]);
@@ -609,16 +628,9 @@ function makeCss(icons, unicodeMap) {
   });
   return [
     '/* Generated file. Do not edit by hand. */',
-    '@font-face{',
-    `  font-family:"${fontFamily}";`,
-    `  src:url("./${fontName}.woff2") format("woff2"),`,
-    `      url("./${fontName}.woff") format("woff");`,
-    '  font-weight:normal;',
-    '  font-style:normal;',
-    '  font-display:block;',
-    '}',
-    '.iconfont{',
-    `  font-family:"${fontFamily}"!important;`,
+    ...fontFace(fontFamily, fontName),
+    ...fontVariants.flatMap(variant => fontFace(variant.family, variant.name)),
+    '.iconfont,.iconfont-sharp,.iconfont-standard,.iconfont-rounded{',
     '  font-style:normal;',
     '  font-weight:normal;',
     '  font-variant:normal;',
@@ -628,6 +640,10 @@ function makeCss(icons, unicodeMap) {
     '  -webkit-font-smoothing:antialiased;',
     '  -moz-osx-font-smoothing:grayscale;',
     '}',
+    `.iconfont{font-family:"${fontFamily}"!important;}`,
+    ...fontVariants.map(variant =>
+      `.iconfont-${variant.id}{font-family:"${variant.family}"!important;}`
+    ),
     ...rules,
     '',
   ].join('\n');
@@ -653,6 +669,17 @@ function makeManifest(icons, unicodeMap) {
       woff: `${fontName}.woff`,
       ttf: `${fontName}.ttf`,
     },
+    fontVariants: Object.fromEntries(fontVariants.map(variant => [
+      variant.id,
+      {
+        fontFamily: variant.family,
+        fontFiles: {
+          woff2: `${variant.name}.woff2`,
+          woff: `${variant.name}.woff`,
+          ttf: `${variant.name}.ttf`,
+        },
+      },
+    ])),
     icons: icons.map(icon => ({
       key: icon.key,
       name: icon.name,
@@ -710,6 +737,66 @@ async function emptyAndCreate(directory) {
   await fs.mkdir(directory, { recursive: true });
 }
 
+function variantDirectories(variant) {
+  if (variant.id === 'standard') {
+    return { source: sourceSvgDir, outline: outlineSvgDir };
+  }
+  return {
+    source: path.join(outputRoot, `svg-${variant.id}`),
+    outline: path.join(outputRoot, `outlined-svg-${variant.id}`),
+  };
+}
+
+function makeFontOptions(variant, outlineDir, unicodeByFileName) {
+  return {
+    src: outlineDir,
+    dist: distDir,
+    fontName: variant.name,
+    startUnicode: 0xE001,
+    getIconUnicode(name) {
+      const codePoint = unicodeByFileName.get(name);
+      if (!codePoint) throw new Error(`字体生成器遇到未知图标：${name}`);
+      return [String.fromCodePoint(codePoint), codePoint];
+    },
+    svgicons2svgfont: {
+      fontName: variant.family,
+      fontHeight: 1024,
+      descent: 0,
+      normalize: false,
+      fixedWidth: true,
+      centerHorizontally: true,
+      centerVertically: true,
+      log: () => {},
+    },
+  };
+}
+
+async function buildVariantFont(variant, outlineDir, icons, unicodeByFileName) {
+  const options = makeFontOptions(variant, outlineDir, unicodeByFileName);
+  const { unicodeObject } = await createSVG(options);
+  const ttf = await createTTF(options);
+  await Promise.all([
+    createWOFF(options, ttf),
+    createWOFF2(options, ttf),
+  ]);
+  for (const icon of icons) {
+    const fileName = icon.token.slice(5);
+    const actual = unicodeObject[fileName]?.codePointAt(0);
+    const expected = unicodeByFileName.get(fileName);
+    if (actual !== expected) {
+      throw new Error(
+        `${variant.id}/${icon.key} 字体码位错误：预期 ${codePointHex(expected)}，` +
+        `实际 ${actual ? codePointHex(actual) : '缺失'}。`
+      );
+    }
+  }
+  return {
+    woff2: (await fs.stat(path.join(distDir, `${variant.name}.woff2`))).size,
+    woff: (await fs.stat(path.join(distDir, `${variant.name}.woff`))).size,
+    ttf: (await fs.stat(path.join(distDir, `${variant.name}.ttf`))).size,
+  };
+}
+
 async function main() {
   const html = await fs.readFile(inputHtml, 'utf8');
   const persistedUnicodeMap = JSON.parse(await fs.readFile(mapPath, 'utf8'));
@@ -720,16 +807,30 @@ async function main() {
   delete globalThis.InternDiscoveryIconUnicode;
 
   await emptyAndCreate(outputRoot);
-  await fs.mkdir(sourceSvgDir, { recursive: true });
-  await fs.mkdir(outlineSvgDir, { recursive: true });
   await fs.mkdir(distDir, { recursive: true });
+  const directories = new Map();
+  for (const variant of fontVariants) {
+    const dirs = variantDirectories(variant);
+    directories.set(variant.id, dirs);
+    await Promise.all([
+      fs.mkdir(dirs.source, { recursive: true }),
+      fs.mkdir(dirs.outline, { recursive: true }),
+    ]);
+  }
 
-  for (const icon of icons) {
-    const fileName = `${icon.token.slice(5)}.svg`;
-    const source = sourceSvg(glyphs[icon.key]);
-    const outlined = prepareForFont(source, icon.key);
-    await fs.writeFile(path.join(sourceSvgDir, fileName), `${source}\n`, 'utf8');
-    await fs.writeFile(path.join(outlineSvgDir, fileName), `${outlined}\n`, 'utf8');
+  for (const variant of fontVariants) {
+    const profile = cornerProfiles[variant.id];
+    const dirs = directories.get(variant.id);
+    for (const icon of icons) {
+      const fileName = `${icon.token.slice(5)}.svg`;
+      const fragment = glyphForCornerStyle(glyphs[icon.key], variant.id);
+      const sourceSvgText = sourceSvg(fragment, profile);
+      const outlined = prepareForFont(sourceSvgText, icon.key);
+      await Promise.all([
+        fs.writeFile(path.join(dirs.source, fileName), `${sourceSvgText}\n`, 'utf8'),
+        fs.writeFile(path.join(dirs.outline, fileName), `${outlined}\n`, 'utf8'),
+      ]);
+    }
   }
 
   const unicodeByFileName = new Map(
@@ -738,45 +839,22 @@ async function main() {
       parseCodePoint(unicodeMap.icons[icon.key]),
     ])
   );
-  const fontOptions = {
-    src: outlineSvgDir,
-    dist: distDir,
-    fontName,
-    startUnicode: 0xE001,
-    getIconUnicode(name) {
-      const codePoint = unicodeByFileName.get(name);
-      if (!codePoint) throw new Error(`字体生成器遇到未知图标：${name}`);
-      return [String.fromCodePoint(codePoint), codePoint];
-    },
-    svgicons2svgfont: {
-      fontName: fontFamily,
-      fontHeight: 1024,
-      descent: 0,
-      normalize: false,
-      fixedWidth: true,
-      centerHorizontally: true,
-      centerVertically: true,
-      log: () => {},
-    },
-  };
+  const variantFiles = {};
+  for (const variant of fontVariants) {
+    variantFiles[variant.id] = await buildVariantFont(
+      variant,
+      directories.get(variant.id).outline,
+      icons,
+      unicodeByFileName
+    );
+  }
 
-  const { unicodeObject } = await createSVG(fontOptions);
-  const ttf = await createTTF(fontOptions);
-  await Promise.all([
-    createWOFF(fontOptions, ttf),
-    createWOFF2(fontOptions, ttf),
-  ]);
-
-  for (const icon of icons) {
-    const fileName = icon.token.slice(5);
-    const actual = unicodeObject[fileName]?.codePointAt(0);
-    const expected = unicodeByFileName.get(fileName);
-    if (actual !== expected) {
-      throw new Error(
-        `${icon.key} 字体码位错误：预期 ${codePointHex(expected)}，` +
-        `实际 ${actual ? codePointHex(actual) : '缺失'}。`
-      );
-    }
+  const standard = fontVariants.find(variant => variant.id === 'standard');
+  for (const extension of ['svg', 'ttf', 'woff', 'woff2']) {
+    await fs.copyFile(
+      path.join(distDir, `${standard.name}.${extension}`),
+      path.join(distDir, `${fontName}.${extension}`)
+    );
   }
 
   const manifest = makeManifest(icons, unicodeMap);
@@ -812,11 +890,8 @@ async function main() {
     codePointMin: codePointHex(Math.min(...unicodeByFileName.values())),
     codePointMax: codePointHex(Math.max(...unicodeByFileName.values())),
     reserved: [...reservedCodePoints].map(codePointHex),
-    files: {
-      woff2: (await fs.stat(path.join(distDir, `${fontName}.woff2`))).size,
-      woff: (await fs.stat(path.join(distDir, `${fontName}.woff`))).size,
-      ttf: (await fs.stat(path.join(distDir, `${fontName}.ttf`))).size,
-    },
+    files: variantFiles.standard,
+    variants: variantFiles,
   };
   await fs.writeFile(
     path.join(outputRoot, 'build-report.json'),

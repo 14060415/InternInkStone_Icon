@@ -7,6 +7,32 @@
     "woff": "intern-discovery-icons.woff",
     "ttf": "intern-discovery-icons.ttf"
   },
+  "fontVariants": {
+    "sharp": {
+      "fontFamily": "InternDiscoveryIconsSharp",
+      "fontFiles": {
+        "woff2": "intern-discovery-icons-sharp.woff2",
+        "woff": "intern-discovery-icons-sharp.woff",
+        "ttf": "intern-discovery-icons-sharp.ttf"
+      }
+    },
+    "standard": {
+      "fontFamily": "InternDiscoveryIconsStandard",
+      "fontFiles": {
+        "woff2": "intern-discovery-icons-standard.woff2",
+        "woff": "intern-discovery-icons-standard.woff",
+        "ttf": "intern-discovery-icons-standard.ttf"
+      }
+    },
+    "rounded": {
+      "fontFamily": "InternDiscoveryIconsRounded",
+      "fontFiles": {
+        "woff2": "intern-discovery-icons-rounded.woff2",
+        "woff": "intern-discovery-icons-rounded.woff",
+        "ttf": "intern-discovery-icons-rounded.ttf"
+      }
+    }
+  },
   "icons": [
     {
       "key": "menu",

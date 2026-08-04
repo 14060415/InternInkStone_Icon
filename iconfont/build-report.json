@@ -8,8 +8,25 @@
     "U+E0AE"
   ],
   "files": {
-    "woff2": 18404,
-    "woff": 22348,
-    "ttf": 45908
+    "woff2": 20792,
+    "woff": 25112,
+    "ttf": 52108
+  },
+  "variants": {
+    "sharp": {
+      "woff2": 18784,
+      "woff": 22812,
+      "ttf": 45904
+    },
+    "standard": {
+      "woff2": 20792,
+      "woff": 25112,
+      "ttf": 52108
+    },
+    "rounded": {
+      "woff2": 21852,
+      "woff": 26176,
+      "ttf": 53724
+    }
   }
 }

@@ -6,14 +6,16 @@
   <title>Intern InkStone 本地 Unicode 对照审阅</title>
   <link rel="stylesheet" href="./iconfont/iconfont.css">
   <style>
-    @font-face{font-family:"InternDiscoveryIconsLocalReview";src:url("./iconfont/intern-discovery-icons.woff2?v=local-review-20260803-3") format("woff2"),url("./iconfont/intern-discovery-icons.woff?v=local-review-20260803-3") format("woff");font-weight:normal;font-style:normal;font-display:block}
-    :root{--ink:#3a4556;--muted:#7a8394;--line:#dfe3e8;--paper:#fff;--canvas:#f6f7f8;--size:32px}
+    @font-face{font-family:"InternDiscoveryIconsLocalReviewSharp";src:url("./iconfont/intern-discovery-icons-sharp.woff2?v=local-review-20260804-1") format("woff2"),url("./iconfont/intern-discovery-icons-sharp.woff?v=local-review-20260804-1") format("woff");font-weight:normal;font-style:normal;font-display:block}
+    @font-face{font-family:"InternDiscoveryIconsLocalReviewStandard";src:url("./iconfont/intern-discovery-icons-standard.woff2?v=local-review-20260804-1") format("woff2"),url("./iconfont/intern-discovery-icons-standard.woff?v=local-review-20260804-1") format("woff");font-weight:normal;font-style:normal;font-display:block}
+    @font-face{font-family:"InternDiscoveryIconsLocalReviewRounded";src:url("./iconfont/intern-discovery-icons-rounded.woff2?v=local-review-20260804-1") format("woff2"),url("./iconfont/intern-discovery-icons-rounded.woff?v=local-review-20260804-1") format("woff");font-weight:normal;font-style:normal;font-display:block}
+    :root{--ink:#3a4556;--muted:#7a8394;--line:#dfe3e8;--paper:#fff;--canvas:#f6f7f8;--size:32px;--review-font:"InternDiscoveryIconsLocalReviewStandard"}
     *{box-sizing:border-box}
     body{margin:0;color:var(--ink);background:var(--canvas);font:14px/1.5 Inter,"PingFang SC","Microsoft YaHei",sans-serif}
     header{position:sticky;top:0;z-index:3;padding:20px 28px 16px;border-bottom:1px solid var(--line);background:rgba(246,247,248,.96);backdrop-filter:blur(10px)}
     h1{margin:0;font-size:22px}p{margin:6px 0 0;color:var(--muted)}
     .warning{color:#9a5a11;font-weight:600}
-    .tools{display:grid;grid-template-columns:minmax(220px,1fr) 140px;gap:10px;max-width:700px;margin-top:14px}
+    .tools{display:grid;grid-template-columns:minmax(220px,1fr) 140px 140px;gap:10px;max-width:850px;margin-top:14px}
     input,select{height:40px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font:inherit}
     main{padding:24px 28px 60px}
     .summary{margin-bottom:14px;color:var(--muted)}
@@ -24,7 +26,7 @@
     .sample::after{position:absolute;left:7px;top:5px;color:#9aa1ac;font-size:11px}
     .sample.svg::after{content:"原始 SVG"}.sample.font::after{content:"Unicode 字体"}
     .sample img{width:var(--size);height:var(--size)}
-    .sample .iconfont{font-family:"InternDiscoveryIconsLocalReview"!important;color:var(--ink);font-size:var(--size);line-height:1}
+    .sample .iconfont{font-family:var(--review-font)!important;color:var(--ink);font-size:var(--size);line-height:1}
     .meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}
     .key{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
     .unicode{flex:none;color:var(--muted);font:12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace}
@@ -45,6 +47,11 @@
         <option value="40">40px</option>
         <option value="48">48px</option>
       </select>
+      <select id="corner-style" aria-label="圆角档位">
+        <option value="sharp">锋利</option>
+        <option value="standard" selected>标准</option>
+        <option value="rounded">圆润</option>
+      </select>
     </div>
   </header>
   <main>
@@ -62,16 +69,30 @@
     const grid=document.getElementById('grid');
     const search=document.getElementById('search');
     const size=document.getElementById('size');
+    const cornerStyle=document.getElementById('corner-style');
     const summary=document.getElementById('summary');
     const empty=document.getElementById('empty');
+    const variants={
+      sharp:{font:'"InternDiscoveryIconsLocalReviewSharp"',svgDir:'svg-sharp'},
+      standard:{font:'"InternDiscoveryIconsLocalReviewStandard"',svgDir:'svg'},
+      rounded:{font:'"InternDiscoveryIconsLocalReviewRounded"',svgDir:'svg-rounded'}
+    };
 
     for(const icon of entries){
       const card=document.createElement('article');
       card.className='card';
       card.dataset.search=`${icon.key} ${icon.file} ${icon.unicodeHex}`.toLowerCase();
       const codePoint=Number.parseInt(icon.unicodeHex.slice(2),16);
-      card.innerHTML=`<div class="visuals"><div class="sample svg"><img src="./iconfont/svg/${icon.file}.svg" alt=""></div><div class="sample font"><span class="iconfont" aria-hidden="true">${String.fromCodePoint(codePoint)}</span></div></div><div class="meta"><span class="key">${icon.key}</span><span class="unicode">${icon.unicodeHex}</span></div>`;
+      card.innerHTML=`<div class="visuals"><div class="sample svg"><img src="./iconfont/svg/${icon.file}.svg" data-file="${icon.file}" alt=""></div><div class="sample font"><span class="iconfont" aria-hidden="true">${String.fromCodePoint(codePoint)}</span></div></div><div class="meta"><span class="key">${icon.key}</span><span class="unicode">${icon.unicodeHex}</span></div>`;
       grid.append(card);
+    }
+
+    function applyCornerStyle(){
+      const variant=variants[cornerStyle.value]||variants.standard;
+      document.documentElement.style.setProperty('--review-font',variant.font);
+      document.querySelectorAll('img[data-file]').forEach(image=>{
+        image.src=`./iconfont/${variant.svgDir}/${image.dataset.file}.svg`;
+      });
     }
 
     function filter(){
@@ -87,6 +108,8 @@
     }
     search.addEventListener('input',filter);
     size.addEventListener('change',()=>document.documentElement.style.setProperty('--size',`${size.value}px`));
+    cornerStyle.addEventListener('change',applyCornerStyle);
+    applyCornerStyle();
     filter();
   </script>
 </body>

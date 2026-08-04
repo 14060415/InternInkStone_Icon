@@ -2,6 +2,16 @@
 
 本目录由 `tools/iconfont-build` 自动生成。普通业务项目只需要引用本目录中的静态资源，不需要安装构建依赖。
 
+## 圆角字体档位
+
+三套字体使用完全相同的 Unicode 码位：
+
+- 锋利：`intern-discovery-icons-sharp.woff2` / `.woff` / `.ttf`
+- 标准：`intern-discovery-icons-standard.woff2` / `.woff` / `.ttf`
+- 圆润：`intern-discovery-icons-rounded.woff2` / `.woff` / `.ttf`
+
+无后缀文件与“标准”版内容一致，用于兼容原有引用。加载 `iconfont.css` 后，可分别使用 `iconfont-sharp`、`iconfont-standard`、`iconfont-rounded`；原来的 `iconfont` 类继续使用标准版。
+
 ## CSS 类引用
 
 ```html

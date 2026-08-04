@@ -10,10 +10,11 @@ const dist = root;
 const manifest = JSON.parse(await fs.readFile(path.join(root, 'manifest.json'), 'utf8'));
 const unicodeMap = JSON.parse(await fs.readFile(path.join(root, 'unicode-map.json'), 'utf8'));
 const css = await fs.readFile(path.join(dist, 'iconfont.css'), 'utf8');
-const svgFont = await fs.readFile(
-  path.join(dist, 'intern-discovery-icons.svg'),
-  'utf8'
-);
+const variantIds = ['sharp', 'standard', 'rounded'];
+const svgFonts = Object.fromEntries(await Promise.all(variantIds.map(async variant => [
+  variant,
+  await fs.readFile(path.join(dist, `intern-discovery-icons-${variant}.svg`), 'utf8'),
+])));
 
 function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -73,13 +74,15 @@ for (const icon of manifest.icons) {
   }
   const glyphName = path.basename(icon.svg, '.svg');
   const glyphPattern = new RegExp(`<glyph\\s+glyph-name="${escapeRegExp(glyphName)}"\\s+unicode="&#x${icon.unicode.slice(2)};"\\s+horiz-adv-x="[^"]+"\\s+d="([^"]+)"`);
-  const glyphMatch = svgFont.match(glyphPattern);
-  if (!glyphMatch) {
-    errors.push(`字体字形名称或码位不一致：${icon.key} / ${icon.unicode}`);
-  } else if (hollowGlyphs.has(icon.key)) {
-    const signs = contourAreaSigns(glyphMatch[1]);
-    if (signs.length < 2 || signs[0] === signs[1]) {
-      errors.push(`描边图标孔洞方向错误：${icon.key}`);
+  for (const [variant, svgFont] of Object.entries(svgFonts)) {
+    const glyphMatch = svgFont.match(glyphPattern);
+    if (!glyphMatch) {
+      errors.push(`${variant} 字体字形名称或码位不一致：${icon.key} / ${icon.unicode}`);
+    } else if (hollowGlyphs.has(icon.key)) {
+      const signs = contourAreaSigns(glyphMatch[1]);
+      if (signs.length < 2 || signs[0] === signs[1]) {
+        errors.push(`${variant} 描边图标孔洞方向错误：${icon.key}`);
+      }
     }
   }
   if (unicodeMap.icons[icon.key] !== icon.unicode) {
@@ -92,6 +95,12 @@ for (const name of [
   'intern-discovery-icons.woff',
   'intern-discovery-icons.ttf',
   'intern-discovery-icons.svg',
+  ...variantIds.flatMap(variant => [
+    `intern-discovery-icons-${variant}.woff2`,
+    `intern-discovery-icons-${variant}.woff`,
+    `intern-discovery-icons-${variant}.ttf`,
+    `intern-discovery-icons-${variant}.svg`,
+  ]),
   'iconfont.css',
   'demo.html',
 ]) {
@@ -99,29 +108,54 @@ for (const name of [
   if (!stats.isFile() || stats.size === 0) errors.push(`无效产物：${name}`);
 }
 
-const sourceSvgs = (await fs.readdir(path.join(root, 'svg')))
-  .filter(name => name.endsWith('.svg'));
-const outlineSvgs = (await fs.readdir(path.join(root, 'outlined-svg')))
-  .filter(name => name.endsWith('.svg'));
-if (sourceSvgs.length !== manifest.icons.length) {
-  errors.push(`源 SVG 数量错误：${sourceSvgs.length}`);
+const variantDirectories = {
+  sharp: { source: 'svg-sharp', outline: 'outlined-svg-sharp' },
+  standard: { source: 'svg', outline: 'outlined-svg' },
+  rounded: { source: 'svg-rounded', outline: 'outlined-svg-rounded' },
+};
+const outlineFiles = [];
+for (const [variant, directories] of Object.entries(variantDirectories)) {
+  const sourceSvgs = (await fs.readdir(path.join(root, directories.source)))
+    .filter(name => name.endsWith('.svg'));
+  const outlineSvgs = (await fs.readdir(path.join(root, directories.outline)))
+    .filter(name => name.endsWith('.svg'));
+  if (sourceSvgs.length !== manifest.icons.length) {
+    errors.push(`${variant} 源 SVG 数量错误：${sourceSvgs.length}`);
+  }
+  if (outlineSvgs.length !== manifest.icons.length) {
+    errors.push(`${variant} 轮廓 SVG 数量错误：${outlineSvgs.length}`);
+  }
+  outlineFiles.push(...outlineSvgs.map(name => ({ variant, directory: directories.outline, name })));
 }
-if (outlineSvgs.length !== manifest.icons.length) {
-  errors.push(`轮廓 SVG 数量错误：${outlineSvgs.length}`);
-}
-for (const name of outlineSvgs) {
-  const outlined = await fs.readFile(path.join(root, 'outlined-svg', name), 'utf8');
+for (const { variant, directory, name } of outlineFiles) {
+  const outlined = await fs.readFile(path.join(root, directory, name), 'utf8');
   if (/fill-rule=["']evenodd["']/.test(outlined)) {
-    errors.push(`轮廓 SVG 仍依赖字体不支持的偶奇填充：${name}`);
+    errors.push(`${variant} 轮廓 SVG 仍依赖字体不支持的偶奇填充：${name}`);
   }
   if (/<text\b/.test(outlined)) {
-    errors.push(`轮廓 SVG 仍含字体生成器会忽略的文字：${name}`);
+    errors.push(`${variant} 轮廓 SVG 仍含字体生成器会忽略的文字：${name}`);
   }
+}
+
+for (const variant of variantIds) {
+  const metadata = manifest.fontVariants?.[variant];
+  if (!metadata) {
+    errors.push(`清单缺少 ${variant} 字体信息`);
+    continue;
+  }
+  if (!css.includes(metadata.fontFiles.woff2) || !css.includes(metadata.fontFiles.woff)) {
+    errors.push(`CSS 缺少 ${variant} 字体引用`);
+  }
+}
+for (const extension of ['svg', 'ttf', 'woff', 'woff2']) {
+  const base = await fs.readFile(path.join(dist, `intern-discovery-icons.${extension}`));
+  const standard = await fs.readFile(path.join(dist, `intern-discovery-icons-standard.${extension}`));
+  if (!base.equals(standard)) errors.push(`标准兼容文件内容不一致：${extension}`);
 }
 
 if (errors.length) {
   console.error(errors.join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`验证通过：${manifest.icons.length} 个图标，Unicode/CSS/字体/描边孔洞映射一致。`);
+  console.log(`验证通过：${manifest.icons.length} 个图标，锋利/标准/圆润三套 Unicode/CSS/字体/描边孔洞映射一致。`);
 }
