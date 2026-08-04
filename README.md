@@ -29,6 +29,18 @@ https://14060415.github.io/InternInkStone_Icon/
 
 这些码位属于 Unicode 私有使用区，未加载 `InternDiscoveryIcons` 字体时不会显示正确图案。
 
+## 三种圆角档位
+
+三档共用稳定 Unicode 码位，但使用独立字体文件和 HTML 类：
+
+```html
+<span class="iconfont iconfont-sharp" aria-hidden="true">&#xE001;</span>
+<span class="iconfont iconfont-standard" aria-hidden="true">&#xE001;</span>
+<span class="iconfont iconfont-rounded" aria-hidden="true">&#xE001;</span>
+```
+
+正式字体源笔触为 1.875，在 16px 下约为 1.25px。`iconfont` 默认使用标准档位。
+
 ## 更新约束
 
 - `tools/iconfont-build/unicode-map.json` 是永久映射源。

@@ -16,9 +16,25 @@
   font-display:block;
 }
 @font-face{
+  font-family:"InternDiscoveryIconsSharpW1875";
+  src:url("./intern-discovery-icons-sharp-w1875.woff2") format("woff2"),
+      url("./intern-discovery-icons-sharp-w1875.woff") format("woff");
+  font-weight:normal;
+  font-style:normal;
+  font-display:block;
+}
+@font-face{
   font-family:"InternDiscoveryIconsStandard";
   src:url("./intern-discovery-icons-standard.woff2") format("woff2"),
       url("./intern-discovery-icons-standard.woff") format("woff");
+  font-weight:normal;
+  font-style:normal;
+  font-display:block;
+}
+@font-face{
+  font-family:"InternDiscoveryIconsStandardW1875";
+  src:url("./intern-discovery-icons-standard-w1875.woff2") format("woff2"),
+      url("./intern-discovery-icons-standard-w1875.woff") format("woff");
   font-weight:normal;
   font-style:normal;
   font-display:block;
@@ -31,7 +47,15 @@
   font-style:normal;
   font-display:block;
 }
-.iconfont,.iconfont-sharp,.iconfont-standard,.iconfont-rounded{
+@font-face{
+  font-family:"InternDiscoveryIconsRoundedW1875";
+  src:url("./intern-discovery-icons-rounded-w1875.woff2") format("woff2"),
+      url("./intern-discovery-icons-rounded-w1875.woff") format("woff");
+  font-weight:normal;
+  font-style:normal;
+  font-display:block;
+}
+.iconfont,.iconfont-sharp,.iconfont-sharp-w1875,.iconfont-standard,.iconfont-standard-w1875,.iconfont-rounded,.iconfont-rounded-w1875{
   font-style:normal;
   font-weight:normal;
   font-variant:normal;
@@ -42,9 +66,12 @@
   -moz-osx-font-smoothing:grayscale;
 }
 .iconfont{font-family:"InternDiscoveryIcons"!important;}
-.iconfont-sharp{font-family:"InternDiscoveryIconsSharp"!important;}
-.iconfont-standard{font-family:"InternDiscoveryIconsStandard"!important;}
-.iconfont-rounded{font-family:"InternDiscoveryIconsRounded"!important;}
+.iconfont-sharp{font-family:"InternDiscoveryIconsSharpW1875"!important;}
+.iconfont-sharp-w1875{font-family:"InternDiscoveryIconsSharpW1875"!important;}
+.iconfont-standard{font-family:"InternDiscoveryIconsStandardW1875"!important;}
+.iconfont-standard-w1875{font-family:"InternDiscoveryIconsStandardW1875"!important;}
+.iconfont-rounded{font-family:"InternDiscoveryIconsRoundedW1875"!important;}
+.iconfont-rounded-w1875{font-family:"InternDiscoveryIconsRoundedW1875"!important;}
 .icon-menu::before{content:"\e001";}
 .icon-sidebar::before{content:"\e002";}
 .icon-sidebar-collapse::before{content:"\e003";}

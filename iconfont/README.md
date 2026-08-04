@@ -2,15 +2,19 @@
 
 本目录由 `tools/iconfont-build` 自动生成。普通业务项目只需要引用本目录中的静态资源，不需要安装构建依赖。
 
-## 圆角字体档位
+## 正式圆角字体档位
 
 三套字体使用完全相同的 Unicode 码位：
 
-- 锋利：`intern-discovery-icons-sharp.woff2` / `.woff` / `.ttf`
-- 标准：`intern-discovery-icons-standard.woff2` / `.woff` / `.ttf`
-- 圆润：`intern-discovery-icons-rounded.woff2` / `.woff` / `.ttf`
+- 锋利：`intern-discovery-icons-sharp-w1875.woff2` / `.woff` / `.ttf`
+- 标准：`intern-discovery-icons-standard-w1875.woff2` / `.woff` / `.ttf`
+- 圆润：`intern-discovery-icons-rounded-w1875.woff2` / `.woff` / `.ttf`
 
-无后缀文件与“标准”版内容一致，用于兼容原有引用。加载 `iconfont.css` 后，可分别使用 `iconfont-sharp`、`iconfont-standard`、`iconfont-rounded`；原来的 `iconfont` 类继续使用标准版。
+无后缀文件与批准的“标准 1.875”版内容一致，用于兼容原有引用。加载 `iconfont.css` 后，可分别使用 `iconfont-sharp`、`iconfont-standard`、`iconfont-rounded`；原来的 `iconfont` 类继续使用标准版。
+
+## 正式笔触粗细
+
+三种正式字体的 24×24 设计网格源笔触为 1.875，按 16px 显示时理论笔触约为 1.25px。带 `-w1875` 的文件为正式产物；不带粗细后缀的三个字体仍保留作内部对照。
 
 ## CSS 类引用
 

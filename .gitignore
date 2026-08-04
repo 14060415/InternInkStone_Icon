@@ -1,1 +1,10 @@
 node_modules/
+
+# Build-only SVG font containers; web releases use WOFF2/WOFF/TTF.
+iconfont/intern-discovery-icons.svg
+iconfont/intern-discovery-icons-sharp.svg
+iconfont/intern-discovery-icons-sharp-w1875.svg
+iconfont/intern-discovery-icons-standard.svg
+iconfont/intern-discovery-icons-standard-w1875.svg
+iconfont/intern-discovery-icons-rounded.svg
+iconfont/intern-discovery-icons-rounded-w1875.svg
