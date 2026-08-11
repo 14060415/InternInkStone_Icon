@@ -59,6 +59,8 @@ const hollowGlyphs = new Set([
   'lightbulb', 'bellOff', 'eyeOff', 'python', 'dna',
   'flask', 'network',
   'sparkles', 'cpu', 'message', 'messages', 'play', 'messagePlus',
+  'tag', 'shieldCheck', 'fileAdd', 'folderPlus', 'notes', 'topicDiscussion',
+  'pullRequest', 'radarChart', 'dataEmpty', 'audit', 'certificate', 'target',
 ]);
 
 for (const icon of manifest.icons) {

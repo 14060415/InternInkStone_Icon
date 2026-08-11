@@ -2724,6 +2724,436 @@
         "CheckmarkOutlined"
       ],
       "svg": "./svg/checkmark.svg"
+    },
+    {
+      "key": "tag",
+      "name": "标签",
+      "token": "icon-tag",
+      "unicode": "U+E0B3",
+      "htmlEntity": "&#xE0B3;",
+      "category": "文件与内容",
+      "family": "知识与记录",
+      "aliases": [
+        "标记",
+        "分类标签",
+        "元数据标签",
+        "TagOutlined"
+      ],
+      "svg": "./svg/tag.svg"
+    },
+    {
+      "key": "shieldCheck",
+      "name": "安全通过",
+      "token": "icon-shield-check",
+      "unicode": "U+E0B4",
+      "htmlEntity": "&#xE0B4;",
+      "category": "状态与反馈",
+      "family": "可见与安全",
+      "aliases": [
+        "安全验证",
+        "防护通过",
+        "可信",
+        "ShieldCheckOutlined"
+      ],
+      "svg": "./svg/shield-check.svg"
+    },
+    {
+      "key": "report",
+      "name": "举报",
+      "token": "icon-report",
+      "unicode": "U+E0B5",
+      "htmlEntity": "&#xE0B5;",
+      "category": "状态与反馈",
+      "family": "可见与安全",
+      "aliases": [
+        "报告问题",
+        "风险举报",
+        "违规反馈",
+        "ReportOutlined"
+      ],
+      "svg": "./svg/report.svg"
+    },
+    {
+      "key": "fileAdd",
+      "name": "新建文件",
+      "token": "icon-file-add",
+      "unicode": "U+E0B6",
+      "htmlEntity": "&#xE0B6;",
+      "category": "文件与内容",
+      "family": "文件与容器",
+      "aliases": [
+        "添加文件",
+        "创建文档",
+        "FileAddOutlined"
+      ],
+      "svg": "./svg/file-add.svg"
+    },
+    {
+      "key": "fileSearch",
+      "name": "文件搜索",
+      "token": "icon-file-search",
+      "unicode": "U+E0B7",
+      "htmlEntity": "&#xE0B7;",
+      "category": "文件与内容",
+      "family": "文件与容器",
+      "aliases": [
+        "检索文件",
+        "查找文档",
+        "FileSearchOutlined"
+      ],
+      "svg": "./svg/file-search.svg"
+    },
+    {
+      "key": "folderOpen",
+      "name": "打开文件夹",
+      "token": "icon-folder-open",
+      "unicode": "U+E0B8",
+      "htmlEntity": "&#xE0B8;",
+      "category": "文件与内容",
+      "family": "文件与容器",
+      "aliases": [
+        "展开目录",
+        "已打开文件夹",
+        "FolderOpenOutlined"
+      ],
+      "svg": "./svg/folder-open.svg"
+    },
+    {
+      "key": "folderPlus",
+      "name": "新建文件夹",
+      "token": "icon-folder-plus",
+      "unicode": "U+E0B9",
+      "htmlEntity": "&#xE0B9;",
+      "category": "文件与内容",
+      "family": "文件与容器",
+      "aliases": [
+        "添加目录",
+        "创建文件夹",
+        "FolderPlusOutlined"
+      ],
+      "svg": "./svg/folder-plus.svg"
+    },
+    {
+      "key": "notes",
+      "name": "笔记",
+      "token": "icon-notes",
+      "unicode": "U+E0BA",
+      "htmlEntity": "&#xE0BA;",
+      "category": "文件与内容",
+      "family": "知识与记录",
+      "aliases": [
+        "研究笔记",
+        "记事本",
+        "记录",
+        "NotesOutlined"
+      ],
+      "svg": "./svg/notes.svg"
+    },
+    {
+      "key": "textRecognition",
+      "name": "文字识别",
+      "token": "icon-text-recognition",
+      "unicode": "U+E0BB",
+      "htmlEntity": "&#xE0BB;",
+      "category": "文件与内容",
+      "family": "知识与记录",
+      "aliases": [
+        "OCR",
+        "文本识别",
+        "扫描文字",
+        "TextRecognitionOutlined"
+      ],
+      "svg": "./svg/text-recognition.svg"
+    },
+    {
+      "key": "arrowUp",
+      "name": "向上箭头",
+      "token": "icon-arrow-up",
+      "unicode": "U+E0BC",
+      "htmlEntity": "&#xE0BC;",
+      "category": "导航与布局",
+      "family": "直向箭头",
+      "aliases": [
+        "上移",
+        "向上滚动",
+        "垂直向上"
+      ],
+      "svg": "./svg/arrow-up.svg"
+    },
+    {
+      "key": "toBottom",
+      "name": "到达底部",
+      "token": "icon-to-bottom",
+      "unicode": "U+E0BD",
+      "htmlEntity": "&#xE0BD;",
+      "category": "导航与布局",
+      "family": "基础方向",
+      "aliases": [
+        "回到底部",
+        "置底",
+        "ToBottomOutlined"
+      ],
+      "svg": "./svg/to-bottom.svg"
+    },
+    {
+      "key": "undo",
+      "name": "撤销",
+      "token": "icon-undo",
+      "unicode": "U+E0BE",
+      "htmlEntity": "&#xE0BE;",
+      "category": "通用操作",
+      "family": "创建与编辑",
+      "aliases": [
+        "返回上一步",
+        "撤回操作",
+        "UndoOutlined"
+      ],
+      "svg": "./svg/undo.svg"
+    },
+    {
+      "key": "redo",
+      "name": "重做",
+      "token": "icon-redo",
+      "unicode": "U+E0BF",
+      "htmlEntity": "&#xE0BF;",
+      "category": "通用操作",
+      "family": "创建与编辑",
+      "aliases": [
+        "恢复操作",
+        "再次执行",
+        "RedoOutlined"
+      ],
+      "svg": "./svg/redo.svg"
+    },
+    {
+      "key": "sidebarExpand",
+      "name": "侧栏展开",
+      "token": "icon-sidebar-expand",
+      "unicode": "U+E0C0",
+      "htmlEntity": "&#xE0C0;",
+      "category": "导航与布局",
+      "family": "菜单与侧栏",
+      "aliases": [
+        "展开侧栏",
+        "打开边栏",
+        "MenuUnfoldOutlined"
+      ],
+      "svg": "./svg/sidebar-expand.svg"
+    },
+    {
+      "key": "login",
+      "name": "登录",
+      "token": "icon-login",
+      "unicode": "U+E0C1",
+      "htmlEntity": "&#xE0C1;",
+      "category": "用户与协作",
+      "family": "个人与账户",
+      "aliases": [
+        "进入账户",
+        "登入",
+        "LoginOutlined"
+      ],
+      "svg": "./svg/login.svg"
+    },
+    {
+      "key": "messageUnread",
+      "name": "未读消息",
+      "token": "icon-message-unread",
+      "unicode": "U+E0C2",
+      "htmlEntity": "&#xE0C2;",
+      "category": "对话与媒体控制",
+      "family": "消息与会话",
+      "aliases": [
+        "新消息",
+        "消息未读",
+        "UnreadMessageOutlined"
+      ],
+      "svg": "./svg/message-unread.svg"
+    },
+    {
+      "key": "messageSearch",
+      "name": "搜索消息",
+      "token": "icon-message-search",
+      "unicode": "U+E0C3",
+      "htmlEntity": "&#xE0C3;",
+      "category": "对话与媒体控制",
+      "family": "消息与会话",
+      "aliases": [
+        "检索会话",
+        "查找聊天记录",
+        "MessageSearchOutlined"
+      ],
+      "svg": "./svg/message-search.svg"
+    },
+    {
+      "key": "topicDiscussion",
+      "name": "话题讨论",
+      "token": "icon-topic-discussion",
+      "unicode": "U+E0C4",
+      "htmlEntity": "&#xE0C4;",
+      "category": "对话与媒体控制",
+      "family": "消息与会话",
+      "aliases": [
+        "主题讨论",
+        "评论话题",
+        "TopicDiscussionOutlined"
+      ],
+      "svg": "./svg/topic-discussion.svg"
+    },
+    {
+      "key": "braces",
+      "name": "大括号",
+      "token": "icon-braces",
+      "unicode": "U+E0C5",
+      "htmlEntity": "&#xE0C5;",
+      "category": "开发与 AI 工程",
+      "family": "开发工具",
+      "aliases": [
+        "花括号",
+        "代码块",
+        "JSON",
+        "BracesOutlined"
+      ],
+      "svg": "./svg/braces.svg"
+    },
+    {
+      "key": "pullRequest",
+      "name": "合并请求",
+      "token": "icon-pull-request",
+      "unicode": "U+E0C6",
+      "htmlEntity": "&#xE0C6;",
+      "category": "开发与 AI 工程",
+      "family": "代码与协作",
+      "aliases": [
+        "Pull Request",
+        "代码合并",
+        "变更请求",
+        "PullRequestOutlined"
+      ],
+      "svg": "./svg/pull-request.svg"
+    },
+    {
+      "key": "scatterChart",
+      "name": "散点图",
+      "token": "icon-scatter-chart",
+      "unicode": "U+E0C7",
+      "htmlEntity": "&#xE0C7;",
+      "category": "数据与可视化",
+      "family": "统计图表",
+      "aliases": [
+        "散点分布",
+        "相关性图",
+        "ScatterChartOutlined"
+      ],
+      "svg": "./svg/scatter-chart.svg"
+    },
+    {
+      "key": "histogram",
+      "name": "直方图",
+      "token": "icon-histogram",
+      "unicode": "U+E0C8",
+      "htmlEntity": "&#xE0C8;",
+      "category": "数据与可视化",
+      "family": "统计图表",
+      "aliases": [
+        "频数分布",
+        "区间统计",
+        "HistogramOutlined"
+      ],
+      "svg": "./svg/histogram.svg"
+    },
+    {
+      "key": "radarChart",
+      "name": "雷达图",
+      "token": "icon-radar-chart",
+      "unicode": "U+E0C9",
+      "htmlEntity": "&#xE0C9;",
+      "category": "数据与可视化",
+      "family": "统计图表",
+      "aliases": [
+        "蜘蛛图",
+        "多维指标",
+        "RadarChartOutlined"
+      ],
+      "svg": "./svg/radar-chart.svg"
+    },
+    {
+      "key": "timeline",
+      "name": "时间线",
+      "token": "icon-timeline",
+      "unicode": "U+E0CA",
+      "htmlEntity": "&#xE0CA;",
+      "category": "数据与可视化",
+      "family": "关系与指标",
+      "aliases": [
+        "事件序列",
+        "过程记录",
+        "TimelineOutlined"
+      ],
+      "svg": "./svg/timeline.svg"
+    },
+    {
+      "key": "dataEmpty",
+      "name": "空数据",
+      "token": "icon-data-empty",
+      "unicode": "U+E0CB",
+      "htmlEntity": "&#xE0CB;",
+      "category": "数据与可视化",
+      "family": "关系与指标",
+      "aliases": [
+        "无数据",
+        "数据为空",
+        "EmptyDataOutlined"
+      ],
+      "svg": "./svg/data-empty.svg"
+    },
+    {
+      "key": "audit",
+      "name": "审核",
+      "token": "icon-audit",
+      "unicode": "U+E0CC",
+      "htmlEntity": "&#xE0CC;",
+      "category": "状态与反馈",
+      "family": "结果与提示",
+      "aliases": [
+        "审查",
+        "审批",
+        "内容审核",
+        "AuditOutlined"
+      ],
+      "svg": "./svg/audit.svg"
+    },
+    {
+      "key": "certificate",
+      "name": "证书",
+      "token": "icon-certificate",
+      "unicode": "U+E0CD",
+      "htmlEntity": "&#xE0CD;",
+      "category": "状态与反馈",
+      "family": "成就与热度",
+      "aliases": [
+        "认证",
+        "资质证明",
+        "成果证书",
+        "CertificateOutlined"
+      ],
+      "svg": "./svg/certificate.svg"
+    },
+    {
+      "key": "target",
+      "name": "目标",
+      "token": "icon-target",
+      "unicode": "U+E0CE",
+      "htmlEntity": "&#xE0CE;",
+      "category": "数据与可视化",
+      "family": "关系与指标",
+      "aliases": [
+        "指标目标",
+        "聚焦",
+        "靶心",
+        "TargetOutlined"
+      ],
+      "svg": "./svg/target.svg"
     }
   ]
 }

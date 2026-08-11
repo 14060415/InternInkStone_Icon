@@ -1,16 +1,16 @@
 {
-  "icons": 176,
-  "glyphs": 176,
+  "icons": 204,
+  "glyphs": 204,
   "codePointMin": "U+E001",
-  "codePointMax": "U+E0B2",
+  "codePointMax": "U+E0CE",
   "reserved": [
     "U+E0AD",
     "U+E0AE"
   ],
   "files": {
-    "woff2": 20464,
-    "woff": 24620,
-    "ttf": 50880
+    "woff2": 23448,
+    "woff": 28488,
+    "ttf": 59212
   },
   "strokeWeights": {
     "normal": {
@@ -26,34 +26,34 @@
   },
   "variants": {
     "sharp": {
-      "woff2": 18676,
-      "woff": 22640,
-      "ttf": 44928
+      "woff2": 21400,
+      "woff": 26144,
+      "ttf": 52216
     },
     "sharp-w1875": {
-      "woff2": 18740,
-      "woff": 22756,
-      "ttf": 44956
+      "woff2": 21440,
+      "woff": 26240,
+      "ttf": 52244
     },
     "standard": {
-      "woff2": 20452,
-      "woff": 24584,
-      "ttf": 50604
+      "woff2": 23452,
+      "woff": 28560,
+      "ttf": 59036
     },
     "standard-w1875": {
-      "woff2": 20464,
-      "woff": 24620,
-      "ttf": 50880
+      "woff2": 23448,
+      "woff": 28488,
+      "ttf": 59212
     },
     "rounded": {
-      "woff2": 21320,
-      "woff": 25524,
-      "ttf": 51980
+      "woff2": 24516,
+      "woff": 29612,
+      "ttf": 60636
     },
     "rounded-w1875": {
-      "woff2": 21252,
-      "woff": 25404,
-      "ttf": 51624
+      "woff2": 24476,
+      "woff": 29440,
+      "ttf": 60160
     }
   }
 }

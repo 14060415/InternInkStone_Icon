@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Intern InkStone 图标库</title>
-  <link rel="stylesheet" href="./iconfont/iconfont.css?v=20260804-w1875">
+  <link rel="stylesheet" href="./iconfont/iconfont.css?v=20260807-e0ce-r7">
   <style>
     :root{
       --ink:#3a4556;--ink-soft:#3a4556;--muted:#7a8394;--line:#e1e4e8;
@@ -151,13 +151,13 @@
     <footer class="foot">搜索支持名称、token、Unicode 码位与历史别名；每个图标均可复制 Unicode 字符、HTML 实体或当前档位的完整 HTML。三档共用稳定 Unicode 码位，但分别加载独立字体文件；使用前必须加载本图标库的字体 CSS。</footer>
   </main>
 
-  <script src="./iconfont/unicode-map.js"></script>
+  <script src="./iconfont/unicode-map.js?v=20260807-e0ce-r7"></script>
   <script>
     const categoryDefinitions = [
       {name:'导航与布局',description:'页面导航、方向层级、菜单侧栏、视图窗口与主题切换。',families:[
-        ['菜单与侧栏',['menu','sidebar','sidebarCollapse','moreVertical']],
-        ['基础方向',['left','right','down','up','toTop','enter']],
-        ['直向箭头',['arrowLeft','arrowRight','arrowDown']],
+        ['菜单与侧栏',['menu','sidebar','sidebarCollapse','sidebarExpand','moreVertical']],
+        ['基础方向',['left','right','down','up','toTop','toBottom','enter']],
+        ['直向箭头',['arrowLeft','arrowRight','arrowUp','arrowDown']],
         ['斜向箭头',['arrowUpLeft','arrowUpRight','arrowDownLeft','arrowDownRight']],
         ['方向交换',['swapHorizontal','swapVertical']],
         ['页面与语言',['home','external','browser','languageChinese','languageEnglish','languageSwitch']],
@@ -166,41 +166,41 @@
       ]},
       {name:'通用操作',description:'搜索筛选、内容创建、对象管理、传输共享与系统控制。',families:[
         ['搜索与筛选',['search','filter','sort','sliders']],
-        ['创建与编辑',['plus','minus','edit','save','copy']],
+        ['创建与编辑',['plus','minus','edit','save','copy','undo','redo']],
         ['对象管理',['trash','clear','pin','close','checkmark','more']],
         ['传输与共享',['upload','download','share','export','sync']],
         ['系统控制',['refresh','settings']]
       ]},
       {name:'文件与内容',description:'常见文件格式、媒体、云端内容、链接引用与知识记录。',families:[
         ['文件格式',['fileText','filePdf','fileSpreadsheet','filePresentation','fileArchive','fileAudio','fileCode']],
-        ['文件与容器',['fileList','folder','inbox','archive']],
+        ['文件与容器',['fileList','fileAdd','fileSearch','folder','folderOpen','folderPlus','inbox','archive']],
         ['媒体内容',['image','camera','video']],
         ['云端内容',['cloud','cloudDownload']],
         ['链接与引用',['attachment','link','unlink','quote']],
-        ['知识与记录',['location','book','history']]
+        ['知识与记录',['location','book','history','notes','textRecognition','tag']]
       ]},
       {name:'用户与协作',description:'个人账户、团队组织、成员邀请、联系与访问权限。',families:[
-        ['个人与账户',['user','occupation','logout']],
+        ['个人与账户',['user','occupation','login','logout']],
         ['团队与组织',['users','building','invite']],
         ['联系与权限',['phone','shield']]
       ]},
       {name:'状态与反馈',description:'结果提示、通知进度、可见性、安全状态及交互反馈。',families:[
-        ['结果与提示',['check','error','info','help','lightbulb','alert','required']],
+        ['结果与提示',['check','error','info','help','lightbulb','alert','required','audit']],
         ['通知与时间',['bell','bellOff','clock','calendar','loading']],
-        ['可见与安全',['eye','eyeOff','lock','unlock']],
-        ['成就与热度',['trophy','fire','fireFilled']],
+        ['可见与安全',['eye','eyeOff','lock','unlock','shieldCheck','report']],
+        ['成就与热度',['trophy','certificate','fire','fireFilled']],
         ['收藏状态',['bookmark','bookmarkFilled','star','starFilled']],
         ['评价状态',['thumbsUp','thumbsUpFilled','thumbsDown','thumbsDownFilled']]
       ]},
       {name:'对话与媒体控制',description:'消息会话、发送输入、声音控制及媒体播放操作。',families:[
-        ['消息与会话',['message','messages','messagePlus']],
+        ['消息与会话',['message','messages','messagePlus','messageUnread','messageSearch','topicDiscussion']],
         ['输入与发送',['send','mic']],
         ['声音控制',['volumeOn','volumeOff']],
         ['媒体播放',['play','pause','fastForward','rewind']]
       ]},
       {name:'开发与 AI 工程',description:'代码协作、开发工具、智能流程、AI 能力与模型工程。',families:[
-        ['代码与协作',['task','log','repository','branch','plugin','bug','license','code']],
-        ['开发工具',['terminal','key','embed']],
+        ['代码与协作',['task','log','repository','branch','pullRequest','plugin','bug','license','code']],
+        ['开发工具',['terminal','key','embed','braces']],
         ['智能流程',['bot','workflow','sparkles']],
         ['AI 基础能力',['algorithm','mcp','python','dataPreparation','multimodal','computerVision','nlp','pointCloud']],
         ['模型工程',['inference','training']]
@@ -212,8 +212,8 @@
       ]},
       {name:'数据与可视化',description:'数据结构、统计图表、关系网络与监测指标。',families:[
         ['数据结构',['database','table']],
-        ['统计图表',['lineChart','barChart','pieChart','heatmap']],
-        ['关系与指标',['network','activity']]
+        ['统计图表',['lineChart','barChart','pieChart','scatterChart','histogram','radarChart','heatmap']],
+        ['关系与指标',['network','activity','timeline','dataEmpty','target']]
       ]},
       {name:'平台组件与资产',description:'平台级功能入口以及项目、论文和模型等核心资产。',families:[
         ['平台组件',['module','workspace','tool','app']],
@@ -254,7 +254,7 @@
       browser:'<g data-keyline="20x20" data-shape="circle" transform="matrix(0.9487179 0 0 0.9487179 0.615385 0.615385)" stroke-width="1.5810811"><circle cx="12" cy="12" r="9.75"/><path d="m16.5 7.5-3.2 7-5.7 2 3.2-7z"/></g>',
       search:'<g data-keyline="18x18" data-shape="square" transform="matrix(1 0 0 1 -0.25 -0.25)" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></g>',
       filter:'<g data-keyline="20x16" data-shape="landscape" transform="matrix(1.0277733 0 0 0.906248 -0.3332797 0.2187757)" stroke-width="1.5542434"><path data-corner-lock="true" d="M4 5H20Q21 5 21 6L14 13v6l-4 2v-8L3 6Q3 5 4 5Z"/></g>',
-      sort:'<g data-keyline="18x18" data-shape="square" transform="matrix(0.916667 0 0 1.1785722 1.9166628 -2.1428661)" stroke-width="1.4431363"><path d="M11 6h9M11 12h7M11 18h4"/><path data-junction-trim="true" d="M5 5v14m-3-3 3 3 3-3"/></g>',
+      sort:'<g data-keyline="18x18" data-shape="square" transform="matrix(.916667 0 0 .916667 1 1)" stroke-width="1.636363"><path d="M11 6H20M11 12H18M11 18H15"/><path data-junction-trim="true" d="M5 5V19M2 16 5 19 8 16"/></g>',
       sliders:'<g data-keyline="18x18" data-shape="square" transform="matrix(1.0312521 0 0 1.0312521 -0.3750258 -0.3750258)" stroke-width="1.4545424"><path d="M4 6h6M14 6h6M4 12h10M18 12h2M4 18h3M11 18h9"/><circle cx="12" cy="6" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="9" cy="18" r="2"/></g>',
       plus:'<g data-keyline="18x18" data-shape="square" transform="matrix(1.178569 0 0 1.178569 -2.1428297 -2.1428297)" stroke-width="1.2727299"><path d="M12 5v14M5 12h14"/></g>',
       minus:'<path d="M5 12h14"/>',
@@ -337,9 +337,9 @@
       lock:'<g data-keyline="16x20" data-shape="portrait" transform="matrix(1.0357138 0 0 1.0277785 -0.4285653 -0.333342)" stroke-width="1.4538568"><rect x="5" y="10" width="14" height="11" rx="1.25"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></g>',
       unlock:'<g data-keyline="16x20" data-shape="portrait" transform="matrix(1 0 0 0.999935 0 -0.0036198)" stroke-width="1.5000487"><g><rect x="4.75" y="9.9809" width="14.5" height="11.2741" rx="1.2946" ry="1.2811"/><path d="M7.8571 9.9809L7.8571 6.9062C7.8265 5.0245 9.0944 3.3638 10.932 2.8789C12.7696 2.394 14.7047 3.2094 15.625 4.8563M12 14.0806L12 17.1553"/></g></g>',
       loading:'<g data-keyline="20x20" data-shape="circle" transform="matrix(1.1567771 0 0 1.1666088 -1.8856059 -1.9578915)" stroke-width="1.2912305"><path d="M20 12a8 8 0 1 1-2.34-5.66"/></g>',
-      message:'<g data-keyline="18x18" data-shape="square" transform="matrix(1.0312521 0 0 0.9705892 -0.3750258 -0.132365)" stroke-width="1.4993088"><path data-corner-lock="true" d="M4 4h16v13H8l-4 4z"/><path d="M8 9h8M8 13h5"/></g>',
-      messages:'<g data-keyline="18x18" data-shape="square" transform="matrix(1.0312521 0 0 1.0999961 -0.3750258 -1.7499501)" stroke-width="1.4083586"><path data-corner-lock="true" d="M4 5h13v10H8l-4 4z"/><path data-corner-lock="true" d="M17 8h3v9h-4l-3 3v-5"/></g>',
-      messagePlus:'<g data-keyline="18x18" data-shape="square" transform="matrix(1.0312521 0 0 1.0312521 -0.3750258 -1.4062779)" stroke-width="1.4545424"><path data-corner-lock="true" d="M4 5h16v13H8l-4 3z"/><path d="M12 8v6M9 11h6"/></g>',
+      message:'<g data-keyline="18x18" data-shape="square" transform="matrix(1.0312521 0 0 .9705892 -.3750258 -.132365)" stroke-width="1.4993088"><path data-corner-lock="true" d="M4 4H20V17H11L7 21 6 17H4Z"/><path d="M8 9H16M8 13H13"/></g>',
+      messages:'<g data-keyline="18x18" data-shape="square" transform="matrix(1.0312521 0 0 1.0999961 -.3750258 -1.7499501)" stroke-width="1.4083586"><path data-corner-lock="true" d="M4 5H17V15H10L7 19 6 15H4Z"/><path data-corner-lock="true" d="M17 8H20V17H18L15 20 14 17H13V15"/></g>',
+      messagePlus:'<g data-keyline="18x18" data-shape="square" transform="matrix(1.0312521 0 0 1.0312521 -.3750258 -1.4062779)" stroke-width="1.4545424"><path data-corner-lock="true" d="M4 5H20V18H11L7 21 6 18H4Z"/><path d="M12 8V14M9 11H15"/></g>',
       send:'<g data-keyline="14x17" data-shape="special" transform="matrix(1.041663 0 0 1.0333355 -0.4999563 -0.9166932)" stroke-width="1.4457958"><path data-junction-trim="true" d="M12 20V5M6 11l6-6 6 6"/></g>',
       mic:'<g data-keyline="16x20" data-shape="portrait" transform="matrix(1.0357138 0 0 1.0277785 -0.4285653 -0.333342)" stroke-width="1.4538568"><rect x="9" y="3" width="6" height="11" rx="1.5"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/></g>',
       volumeOn:'<g data-keyline="20x16" data-shape="landscape" transform="matrix(1.0574611 0 0 0.9973751 -0.8293299 0.0314991)"><g transform="matrix(1.0769 0 0 1.0769 -0.9228 -0.9228)" stroke-width="1.3563086"><path d="M4 9.5h3l5.25-4.25v13.5L7 14.5H4Z"/><path d="M15.9747 8.6346C17.9169 10.5041 17.9169 13.4959 15.9747 15.3654M18.013 6.7115C20.9896 9.6779 20.9896 14.3221 18.013 17.2885"/></g></g>',
@@ -358,7 +358,7 @@
       archive:'<g data-keyline="18x18" data-shape="square" transform="matrix(0.916667 0 0 0.9705892 0.9999958 0.8382244)" stroke-width="1.5902585"><path stroke-linecap="butt" d="M4 7V20H20V7"/><path d="M3 3h18v4H3z"/><path d="M9 11h6"/></g>',
       key:'<g data-keyline="18x18" data-shape="square" transform="matrix(1 0 0 1 0 0)" stroke-width="1.5"><g><circle cx="8.1961" cy="15.8039" r="4.4461"/><path d="M11.3578 12.6422L20.25 3.75M17.0883 6.9117L19.0644 8.8877M15.1123 8.8877L17.0883 10.8638"/></g></g>',
       embed:'<g data-keyline="20x16" data-shape="landscape" transform="matrix(1.0277784 0 0 0.906248 -0.3333417 1.1250237)" stroke-width="1.5542395"><rect x="3" y="4" width="18" height="16" rx="1.25"/><path d="m9 9-3 3 3 3M15 9l3 3-3 3M13 7l-2 10"/></g>',
-      sync:'<g data-keyline="18x18" data-shape="square" transform="matrix(1.0644913 0 0 0.9997389 -0.7738954 0.0031326)" stroke-width="1.4540418"><g><path d="M19.75 8.5449C18.9459 5.8706 16.274 4.0484 13.2114 3.7446C10.1487 3.4408 7.1443 4.7 5.2969 7.0618M19.75 4.5899L19.75 8.5449L15.625 8.5449M4.25 15.4551C5.0541 18.1294 7.726 19.9516 10.7886 20.2554C13.8513 20.5592 16.8557 19.3 18.7031 16.9382M4.25 19.4101L4.25 15.4551L8.375 15.4551"/></g></g>',
+      sync:'<g data-keyline="18x18" data-shape="square" transform="matrix(1.0644913 0 0 .9997389 -.7738954 .0031326)" stroke-width="1.4540418"><path d="M18.75 8.5449C17.9459 5.8706 15.774 4.0484 13.2114 3.7446C10.1487 3.4408 7.1443 4.7 5.2969 7.0618M18.75 4.5899V8.5449H14.625M5.25 15.4551C6.0541 18.1294 8.226 19.9516 10.7886 20.2554C13.8513 20.5592 16.8557 19.3 18.7031 16.9382M5.25 19.4101V15.4551H9.375"/></g>',
       lightMode:'<g data-keyline="20x20" data-shape="circle" transform="matrix(0.9736865 0 0 0.9736865 0.3157624 0.3157624)" stroke-width="1.540537"><g><circle cx="12" cy="12" r="5"/><path d="M12 2.5V4M12 20v1.5M2.5 12H4M20 12h1.5M5.28 5.28l1.06 1.06M17.66 17.66l1.06 1.06M18.72 5.28l-1.06 1.06M6.34 17.66l-1.06 1.06"/></g></g>',
       darkMode:'<g data-keyline="20x20" data-shape="circle" transform="matrix(1.1114711 0 0 1.0668083 -1.8130298 -0.7087807)" stroke-width="1.3775234"><g><path d="M14.5 3.25A8.75 8.75 0 1 0 20.75 15.5A7.5 7.5 0 0 1 14.5 3.25Z"/></g></g>',
       algorithm:'<g data-keyline="18x18" data-shape="square" transform="matrix(0.891893 0 0 0.891893 1.2972837 1.2972837)" stroke-width="1.681816"><g><rect x="8.1053" y="2.75" width="7.7895" height="4" rx="0.7303" ry="0.75"/><path d="M12 9.25L15.8947 12.25L12 15.25L8.1053 12.25ZM12 6.75L12 9.25M8.1053 12.25L5.1842 12.25L5.1842 17.25M15.8947 12.25L18.8158 12.25L18.8158 17.25"/><rect x="2.75" y="17.25" width="4.8684" height="4" rx="0.7303" ry="0.75"/><rect x="16.3816" y="17.25" width="4.8684" height="4" rx="0.7303" ry="0.75"/></g></g>',
@@ -396,7 +396,35 @@
       model:'<g data-keyline="18x20" data-shape="special" transform="matrix(0.9765476 0 0 0.9783576 0.2814282 0.3079653)" stroke-width="1.5346019"><g><path d="M12 2.496 20.448 7.248v9.504L12 21.504l-8.448-4.752V7.248Z"/><path d="M12 7.776 15.696 9.888v4.224L12 16.224l-3.696-2.112V9.888Z"/><path d="M12 7.776v-5.28M8.304 14.112l-4.752 2.64M15.696 14.112l4.752 2.64"/></g></g>',
       modelApp:'<g data-keyline="18x20" data-shape="special" transform="matrix(0.916667 0 0 0.9358855 0.9999958 0.7693738)" stroke-width="1.6194745"><path d="M12 2 21 7.35v9.3L12 22 3 16.65V7.35Z"/><path d="m8.5 9.25 3.5 2 3.5-2M12 11.25v4.5"/></g>',
       compare:'<g data-keyline="18x18" data-shape="square" transform="matrix(0.916667 0 0 0.916667 0.9999958 0.9999958)" stroke-width="1.636363"><path d="M9 4H3v16h6M15 4h6v16h-6M12 3v18"/></g>',
-      export:'<g data-keyline="18x18" data-shape="square"><path d="M3.75 10.25v8.5a1.5 1.5 0 0 0 1.5 1.5h13a1.5 1.5 0 0 0 1.5-1.5v-2.5"/><path d="M7.75 14.25c1.1-4.8 4.3-8 9.2-8h3.3M16.75 3.75l3.5 2.5-3.5 2.5"/></g>'
+      export:'<g data-keyline="18x18" data-shape="square"><path d="M3.75 10.25v8.5a1.5 1.5 0 0 0 1.5 1.5h13a1.5 1.5 0 0 0 1.5-1.5v-2.5"/><path d="M7.75 14.25c1.1-4.8 4.3-8 9.2-8h3.3M16.75 3.75l3.5 2.5-3.5 2.5"/></g>',
+      tag:'<g data-keyline="18x18" data-shape="square" transform="matrix(.916667 0 0 .916667 1 1)" stroke-width="1.636363"><path data-corner-scale=".65" d="M4 4H11L21 14L14 21L4 11Z"/><circle cx="8" cy="8" r="1.5"/></g>',
+      shieldCheck:'<g data-keyline="16x20" data-shape="portrait" transform="matrix(.906248 0 0 .930767 1.125024 .8375)" stroke-width="1.63323"><path data-corner-lock="true" d="M12 2 20 5v6c0 5-3.4 9-8 11-4.6-2-8-6-8-11V5Z"/><path d="m8.5 12 2.5 2.5L16 9"/></g>',
+      report:'<g data-keyline="18x20" data-shape="special" transform="matrix(.95 0 0 .95 .6 .6)" stroke-width="1.578947"><path d="M5 21V2.5M5 3H20.5L17.5 9 20.5 15H5Z"/><path d="M12.75 6.5V9.5M12.75 12.75v.2"/></g>',
+      fileAdd:'<g data-keyline="16x20" data-shape="portrait" transform="matrix(1.035714 0 0 1.027779 -.428565 -.333342)" stroke-width="1.453857"><path d="M5 3H14L19 8V21H5Z"/><path d="M14 3V8H19M12 11v7M8.5 14.5h7"/></g>',
+      fileSearch:'<g data-keyline="16x20" data-shape="portrait" transform="matrix(1.035714 0 0 1.027779 -.428565 -.333342)" stroke-width="1.453857"><path d="M11 21H5V3H14L19 8V11"/><path d="M14 3V8H19"/><circle cx="14.25" cy="15.5" r="3.5"/><path d="m16.75 18 3 3"/></g>',
+      folderOpen:'<g data-keyline="20x18" data-shape="special"><path data-corner-scale=".7" d="M3 19.75V4.25H9.25L12 7.25H20.75V9.5"/><path data-corner-scale=".7" d="M6.75 10.75H22.25L19.25 19.75H3.75Z"/></g>',
+      folderPlus:'<g data-keyline="20x18" data-shape="special"><path data-corner-scale=".7" d="M2.75 20.25V3.75H9.25L12 6.75H21.25V20.25Z"/><path d="M12 10v7M8.5 13.5h7"/></g>',
+      notes:'<g data-keyline="16x20" data-shape="portrait" transform="matrix(1.035714 0 0 1.027779 -.428565 -1.083342)" stroke-width="1.453857"><rect x="5" y="4" width="14" height="17" rx="1.25"/><path d="M8 2v4M12 2v4M16 2v4M8.5 9H15.5M8.5 13H15.5M8.5 17H13"/></g>',
+      textRecognition:'<g data-keyline="18x18" data-shape="square" transform="matrix(.916667 0 0 .916667 1 1)" stroke-width="1.636363"><path d="M9 3H3V9M15 3H21V9M9 21H3V15M15 21H21V15M8 8H16M12 8V17M9 17H15"/></g>',
+      arrowUp:'<g data-keyline="14x17" data-shape="special" transform="matrix(1.041663 0 0 1.033336 -.499956 -.116642)" stroke-width="1.445796"><path data-junction-trim="true" d="M12 20V5M6 11 12 5 18 11"/></g>',
+      toBottom:'<g data-keyline="18x18" data-shape="square"><path data-junction-trim="true" d="M3.75 20.25H20.25M12 3.75V18.25M7 13.25 12 18.25 17 13.25"/></g>',
+      undo:'<g data-keyline="20x16" data-shape="landscape"><path data-junction-trim="true" d="M10 8.5 5 8 6.5 3.5"/><path d="M5 8C8 4.5 13.5 4 17 7C20.5 10 20.5 15 17.5 18"/></g>',
+      redo:'<g data-keyline="20x16" data-shape="landscape"><path data-junction-trim="true" d="M14 8.5 19 8 17.5 3.5"/><path d="M19 8C16 4.5 10.5 4 7 7C3.5 10 3.5 15 6.5 18"/></g>',
+      sidebarExpand:'<g data-keyline="18x18" data-shape="square" transform="matrix(.916667 0 0 .916667 1 1)" stroke-width="1.636363"><rect x="3" y="3" width="18" height="18" rx="1.25"/><path d="M8 3V21M11 12H17M14 9 17 12 14 15"/></g>',
+      login:'<g data-keyline="16x20" data-shape="portrait" transform="matrix(1.115386 0 0 1.156247 -.826937 -1.874966)" stroke-width="1.32085"><path d="M14 4H19V20H14"/><path data-junction-trim="true" d="M10 8 6 12 10 16M6 12H15"/></g>',
+      messageUnread:'<g data-keyline="18x18" data-shape="square" transform="matrix(1.031252 0 0 .970589 -.375026 -.132365)" stroke-width="1.499309"><path data-corner-scale=".7" d="M4 5H14M20 10V17H11L7 21 6 17H4V5"/><circle cx="18" cy="6" r="2.25" fill="currentColor" stroke="none"/></g>',
+      messageSearch:'<g data-keyline="18x18" data-shape="square" transform="matrix(1.031252 0 0 .970589 -.375026 -.132365)" stroke-width="1.499309"><path data-corner-scale=".7" d="M4 4H20V10.5M11 17 7 21 6 17H4V4"/><circle cx="15.75" cy="15.75" r="3.75"/><path d="m18.5 18.5 2.75 2.75"/></g>',
+      topicDiscussion:'<g data-keyline="18x18" data-shape="square" transform="matrix(1.0312521 0 0 .9705892 -.3750258 -.132365)" stroke-width="1.4993088"><path data-corner-lock="true" d="M4 4H20V17H11L7 21 6 17H4Z"/><path d="M10.5 7.5V13.5M13.5 7.5V13.5M9 9H15M9 12.25H15"/></g>',
+      braces:'<g data-keyline="20x18" data-shape="special"><path d="M9 3H8C6.3 3 5.5 4 5.5 5.5V8.5C5.5 10.5 4.5 12 2.5 12C4.5 12 5.5 13.5 5.5 15.5V18.5C5.5 20 6.3 21 8 21H9"/><path d="M15 3H16C17.7 3 18.5 4 18.5 5.5V8.5C18.5 10.5 19.5 12 21.5 12C19.5 12 18.5 13.5 18.5 15.5V18.5C18.5 20 17.7 21 16 21H15"/></g>',
+      pullRequest:'<g data-keyline="18x18" data-shape="square" transform="matrix(.916667 0 0 .916667 1 1)" stroke-width="1.636363"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/><path d="M6 7V17M18 17V12a5 5 0 0 0-5-5H10M13 4 10 7 13 10"/></g>',
+      scatterChart:'<g data-keyline="18x18" data-shape="square" transform="matrix(1.031252 0 0 1.031252 -.375026 -.375026)" stroke-width="1.454542"><path d="M4 4V20H20"/><circle cx="8" cy="16" r="1.2" fill="currentColor" stroke="none"/><circle cx="11" cy="11" r="1.2" fill="currentColor" stroke="none"/><circle cx="14" cy="14" r="1.2" fill="currentColor" stroke="none"/><circle cx="17.5" cy="7" r="1.2" fill="currentColor" stroke="none"/><circle cx="8.5" cy="7.5" r="1.2" fill="currentColor" stroke="none"/></g>',
+      histogram:'<g data-keyline="18x18" data-shape="square" transform="matrix(1.031252 0 0 1.031252 -.375026 -.375026)" stroke-width="1.454542"><path d="M4 4V20H20"/><rect x="7" y="13" width="4" height="7"/><rect x="11" y="7" width="4" height="13"/><rect x="15" y="10" width="4" height="10"/></g>',
+      radarChart:'<g data-keyline="20x20" data-shape="circle" transform="matrix(1.027779 0 0 1.027779 -.333342 -.333342)" stroke-width="1.459458"><path data-corner-scale=".4" d="M12 3 20.5 9.2 17.2 19H6.8L3.5 9.2Z"/><path data-corner-scale=".4" d="M12 7 16.7 10.4 14.9 16H9.1L7.3 10.4Z"/><path d="M12 3V12M20.5 9.2 12 12M17.2 19 12 12M6.8 19 12 12M3.5 9.2 12 12"/></g>',
+      timeline:'<g data-keyline="18x18" data-shape="square" transform="matrix(.916667 0 0 .916667 1 1)" stroke-width="1.636363"><path d="M3 12H21M7 8V12M17 12V16"/><circle cx="7" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="17" cy="12" r="1.5" fill="currentColor" stroke="none"/><rect x="4" y="3" width="6" height="5" rx=".75"/><rect x="14" y="16" width="6" height="5" rx=".75"/></g>',
+      dataEmpty:'<g data-keyline="18x18" data-shape="square" transform="matrix(.916667 0 0 .916667 1 1)" stroke-width="1.636363"><ellipse cx="10" cy="5" rx="7" ry="2.25"/><path d="M3 5V16c0 1.35 3.1 2.25 7 2.25M17 5V11M3 10.5c0 1.35 3.1 2.25 7 2.25 2.4 0 4.5-.35 5.7-.95"/><circle cx="17.5" cy="17" r="4"/><path d="M15.5 17H19.5"/></g>',
+      audit:'<g data-keyline="16x20" data-shape="portrait" transform="matrix(.906248 0 0 .930767 1.125024 .8375)" stroke-width="1.63323"><path data-corner-scale=".7" d="M4 2H16L20 6V22H4Z"/><path d="M16 2V6H20M8.5 12 10.75 14.25 15.5 9.5"/></g>',
+      certificate:'<g data-keyline="20x20" data-shape="square"><rect x="2.5" y="2.5" width="19" height="19" rx="1.25"/><circle cx="12" cy="9" r="3.75"/><path data-corner-scale=".5" d="M9.5 11.75 8.75 18 12 16 15.25 18 14.5 11.75"/><path d="m10.25 9 1.15 1.15L13.9 7.8"/></g>',
+      target:'<g data-keyline="20x20" data-shape="circle" transform="matrix(1.027779 0 0 1.027779 -.333342 -.333342)" stroke-width="1.459458"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/><path d="M12 1V5M12 19V23M1 12H5M19 12H23"/></g>'
     };
 
     const taxonomy = new Map();
@@ -583,7 +611,35 @@
       ['compare','对比',['内容对比','版本对比','切换对比','CompareOutlined']],
       ['export','导出',['内容导出','导出内容','发布导出','ExportOutlined']],
       ['languageSwitch','语言切换',['通用语言','翻译语言','A 文','LanguageSwitchOutlined']],
-      ['checkmark','勾号',['对勾','勾选','应用操作','CheckmarkOutlined']]
+      ['checkmark','勾号',['对勾','勾选','应用操作','CheckmarkOutlined']],
+      ['tag','标签',['标记','分类标签','元数据标签','TagOutlined']],
+      ['shieldCheck','安全通过',['安全验证','防护通过','可信','ShieldCheckOutlined']],
+      ['report','举报',['报告问题','风险举报','违规反馈','ReportOutlined']],
+      ['fileAdd','新建文件',['添加文件','创建文档','FileAddOutlined']],
+      ['fileSearch','文件搜索',['检索文件','查找文档','FileSearchOutlined']],
+      ['folderOpen','打开文件夹',['展开目录','已打开文件夹','FolderOpenOutlined']],
+      ['folderPlus','新建文件夹',['添加目录','创建文件夹','FolderPlusOutlined']],
+      ['notes','笔记',['研究笔记','记事本','记录','NotesOutlined']],
+      ['textRecognition','文字识别',['OCR','文本识别','扫描文字','TextRecognitionOutlined']],
+      ['arrowUp','向上箭头',['上移','向上滚动','垂直向上']],
+      ['toBottom','到达底部',['回到底部','置底','ToBottomOutlined']],
+      ['undo','撤销',['返回上一步','撤回操作','UndoOutlined']],
+      ['redo','重做',['恢复操作','再次执行','RedoOutlined']],
+      ['sidebarExpand','侧栏展开',['展开侧栏','打开边栏','MenuUnfoldOutlined']],
+      ['login','登录',['进入账户','登入','LoginOutlined']],
+      ['messageUnread','未读消息',['新消息','消息未读','UnreadMessageOutlined']],
+      ['messageSearch','搜索消息',['检索会话','查找聊天记录','MessageSearchOutlined']],
+      ['topicDiscussion','话题讨论',['主题讨论','评论话题','TopicDiscussionOutlined']],
+      ['braces','大括号',['花括号','代码块','JSON','BracesOutlined']],
+      ['pullRequest','合并请求',['Pull Request','代码合并','变更请求','PullRequestOutlined']],
+      ['scatterChart','散点图',['散点分布','相关性图','ScatterChartOutlined']],
+      ['histogram','直方图',['频数分布','区间统计','HistogramOutlined']],
+      ['radarChart','雷达图',['蜘蛛图','多维指标','RadarChartOutlined']],
+      ['timeline','时间线',['事件序列','过程记录','TimelineOutlined']],
+      ['dataEmpty','空数据',['无数据','数据为空','EmptyDataOutlined']],
+      ['audit','审核',['审查','审批','内容审核','AuditOutlined']],
+      ['certificate','证书',['认证','资质证明','成果证书','CertificateOutlined']],
+      ['target','目标',['指标目标','聚焦','靶心','TargetOutlined']]
     // Unicode 使用 BMP 私有区；发布后应只追加新图标，避免改变既有码位。
     ].map(([key,name,aliases])=>{
       const placement=taxonomy.get(key);

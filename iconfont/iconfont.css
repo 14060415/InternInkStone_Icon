@@ -1,70 +1,70 @@
 /* Generated file. Do not edit by hand. */
 @font-face{
   font-family:"InternDiscoveryIcons";
-  src:url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons.woff2") format("woff2"),
-      url("./intern-discovery-icons.woff2") format("woff2"),
-      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons.woff") format("woff"),
-      url("./intern-discovery-icons.woff") format("woff");
+  src:url("./intern-discovery-icons.woff2?v=20260807-e0ce-r7") format("woff2"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons.woff2?v=20260807-e0ce-r7") format("woff2"),
+      url("./intern-discovery-icons.woff?v=20260807-e0ce-r7") format("woff"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons.woff?v=20260807-e0ce-r7") format("woff");
   font-weight:normal;
   font-style:normal;
   font-display:block;
 }
 @font-face{
   font-family:"InternDiscoveryIconsSharp";
-  src:url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-sharp.woff2") format("woff2"),
-      url("./intern-discovery-icons-sharp.woff2") format("woff2"),
-      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-sharp.woff") format("woff"),
-      url("./intern-discovery-icons-sharp.woff") format("woff");
+  src:url("./intern-discovery-icons-sharp.woff2?v=20260807-e0ce-r7") format("woff2"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-sharp.woff2?v=20260807-e0ce-r7") format("woff2"),
+      url("./intern-discovery-icons-sharp.woff?v=20260807-e0ce-r7") format("woff"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-sharp.woff?v=20260807-e0ce-r7") format("woff");
   font-weight:normal;
   font-style:normal;
   font-display:block;
 }
 @font-face{
   font-family:"InternDiscoveryIconsSharpW1875";
-  src:url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-sharp-w1875.woff2") format("woff2"),
-      url("./intern-discovery-icons-sharp-w1875.woff2") format("woff2"),
-      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-sharp-w1875.woff") format("woff"),
-      url("./intern-discovery-icons-sharp-w1875.woff") format("woff");
+  src:url("./intern-discovery-icons-sharp-w1875.woff2?v=20260807-e0ce-r7") format("woff2"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-sharp-w1875.woff2?v=20260807-e0ce-r7") format("woff2"),
+      url("./intern-discovery-icons-sharp-w1875.woff?v=20260807-e0ce-r7") format("woff"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-sharp-w1875.woff?v=20260807-e0ce-r7") format("woff");
   font-weight:normal;
   font-style:normal;
   font-display:block;
 }
 @font-face{
   font-family:"InternDiscoveryIconsStandard";
-  src:url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-standard.woff2") format("woff2"),
-      url("./intern-discovery-icons-standard.woff2") format("woff2"),
-      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-standard.woff") format("woff"),
-      url("./intern-discovery-icons-standard.woff") format("woff");
+  src:url("./intern-discovery-icons-standard.woff2?v=20260807-e0ce-r7") format("woff2"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-standard.woff2?v=20260807-e0ce-r7") format("woff2"),
+      url("./intern-discovery-icons-standard.woff?v=20260807-e0ce-r7") format("woff"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-standard.woff?v=20260807-e0ce-r7") format("woff");
   font-weight:normal;
   font-style:normal;
   font-display:block;
 }
 @font-face{
   font-family:"InternDiscoveryIconsStandardW1875";
-  src:url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-standard-w1875.woff2") format("woff2"),
-      url("./intern-discovery-icons-standard-w1875.woff2") format("woff2"),
-      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-standard-w1875.woff") format("woff"),
-      url("./intern-discovery-icons-standard-w1875.woff") format("woff");
+  src:url("./intern-discovery-icons-standard-w1875.woff2?v=20260807-e0ce-r7") format("woff2"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-standard-w1875.woff2?v=20260807-e0ce-r7") format("woff2"),
+      url("./intern-discovery-icons-standard-w1875.woff?v=20260807-e0ce-r7") format("woff"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-standard-w1875.woff?v=20260807-e0ce-r7") format("woff");
   font-weight:normal;
   font-style:normal;
   font-display:block;
 }
 @font-face{
   font-family:"InternDiscoveryIconsRounded";
-  src:url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-rounded.woff2") format("woff2"),
-      url("./intern-discovery-icons-rounded.woff2") format("woff2"),
-      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-rounded.woff") format("woff"),
-      url("./intern-discovery-icons-rounded.woff") format("woff");
+  src:url("./intern-discovery-icons-rounded.woff2?v=20260807-e0ce-r7") format("woff2"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-rounded.woff2?v=20260807-e0ce-r7") format("woff2"),
+      url("./intern-discovery-icons-rounded.woff?v=20260807-e0ce-r7") format("woff"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-rounded.woff?v=20260807-e0ce-r7") format("woff");
   font-weight:normal;
   font-style:normal;
   font-display:block;
 }
 @font-face{
   font-family:"InternDiscoveryIconsRoundedW1875";
-  src:url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-rounded-w1875.woff2") format("woff2"),
-      url("./intern-discovery-icons-rounded-w1875.woff2") format("woff2"),
-      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-rounded-w1875.woff") format("woff"),
-      url("./intern-discovery-icons-rounded-w1875.woff") format("woff");
+  src:url("./intern-discovery-icons-rounded-w1875.woff2?v=20260807-e0ce-r7") format("woff2"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-rounded-w1875.woff2?v=20260807-e0ce-r7") format("woff2"),
+      url("./intern-discovery-icons-rounded-w1875.woff?v=20260807-e0ce-r7") format("woff"),
+      url("https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont/intern-discovery-icons-rounded-w1875.woff?v=20260807-e0ce-r7") format("woff");
   font-weight:normal;
   font-style:normal;
   font-display:block;
@@ -262,3 +262,31 @@
 .icon-export::before{content:"\e0b0";}
 .icon-language-switch::before{content:"\e0b1";}
 .icon-checkmark::before{content:"\e0b2";}
+.icon-tag::before{content:"\e0b3";}
+.icon-shield-check::before{content:"\e0b4";}
+.icon-report::before{content:"\e0b5";}
+.icon-file-add::before{content:"\e0b6";}
+.icon-file-search::before{content:"\e0b7";}
+.icon-folder-open::before{content:"\e0b8";}
+.icon-folder-plus::before{content:"\e0b9";}
+.icon-notes::before{content:"\e0ba";}
+.icon-text-recognition::before{content:"\e0bb";}
+.icon-arrow-up::before{content:"\e0bc";}
+.icon-to-bottom::before{content:"\e0bd";}
+.icon-undo::before{content:"\e0be";}
+.icon-redo::before{content:"\e0bf";}
+.icon-sidebar-expand::before{content:"\e0c0";}
+.icon-login::before{content:"\e0c1";}
+.icon-message-unread::before{content:"\e0c2";}
+.icon-message-search::before{content:"\e0c3";}
+.icon-topic-discussion::before{content:"\e0c4";}
+.icon-braces::before{content:"\e0c5";}
+.icon-pull-request::before{content:"\e0c6";}
+.icon-scatter-chart::before{content:"\e0c7";}
+.icon-histogram::before{content:"\e0c8";}
+.icon-radar-chart::before{content:"\e0c9";}
+.icon-timeline::before{content:"\e0ca";}
+.icon-data-empty::before{content:"\e0cb";}
+.icon-audit::before{content:"\e0cc";}
+.icon-certificate::before{content:"\e0cd";}
+.icon-target::before{content:"\e0ce";}

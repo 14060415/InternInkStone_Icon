@@ -685,15 +685,16 @@ function makeSymbolSprite(icons, glyphs) {
 
 const publicFontBaseUrl =
   'https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont';
+const fontAssetVersion = '20260807-e0ce-r7';
 
 function fontFace(family, file) {
   return [
     '@font-face{',
     `  font-family:"${family}";`,
-    `  src:url("${publicFontBaseUrl}/${file}.woff2") format("woff2"),`,
-    `      url("./${file}.woff2") format("woff2"),`,
-    `      url("${publicFontBaseUrl}/${file}.woff") format("woff"),`,
-    `      url("./${file}.woff") format("woff");`,
+    `  src:url("./${file}.woff2?v=${fontAssetVersion}") format("woff2"),`,
+    `      url("${publicFontBaseUrl}/${file}.woff2?v=${fontAssetVersion}") format("woff2"),`,
+    `      url("./${file}.woff?v=${fontAssetVersion}") format("woff"),`,
+    `      url("${publicFontBaseUrl}/${file}.woff?v=${fontAssetVersion}") format("woff");`,
     '  font-weight:normal;',
     '  font-style:normal;',
     '  font-display:block;',
@@ -919,7 +920,12 @@ async function main() {
         );
       }
       const sourceSvgText = sourceSvg(fragment, profile, variant.sourceStroke);
-      const outlined = prepareForFont(sourceSvgText, icon.key);
+      let outlined;
+      try {
+        outlined = prepareForFont(sourceSvgText, icon.key);
+      } catch (error) {
+        throw new Error(`${variant.id}/${icon.key} 描边转轮廓失败：${error.message}`, { cause: error });
+      }
       await Promise.all([
         fs.writeFile(path.join(dirs.source, fileName), `${sourceSvgText}\n`, 'utf8'),
         fs.writeFile(path.join(dirs.outline, fileName), `${outlined}\n`, 'utf8'),
