@@ -746,16 +746,18 @@
     },
     {
       "key": "refresh",
-      "name": "刷新",
+      "name": "循环",
       "token": "icon-refresh",
       "unicode": "U+E02E",
       "htmlEntity": "&#xE02E;",
       "category": "通用操作",
       "family": "系统控制",
       "aliases": [
+        "刷新",
         "重试",
         "重新加载",
-        "更新"
+        "更新",
+        "LoopOutlined"
       ],
       "svg": "./svg/refresh.svg"
     },

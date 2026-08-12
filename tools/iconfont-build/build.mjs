@@ -685,7 +685,7 @@ function makeSymbolSprite(icons, glyphs) {
 
 const publicFontBaseUrl =
   'https://raw.githubusercontent.com/14060415/InternInkStone_Icon/main/iconfont';
-const fontAssetVersion = '20260807-e0ce-r7';
+const fontAssetVersion = '20260812-r9';
 
 function fontFace(family, file) {
   return [

@@ -9,8 +9,8 @@
   ],
   "files": {
     "woff2": 23448,
-    "woff": 28488,
-    "ttf": 59212
+    "woff": 28444,
+    "ttf": 59204
   },
   "strokeWeights": {
     "normal": {
@@ -26,34 +26,34 @@
   },
   "variants": {
     "sharp": {
-      "woff2": 21400,
-      "woff": 26144,
-      "ttf": 52216
+      "woff2": 21368,
+      "woff": 26100,
+      "ttf": 52184
     },
     "sharp-w1875": {
-      "woff2": 21440,
-      "woff": 26240,
-      "ttf": 52244
+      "woff2": 21380,
+      "woff": 26180,
+      "ttf": 52216
     },
     "standard": {
-      "woff2": 23452,
-      "woff": 28560,
-      "ttf": 59036
+      "woff2": 23384,
+      "woff": 28504,
+      "ttf": 59016
     },
     "standard-w1875": {
       "woff2": 23448,
-      "woff": 28488,
-      "ttf": 59212
+      "woff": 28444,
+      "ttf": 59204
     },
     "rounded": {
-      "woff2": 24516,
-      "woff": 29612,
-      "ttf": 60636
+      "woff2": 24464,
+      "woff": 29568,
+      "ttf": 60592
     },
     "rounded-w1875": {
-      "woff2": 24476,
-      "woff": 29440,
-      "ttf": 60160
+      "woff2": 24452,
+      "woff": 29408,
+      "ttf": 60156
     }
   }
 }
